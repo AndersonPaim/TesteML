@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463ae013de2548d4d9bbd7da4353ba1f, type: 3}
   m_Name: PlayerBalancer
   m_EditorClassIdentifier: 
-  walkSpeed: 0.5
+  walkSpeed: 0.6
   runSpeed: 1
-  generalSpeed: 8
+  generalSpeed: 7
   jumpForce: 5
   gravity: -1
   acceleration: 1

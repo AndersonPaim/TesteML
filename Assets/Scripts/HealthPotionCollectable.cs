@@ -6,16 +6,21 @@ public class HealthPotionCollectable : Collectable
 {
     [SerializeField] private float _healthAmount;
 
-    protected override void Initialize()
-    {
-        base.Initialize();
-    }
+    private IHealable _healable;
+
+    private IInjured _injured;
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<IHealable>() != null)
+        _healable = other.gameObject.GetComponent<IHealable>();  
+        _injured = other.gameObject.GetComponent<IInjured>();
+
+        if(_healable != null)  
         {
-            CollectItem(other.gameObject);
+            if(CanHeal(_injured))
+            {
+                CollectItem(other.gameObject);
+            }
         }
     }
 
@@ -23,8 +28,7 @@ public class HealthPotionCollectable : Collectable
     {
         base.CollectItem(obj);
 
-        Heal(obj.GetComponent<IHealable>()); 
-        StartCoroutine(DisableObject());
+        Heal(_healable); 
     }
 
     private void Heal(IHealable ihealable)
@@ -32,10 +36,16 @@ public class HealthPotionCollectable : Collectable
         ihealable.ReceiveHealing(_healthAmount);
     }
 
-    protected override IEnumerator DisableObject()
+    private bool CanHeal(IInjured injured)
     {
-        yield return new WaitForSeconds(_disableDelay);
-        gameObject.SetActive(false);
+        if(injured.IsInjured())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

@@ -7,4 +7,6 @@ public class SaveData
 {
     public float musicVolume = 0.8f;
     public float soundfxVolume = 0.8f;
+    public float gameTime = 3;
+    public float startCountdown = 3;
 }

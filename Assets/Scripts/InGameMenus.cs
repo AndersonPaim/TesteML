@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class InGameMenus : MonoBehaviour
@@ -8,10 +10,19 @@ public class InGameMenus : MonoBehaviour
     public delegate void PauseHandler(bool isPaused);
     public PauseHandler OnPause;
 
+    public delegate void SceneHandler(string scene);
+    public static SceneHandler OnSetScene;
+    public static SceneHandler OnRestartScene;
+
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private GameObject _finishMenu;
     [SerializeField] private GameObject _settingsMenu;
+    [SerializeField] private GameObject _loadingScreen;
+
+    [SerializeField] private Slider _loadingBar;
+
+    [SerializeField] private TextMeshProUGUI _loadingProgressText;
 
     private bool _isPaused = false;
     private bool _canResume = true;
@@ -32,13 +43,15 @@ public class InGameMenus : MonoBehaviour
         GameManager.sInstance.InputListener.OnPause += PauseInput;
         GameManager.sInstance.OnFinish += Finish;
         GameManager.sInstance.OnGameOver += GameOver;
+        GameManager.sInstance.SceneController.OnUpdateProgress += LoadingScreen;
     }
 
     private void RemoveDelegates()
     {
         GameManager.sInstance.InputListener.OnPause -= PauseInput;
-        GameManager.sInstance.OnFinish += Finish;
+        GameManager.sInstance.OnFinish -= Finish;
         GameManager.sInstance.OnGameOver -= GameOver;
+        GameManager.sInstance.SceneController.OnUpdateProgress -= LoadingScreen;
     }
 
     private void PauseInput()
@@ -52,6 +65,13 @@ public class InGameMenus : MonoBehaviour
             Resume();
         }
     }
+
+    private void LoadingScreen(float progress)
+    {
+        _loadingBar.value = progress;
+        _loadingProgressText.text = (progress * 100).ToString() + "%" ;
+    }
+
 
     public void Pause()
     {
@@ -105,11 +125,12 @@ public class InGameMenus : MonoBehaviour
 
     public void Restart()
     {
-        SceneController.RestartScene();
+        OnRestartScene?.Invoke("Game"); 
     }
 
     public void Quit()
     {
-        SceneController.SetScene("Menu");
+        _loadingScreen.SetActive(true);
+        OnSetScene?.Invoke("Menu");
     }
 }

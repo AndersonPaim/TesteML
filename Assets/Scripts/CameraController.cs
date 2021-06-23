@@ -68,8 +68,8 @@ public class CameraController : MonoBehaviour
     {
         float mouseX = lookX * _sensibility * Time.deltaTime;
         float mouseY = lookY * -_sensibility * Time.deltaTime;
-
-        if(_player.transform.rotation.eulerAngles.x + mouseY > _maxVerticalRot|| _player.transform.rotation.eulerAngles.x + mouseY < _minVerticalRot) 
+     
+        if(_player.transform.rotation.eulerAngles.x + mouseY > _maxVerticalRot || _player.transform.rotation.eulerAngles.x + mouseY < _minVerticalRot) 
         {
             OnCameraRotate?.Invoke(mouseX, mouseY);
         }

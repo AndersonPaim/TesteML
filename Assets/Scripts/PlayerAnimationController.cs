@@ -50,10 +50,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void Shoot(bool isShooting)
     {
-        if(isShooting && _isAiming)
-        {
-            _animator.SetTrigger(PlayerAnimationParameters.SHOOT);
-        }
+        _animator.SetBool(PlayerAnimationParameters.SHOOT, isShooting);
     }
 
     private void ChangeArrow(bool isChangingArrow)

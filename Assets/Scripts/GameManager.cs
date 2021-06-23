@@ -25,13 +25,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ObjectPooler _objectPooler;
 
+    [SerializeField] private SceneController _sceneController;
+
     [SerializeField] private Timer _timer;
 
     [SerializeField] private BowController _bowController;
 
+    [SerializeField] private AudioController _audioController;
+
     [SerializeField] private GameObject _player;
 
-    [SerializeField] private float _gameTimer; // game timer in seconds
     private void Awake()
     {
         if (sInstance != null)
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
             sInstance = this;
         }
         SetupDelegates();
+        SaveSystem.Load(); //TODO VER MELHOR ONDE COLOCAR
     }
 
     private void OnDestroy()
@@ -53,13 +57,13 @@ public class GameManager : MonoBehaviour
 
     private void SetupDelegates()
     {
-        _timer.OnFinishTimer += Finish;
+        _timer.OnFinishGameTimer += Finish;
         _playerController.OnPlayerDeath += GameOver;
     }
 
     private void RemoveDelegates()
     {
-        _timer.OnFinishTimer -= Finish;
+        _timer.OnFinishGameTimer -= Finish;
         _playerController.OnPlayerDeath -= GameOver;
     }
 
@@ -108,14 +112,19 @@ public class GameManager : MonoBehaviour
         get { return _bowController; }
     }
 
+    public SceneController SceneController
+    {
+        get { return _sceneController; }
+    }
+
+    public AudioController AudioController
+    {
+        get { return _audioController; }
+    }
+
     public GameObject Player
     {
         get { return _player; }
-    }
-    
-    public float GameTimer
-    {
-        get { return _gameTimer; }
     }
 
     private void Finish()

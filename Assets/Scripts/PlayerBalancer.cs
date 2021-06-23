@@ -16,5 +16,5 @@ public class PlayerBalancer : ScriptableObject
     public float shootForce;
     public float health;
 
-    public objectsTag[] arrows;
+    public ObjectsTag[] arrows;
 }

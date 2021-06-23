@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [System.Serializable]
     public class EnemyToSpawn
     {
-        public objectsTag enemySpawnTag;
+        public ObjectsTag enemySpawnTag;
 
         public int maxEnemies;
         public int currentEnemies;
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private List<EnemyToSpawn> _enemy;
 
-    public Dictionary<objectsTag, EnemyToSpawn> _enemyDictionary;
+    public Dictionary<ObjectsTag, EnemyToSpawn> _enemyDictionary;
 
     private ObjectPooler _objectPooler;
 
@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
         
         _objectPooler = GameManager.sInstance.ObjectPooler;
         
-        _enemyDictionary = new Dictionary<objectsTag, EnemyToSpawn>();
+        _enemyDictionary = new Dictionary<ObjectsTag, EnemyToSpawn>();
 
         for(int i = 0; i < _enemy.Count; i++)
         {
@@ -69,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
         Enemy.OnEnemyDeath -= EnemyDeath;
     }
 
-    private void EnemyDeath(objectsTag enemy)
+    private void EnemyDeath(ObjectsTag enemy)
     {
         _enemyDictionary[enemy].currentEnemies--;
         _totalCurrentEnemies--;

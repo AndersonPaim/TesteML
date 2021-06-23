@@ -3,24 +3,62 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class SceneController
+public class SceneController : MonoBehaviour 
 {
-    public static int currentScene;
-    public static void SetScene(string scene)
+    public delegate void LoadingProgressHandler(float progress);
+    public LoadingProgressHandler OnUpdateProgress;
+    public int currentScene;
+
+    private void Start() 
     {
-        SceneManager.LoadScene(scene);
+        SetupDelegates();
+    }
+
+    private void OnDestroy() 
+    {
+        RemoveDelegates();
+    }
+
+    private void SetupDelegates()
+    {
+        InGameMenus.OnSetScene += SetScene;
+        InGameMenus.OnRestartScene += RestartScene;
+        MainMenu.OnSetScene += SetScene;
+    }
+    private void RemoveDelegates()
+    {
+        InGameMenus.OnSetScene -= SetScene;
+        InGameMenus.OnRestartScene -= RestartScene;
+        MainMenu.OnSetScene -= SetScene;
+    }
+
+    private void SetScene(string scene)
+    {
+        StartCoroutine(LoadASync(scene));
         GetCurrentScene();
     }
     
-    public static void GetCurrentScene()
+    private IEnumerator LoadASync(string scene)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+
+        while(!operation.isDone)
+        {
+            float loadingProgress = Mathf.Clamp01(operation.progress / 0.9f);
+            OnUpdateProgress?.Invoke(loadingProgress);
+           
+            yield return null;
+        }
+    }
+
+    private void GetCurrentScene()
     {
         Scene scene = SceneManager.GetActiveScene();
         currentScene = scene.buildIndex;
     }
 
-    public static void RestartScene()
+    private void RestartScene(string scene)
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SetScene(scene.name);
+        SetScene(scene);
     }
 }

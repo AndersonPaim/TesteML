@@ -5,13 +5,12 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {   
     public delegate void FinishTimerHandler();
-    public FinishTimerHandler OnFinishTimer;
+    public FinishTimerHandler OnFinishGameTimer;
+    public FinishTimerHandler OnFinishCountdownTimer;
 
     public delegate void GameTimerHandler(float minutes, float seconds);
-    public GameTimerHandler OnUpdateGameTimer; 
+    public GameTimerHandler OnUpdateGameTimer;
     public GameTimerHandler OnUpdateStartTimer;
-
-    [SerializeField] private float _startTime;
 
     [SerializeField] private GameObject _startTimerObject;
     [SerializeField] private GameObject _gameTimerObject;
@@ -19,7 +18,8 @@ public class Timer : MonoBehaviour
     private bool _isPaused;
     private bool _gameStarted;
 
-    private float _time;
+    private float _startTime;
+    private float _gameTime;
     private float _minutes;
     private float _seconds;
 
@@ -47,7 +47,9 @@ public class Timer : MonoBehaviour
 
     private void Initialize()
     {
-        _time = GameManager.sInstance.GameTimer;
+        SaveData data = SaveSystem.localData;
+        _gameTime = data.gameTime * 60;
+        _startTime = data.startCountdown;
         
         StartCountdown();
     }
@@ -87,21 +89,22 @@ public class Timer : MonoBehaviour
             _startTimerObject.SetActive(false);
             _gameTimerObject.SetActive(true);
             _gameStarted = true;
+            OnFinishCountdownTimer?.Invoke();
         }
     }
 
     private void GameCountdown()
     {
-        _time -= Time.deltaTime;
+        _gameTime -= Time.deltaTime;
         
-        _minutes = Mathf.FloorToInt(_time / 60);
-        _seconds = Mathf.FloorToInt(_time % 60);
+        _minutes = Mathf.FloorToInt(_gameTime / 60);
+        _seconds = Mathf.FloorToInt(_gameTime % 60);
         
         OnUpdateGameTimer?.Invoke(_minutes, _seconds);
 
-        if(_time <= 0)
+        if(_gameTime <= 0)
         {
-            OnFinishTimer?.Invoke();
+            OnFinishGameTimer?.Invoke();
         }
 
     }

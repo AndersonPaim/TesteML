@@ -17,7 +17,13 @@ MonoBehaviour:
   health: 100
   attackCooldown: 4
   destroyDelay: 5
-  damage: 20
-  dropChance: 30
-  armorTexture: {fileID: 2100000, guid: 7dda5016b5c0dcd469e7d5d58bd6fcd4, type: 2}
-  itensDrop: 040000000500000003000000
+  damage: 15
+  dropChance: 33
+  armorTexture:
+  - {fileID: 2100000, guid: b477b51fed2b02340a6d749b611c9771, type: 2}
+  - {fileID: 2100000, guid: 7dda5016b5c0dcd469e7d5d58bd6fcd4, type: 2}
+  - {fileID: 2100000, guid: 035ac57c880793c4682204130a02ddea, type: 2}
+  - {fileID: 2100000, guid: 3f6be48f7875b01408f2dc26b38b446f, type: 2}
+  - {fileID: 2100000, guid: a5cd4ee1ec544d746973f666ec9c9653, type: 2}
+  - {fileID: 2100000, guid: b9895ac319f483f48a22fc0867fc27b6, type: 2}
+  itensDrop: 0600000005000000

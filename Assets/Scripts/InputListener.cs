@@ -23,7 +23,7 @@ public class InputListener : MonoBehaviour
     [SerializeField] private float _lookX;
     [SerializeField] private float _lookY;
 
-    [SerializeField] private objectsTag _arrow;
+    [SerializeField] private ObjectsTag _arrow;
 
     [SerializeField] private bool _jump;
     [SerializeField] private bool _run;
@@ -37,7 +37,7 @@ public class InputListener : MonoBehaviour
 
     private void Awake()
     {
-        Initialize();
+        StartInputs();
     }
 
     private void Update()
@@ -58,24 +58,12 @@ public class InputListener : MonoBehaviour
         _input.Disable();
     }
 
-    private void OnDestroy() //TODO AJEITAR ISSO EM UMA FUNÇÃO
+    private void OnDestroy() 
     {
-        _input.Player.Jump.performed -= ctx => Jump(ctx);
-        _input.Player.Run.performed -= ctx => Run(ctx);
-        _input.Player.Run.canceled -= ctx => Run(ctx);
-        _input.Player.Aim.performed -= ctx => Aim(ctx);
-        _input.Player.Aim.canceled -= ctx => Aim(ctx); 
-
-        _input.Player.Shoot.canceled -= _ => Shoot();
-        _input.Player.Pause.performed -= _ => Pause();
-        _input.Player.LookX.performed -= _ => LookX();
-        _input.Player.LookY.performed -= _ => LookY();
-        _input.Player.Arrow1.performed -= _ => SelectArrow1();
-        _input.Player.Arrow2.performed -= _ => SelectArrow2();
-        _input.Player.Arrow3.performed -= _ => SelectArrow3();
+       DestroyInputs();
     }
 
-    private void Initialize()
+    private void StartInputs()
     {
         _input = new PlayerInputActions();
         _input.Player.Jump.performed += ctx => Jump(ctx);
@@ -83,8 +71,9 @@ public class InputListener : MonoBehaviour
         _input.Player.Run.canceled += ctx => Run(ctx);
         _input.Player.Aim.performed += ctx => Aim(ctx);
         _input.Player.Aim.canceled += ctx => Aim(ctx);
+        _input.Player.Shoot.performed += ctx => Shoot(ctx);
+        _input.Player.Shoot.canceled += ctx => Shoot(ctx);
 
-        _input.Player.Shoot.canceled += _ => Shoot();
         _input.Player.Pause.performed += _ => Pause();
         _input.Player.LookX.performed += _ => LookX();
         _input.Player.LookY.performed += _ => LookY(); 
@@ -92,7 +81,25 @@ public class InputListener : MonoBehaviour
         _input.Player.Arrow2.performed += _ => SelectArrow2();
         _input.Player.Arrow3.performed += _ => SelectArrow3();
 
-        _arrow = objectsTag.RegularArrow;
+        _arrow = ObjectsTag.RegularArrow;
+    }
+
+    private void DestroyInputs()
+    {
+        _input.Player.Jump.performed -= ctx => Jump(ctx);
+        _input.Player.Run.performed -= ctx => Run(ctx);
+        _input.Player.Run.canceled -= ctx => Run(ctx);
+        _input.Player.Aim.performed -= ctx => Aim(ctx);
+        _input.Player.Aim.canceled -= ctx => Aim(ctx); 
+        _input.Player.Shoot.performed -= ctx => Shoot(ctx);
+        _input.Player.Shoot.canceled -= ctx => Shoot(ctx);
+
+        _input.Player.Pause.performed -= _ => Pause();
+        _input.Player.LookX.performed -= _ => LookX();
+        _input.Player.LookY.performed -= _ => LookY();
+        _input.Player.Arrow1.performed -= _ => SelectArrow1();
+        _input.Player.Arrow2.performed -= _ => SelectArrow2();
+        _input.Player.Arrow3.performed -= _ => SelectArrow3();
     }
 
     private void CreateInputStruct()
@@ -111,10 +118,6 @@ public class InputListener : MonoBehaviour
         {
             _jump = false;
         }
-        else if(_shoot)
-        {
-            _shoot = false;
-        }
     }
 
     private void Aim(InputAction.CallbackContext ctx)
@@ -129,24 +132,31 @@ public class InputListener : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    private void Shoot(InputAction.CallbackContext ctx)
     {
-        _shoot = true;
+        if(ctx.performed)
+        {
+            _shoot = true;
+        }
+        else
+        {
+            _shoot = false;
+        }
     }
 
     private void SelectArrow1() //TODO JUNTAR ESSES INPUTS NUMA FUNÇÃO SÓ
     {
-        _arrow = objectsTag.RegularArrow;
+        _arrow = ObjectsTag.RegularArrow;
     }
 
     private void SelectArrow2() 
     {
-        _arrow = objectsTag.PiercingArrow;
+        _arrow = ObjectsTag.PiercingArrow;
     }
 
     private void SelectArrow3() 
     {        
-        _arrow = objectsTag.ExplosiveArrow;
+        _arrow = ObjectsTag.ExplosiveArrow;
     }
 
     private void LookX() //TODO JUNTAR EM UM INPUT SÓ

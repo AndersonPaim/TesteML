@@ -4,8 +4,7 @@ using UnityEngine;
 
 public abstract class Collectable : MonoBehaviour
 {
-    [SerializeField] protected float _disableDelay;
-
+    [SerializeField] private AudioClip _collectAudio;
     private Collider _collider;
 
     public virtual void Awake() 
@@ -20,23 +19,15 @@ public abstract class Collectable : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        Collider.enabled = true;
+        _collider.enabled = true;
     }
-
-    //rotected abstract void CollectItem();
  
     protected abstract void OnTriggerEnter(Collider other);
 
     protected virtual void CollectItem(GameObject obj)
     {
-        //CollectItem();
-        Collider.enabled = false;
+        _collider.enabled = false;
+        gameObject.SetActive(false);
     }
 
-    protected abstract IEnumerator DisableObject();
-
-    public Collider Collider
-    {
-        get { return _collider; }
-    }
 }

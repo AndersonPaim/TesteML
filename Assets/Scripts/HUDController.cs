@@ -8,13 +8,19 @@ public class HUDController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _gameTimerText;
     [SerializeField] private TextMeshProUGUI _startTimerText;
-    //[SerializeField] private TextMeshProUGUI _ammoText;
-    
+    [SerializeField] private TextMeshProUGUI _piercingArrowText;
+    [SerializeField] private TextMeshProUGUI _explosiveArrowText;
+
+
     [SerializeField] private Slider _healthBar;
+
+    private Dictionary<ObjectsTag, TextMeshProUGUI> _arrowInventoryText;
+
 
     private void Start()
     {
         SetupDelegates();
+        Initialize();
     }
 
     private void OnDestroy()
@@ -22,11 +28,19 @@ public class HUDController : MonoBehaviour
         RemoveDelegates();
     }
 
+    private void Initialize()
+    {
+        _arrowInventoryText = new Dictionary<ObjectsTag, TextMeshProUGUI>();
+        _arrowInventoryText.Add(ObjectsTag.PiercingArrow, _piercingArrowText);
+        _arrowInventoryText.Add(ObjectsTag.ExplosiveArrow, _explosiveArrowText);
+    }
+
     private void SetupDelegates()
     {
         GameManager.sInstance.Timer.OnUpdateGameTimer += GameTimer;
         GameManager.sInstance.Timer.OnUpdateStartTimer += StartTimer;
         GameManager.sInstance.PlayerController.OnUpdateHealth += HealthBar;
+        GameManager.sInstance.BowController.OnUpdateInventory += UpdateArrowInventory;
     }
 
     private void RemoveDelegates()
@@ -34,6 +48,15 @@ public class HUDController : MonoBehaviour
         GameManager.sInstance.Timer.OnUpdateGameTimer -= GameTimer;
         GameManager.sInstance.Timer.OnUpdateStartTimer -= StartTimer;
         GameManager.sInstance.PlayerController.OnUpdateHealth -= HealthBar;
+        GameManager.sInstance.BowController.OnUpdateInventory -= UpdateArrowInventory;
+    }
+
+    private void UpdateArrowInventory(Dictionary<ObjectsTag, float> arrowInventory)
+    {
+        foreach(System.Collections.Generic.KeyValuePair<ObjectsTag, float> arrow in arrowInventory)
+        {
+            _arrowInventoryText[arrow.Key].text = arrow.Value.ToString();
+        }
     }
 
     private void HealthBar(float health, float maxHealth)
@@ -41,11 +64,6 @@ public class HUDController : MonoBehaviour
         _healthBar.maxValue = maxHealth;
         _healthBar.value = health;
     }
-
-    /*private void UpdateAmmo(float ammo)
-    {
-        _ammoText.text = ammo.ToString();
-    }*/
 
     private void GameTimer(float minutes, float seconds)
     {

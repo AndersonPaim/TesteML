@@ -1,334 +1,967 @@
 fileFormatVersion: 2
 guid: 8023cb560aa414afa813fb3a47965d99
-timeCreated: 1459759424
-licenseType: Store
 ModelImporter:
-  serializedVersion: 18
-  fileIDToRecycleName:
-    100000: ankle_IK_L
-    100002: ankle_IK_R
-    100004: arm_L
-    100006: arm_R
-    100008: Armature_Warrior
-    100010: brow_L
-    100012: brow_R
-    100014: calf_L
-    100016: calf_R
-    100018: clavicle_L
-    100020: clavicle_R
-    100022: elbow_IK_L
-    100024: elbow_IK_R
-    100026: eyelid_L
-    100028: eyelid_R
-    100030: fingers_L
-    100032: fingers_R
-    100034: fingertips_L
-    100036: fingertips_R
-    100038: foot_L
-    100040: foot_R
-    100042: Grenade_Smoke
-    100044: Grenade_Sulfur
-    100046: hand_L
-    100048: hand_R
-    100050: head
-    100052: hips
-    100054: jaw
-    100056: knee_IK_L
-    100058: knee_IK_R
-    100060: main
-    100062: neck
-    100064: Potion_Mana
-    100066: quad_L
-    100068: quad_R
-    100070: Shield
-    100072: shoulder_L
-    100074: shoulder_R
-    100076: slot_1
-    100078: slot_2
-    100080: slot_3
-    100082: slot_4
-    100084: slot_5
-    100086: slot_6
-    100088: spine
-    100090: Sword
-    100092: thumb_L
-    100094: thumb_R
-    100096: torso
-    100098: //RootNode
-    100100: Warrior_Skin_1
-    100102: Warrior_Skin_2
-    100104: Warrior_Skin_3
-    100106: weapon_L
-    100108: weapon_R
-    100110: wrist_IK_L
-    100112: wrist_IK_R
-    100114: ankle_IK.L
-    100116: ankle_IK.L_end
-    100118: ankle_IK.R
-    100120: ankle_IK.R_end
-    100122: arm.L
-    100124: arm.R
-    100126: brow.L
-    100128: brow.L_end
-    100130: brow.R
-    100132: brow.R_end
-    100134: calf.L
-    100136: calf.R
-    100138: clavicle.L
-    100140: clavicle.R
-    100142: elbow_IK.L
-    100144: elbow_IK.L_end
-    100146: elbow_IK.R
-    100148: elbow_IK.R_end
-    100150: eyelid.L
-    100152: eyelid.L_end
-    100154: eyelid.R
-    100156: eyelid.R_end
-    100158: fingers.L
-    100160: fingers.R
-    100162: fingertips.L
-    100164: fingertips.L_end
-    100166: fingertips.R
-    100168: fingertips.R_end
-    100170: foot.L
-    100172: foot.L_end
-    100174: foot.R
-    100176: foot.R_end
-    100178: hand.L
-    100180: hand.R
-    100182: jaw_end
-    100184: knee_IK.L
-    100186: knee_IK.L_end
-    100188: knee_IK.R
-    100190: knee_IK.R_end
-    100192: quad.L
-    100194: quad.R
-    100196: shoulder.L
-    100198: shoulder.R
-    100200: slot_1 1
-    100202: slot_1_end
-    100204: slot_2 1
-    100206: slot_2_end
-    100208: slot_3 1
-    100210: slot_3_end
-    100212: thumb.L
-    100214: thumb.L_end
-    100216: thumb.R
-    100218: thumb.R_end
-    100220: weapon.L
-    100222: weapon.L_end
-    100224: weapon.R
-    100226: weapon.R_end
-    100228: wrist_IK.L
-    100230: wrist_IK.L_end
-    100232: wrist_IK.R
-    100234: wrist_IK.R_end
-    400000: ankle_IK_L
-    400002: ankle_IK_R
-    400004: arm_L
-    400006: arm_R
-    400008: Armature_Warrior
-    400010: brow_L
-    400012: brow_R
-    400014: calf_L
-    400016: calf_R
-    400018: clavicle_L
-    400020: clavicle_R
-    400022: elbow_IK_L
-    400024: elbow_IK_R
-    400026: eyelid_L
-    400028: eyelid_R
-    400030: fingers_L
-    400032: fingers_R
-    400034: fingertips_L
-    400036: fingertips_R
-    400038: foot_L
-    400040: foot_R
-    400042: Grenade_Smoke
-    400044: Grenade_Sulfur
-    400046: hand_L
-    400048: hand_R
-    400050: head
-    400052: hips
-    400054: jaw
-    400056: knee_IK_L
-    400058: knee_IK_R
-    400060: main
-    400062: neck
-    400064: Potion_Mana
-    400066: quad_L
-    400068: quad_R
-    400070: Shield
-    400072: shoulder_L
-    400074: shoulder_R
-    400076: slot_1
-    400078: slot_2
-    400080: slot_3
-    400082: slot_4
-    400084: slot_5
-    400086: slot_6
-    400088: spine
-    400090: Sword
-    400092: thumb_L
-    400094: thumb_R
-    400096: torso
-    400098: //RootNode
-    400100: Warrior_Skin_1
-    400102: Warrior_Skin_2
-    400104: Warrior_Skin_3
-    400106: weapon_L
-    400108: weapon_R
-    400110: wrist_IK_L
-    400112: wrist_IK_R
-    400114: ankle_IK.L
-    400116: ankle_IK.L_end
-    400118: ankle_IK.R
-    400120: ankle_IK.R_end
-    400122: arm.L
-    400124: arm.R
-    400126: brow.L
-    400128: brow.L_end
-    400130: brow.R
-    400132: brow.R_end
-    400134: calf.L
-    400136: calf.R
-    400138: clavicle.L
-    400140: clavicle.R
-    400142: elbow_IK.L
-    400144: elbow_IK.L_end
-    400146: elbow_IK.R
-    400148: elbow_IK.R_end
-    400150: eyelid.L
-    400152: eyelid.L_end
-    400154: eyelid.R
-    400156: eyelid.R_end
-    400158: fingers.L
-    400160: fingers.R
-    400162: fingertips.L
-    400164: fingertips.L_end
-    400166: fingertips.R
-    400168: fingertips.R_end
-    400170: foot.L
-    400172: foot.L_end
-    400174: foot.R
-    400176: foot.R_end
-    400178: hand.L
-    400180: hand.R
-    400182: jaw_end
-    400184: knee_IK.L
-    400186: knee_IK.L_end
-    400188: knee_IK.R
-    400190: knee_IK.R_end
-    400192: quad.L
-    400194: quad.R
-    400196: shoulder.L
-    400198: shoulder.R
-    400200: slot_1 1
-    400202: slot_1_end
-    400204: slot_2 1
-    400206: slot_2_end
-    400208: slot_3 1
-    400210: slot_3_end
-    400212: thumb.L
-    400214: thumb.L_end
-    400216: thumb.R
-    400218: thumb.R_end
-    400220: weapon.L
-    400222: weapon.L_end
-    400224: weapon.R
-    400226: weapon.R_end
-    400228: wrist_IK.L
-    400230: wrist_IK.L_end
-    400232: wrist_IK.R
-    400234: wrist_IK.R_end
-    2300000: Grenade_Smoke
-    2300002: Grenade_Sulfur
-    2300004: Potion_Mana
-    2300006: Shield
-    2300008: Sword
-    3300000: Grenade_Smoke
-    3300002: Grenade_Sulfur
-    3300004: Potion_Mana
-    3300006: Shield
-    3300008: Sword
-    4300000: Shield
-    4300002: Sword
-    4300004: Warrior_Skin_3
-    4300006: Warrior_Skin_2
-    4300008: Warrior_Skin_1
-    4300010: Potion_Mana
-    4300012: Grenade_Sulfur
-    4300014: Grenade_Smoke
-    7400000: Default Take
-    7400002: Archer_Attack_1
-    7400004: Archer_Attack_2
-    7400006: Archer_Damage
-    7400008: Archer_Jump
-    7400010: Archer_Use_1
-    7400012: Archer_Use_2
-    7400014: Archer_Use_3
-    7400016: Character_Idle_1
-    7400018: Character_Idle_2
-    7400020: Character_Idle_3
-    7400022: Character_RunCycle
-    7400024: Character_WalkCycle
-    7400026: Rogue_Attack_1
-    7400028: Rogue_Attack_2
-    7400030: Rogue_Damage
-    7400032: Character_Death
-    7400034: Rogue_Jump
-    7400036: Rogue_Use_1
-    7400038: Rogue_Use_2
-    7400040: Rogue_Use_3
-    7400042: Warrior_Attack_1
-    7400044: Warrior_Attack_2
-    7400046: Warrior_Damage
-    7400048: Warrior_Jump
-    7400050: Warrior_Use_1
-    7400052: Warrior_Use_2
-    7400054: Warrior_Use_3
-    7400056: Armature_Warrior|Archer_Attack_2
-    7400058: Armature_Warrior|Archer_Damage
-    7400060: Armature_Warrior|Archer_Jump
-    7400062: Armature_Warrior|Archer_Use_1
-    7400064: Armature_Warrior|Archer_Use_2
-    7400066: Armature_Warrior|Archer_Use_3
-    7400068: Armature_Warrior|Character_Idle_1
-    7400070: Armature_Warrior|Character_Idle_2
-    7400072: Armature_Warrior|Character_Idle_3
-    7400074: Armature_Warrior|Character_RunCycle
-    7400076: Armature_Warrior|Character_WalkCycle
-    7400078: Armature_Warrior|Rogue_Attack_1
-    7400080: Armature_Warrior|Rogue_Attack_2
-    7400082: Armature_Warrior|Rogue_Damage
-    7400084: Armature_Warrior|Character_Death
-    7400086: Armature_Warrior|Rogue_Jump
-    7400088: Armature_Warrior|Rogue_Use_1
-    7400090: Armature_Warrior|Rogue_Use_2
-    7400092: Armature_Warrior|Rogue_Use_3
-    7400094: Armature_Warrior|Warrior_Attack_1
-    7400096: Armature_Warrior|Warrior_Attack_2
-    7400098: Armature_Warrior|Warrior_Damage
-    7400100: Armature_Warrior|Warrior_Jump
-    7400102: Armature_Warrior|Warrior_Use_1
-    7400104: Armature_Warrior|Warrior_Use_2
-    7400106: Armature_Warrior|Warrior_Use_3
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: Shield
-    13700002: Sword
-    13700004: Warrior_Skin_1
-    13700006: Warrior_Skin_2
-    13700008: Warrior_Skin_3
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: ankle_IK_L
+  - first:
+      1: 100002
+    second: ankle_IK_R
+  - first:
+      1: 100004
+    second: arm_L
+  - first:
+      1: 100006
+    second: arm_R
+  - first:
+      1: 100008
+    second: Armature_Warrior
+  - first:
+      1: 100010
+    second: brow_L
+  - first:
+      1: 100012
+    second: brow_R
+  - first:
+      1: 100014
+    second: calf_L
+  - first:
+      1: 100016
+    second: calf_R
+  - first:
+      1: 100018
+    second: clavicle_L
+  - first:
+      1: 100020
+    second: clavicle_R
+  - first:
+      1: 100022
+    second: elbow_IK_L
+  - first:
+      1: 100024
+    second: elbow_IK_R
+  - first:
+      1: 100026
+    second: eyelid_L
+  - first:
+      1: 100028
+    second: eyelid_R
+  - first:
+      1: 100030
+    second: fingers_L
+  - first:
+      1: 100032
+    second: fingers_R
+  - first:
+      1: 100034
+    second: fingertips_L
+  - first:
+      1: 100036
+    second: fingertips_R
+  - first:
+      1: 100038
+    second: foot_L
+  - first:
+      1: 100040
+    second: foot_R
+  - first:
+      1: 100042
+    second: Grenade_Smoke
+  - first:
+      1: 100044
+    second: Grenade_Sulfur
+  - first:
+      1: 100046
+    second: hand_L
+  - first:
+      1: 100048
+    second: hand_R
+  - first:
+      1: 100050
+    second: head
+  - first:
+      1: 100052
+    second: hips
+  - first:
+      1: 100054
+    second: jaw
+  - first:
+      1: 100056
+    second: knee_IK_L
+  - first:
+      1: 100058
+    second: knee_IK_R
+  - first:
+      1: 100060
+    second: main
+  - first:
+      1: 100062
+    second: neck
+  - first:
+      1: 100064
+    second: Potion_Mana
+  - first:
+      1: 100066
+    second: quad_L
+  - first:
+      1: 100068
+    second: quad_R
+  - first:
+      1: 100070
+    second: Shield
+  - first:
+      1: 100072
+    second: shoulder_L
+  - first:
+      1: 100074
+    second: shoulder_R
+  - first:
+      1: 100076
+    second: slot_1
+  - first:
+      1: 100078
+    second: slot_2
+  - first:
+      1: 100080
+    second: slot_3
+  - first:
+      1: 100082
+    second: slot_4
+  - first:
+      1: 100084
+    second: slot_5
+  - first:
+      1: 100086
+    second: slot_6
+  - first:
+      1: 100088
+    second: spine
+  - first:
+      1: 100090
+    second: Sword
+  - first:
+      1: 100092
+    second: thumb_L
+  - first:
+      1: 100094
+    second: thumb_R
+  - first:
+      1: 100096
+    second: torso
+  - first:
+      1: 100098
+    second: //RootNode
+  - first:
+      1: 100100
+    second: Warrior_Skin_1
+  - first:
+      1: 100102
+    second: Warrior_Skin_2
+  - first:
+      1: 100104
+    second: Warrior_Skin_3
+  - first:
+      1: 100106
+    second: weapon_L
+  - first:
+      1: 100108
+    second: weapon_R
+  - first:
+      1: 100110
+    second: wrist_IK_L
+  - first:
+      1: 100112
+    second: wrist_IK_R
+  - first:
+      1: 100114
+    second: ankle_IK.L
+  - first:
+      1: 100116
+    second: ankle_IK.L_end
+  - first:
+      1: 100118
+    second: ankle_IK.R
+  - first:
+      1: 100120
+    second: ankle_IK.R_end
+  - first:
+      1: 100122
+    second: arm.L
+  - first:
+      1: 100124
+    second: arm.R
+  - first:
+      1: 100126
+    second: brow.L
+  - first:
+      1: 100128
+    second: brow.L_end
+  - first:
+      1: 100130
+    second: brow.R
+  - first:
+      1: 100132
+    second: brow.R_end
+  - first:
+      1: 100134
+    second: calf.L
+  - first:
+      1: 100136
+    second: calf.R
+  - first:
+      1: 100138
+    second: clavicle.L
+  - first:
+      1: 100140
+    second: clavicle.R
+  - first:
+      1: 100142
+    second: elbow_IK.L
+  - first:
+      1: 100144
+    second: elbow_IK.L_end
+  - first:
+      1: 100146
+    second: elbow_IK.R
+  - first:
+      1: 100148
+    second: elbow_IK.R_end
+  - first:
+      1: 100150
+    second: eyelid.L
+  - first:
+      1: 100152
+    second: eyelid.L_end
+  - first:
+      1: 100154
+    second: eyelid.R
+  - first:
+      1: 100156
+    second: eyelid.R_end
+  - first:
+      1: 100158
+    second: fingers.L
+  - first:
+      1: 100160
+    second: fingers.R
+  - first:
+      1: 100162
+    second: fingertips.L
+  - first:
+      1: 100164
+    second: fingertips.L_end
+  - first:
+      1: 100166
+    second: fingertips.R
+  - first:
+      1: 100168
+    second: fingertips.R_end
+  - first:
+      1: 100170
+    second: foot.L
+  - first:
+      1: 100172
+    second: foot.L_end
+  - first:
+      1: 100174
+    second: foot.R
+  - first:
+      1: 100176
+    second: foot.R_end
+  - first:
+      1: 100178
+    second: hand.L
+  - first:
+      1: 100180
+    second: hand.R
+  - first:
+      1: 100182
+    second: jaw_end
+  - first:
+      1: 100184
+    second: knee_IK.L
+  - first:
+      1: 100186
+    second: knee_IK.L_end
+  - first:
+      1: 100188
+    second: knee_IK.R
+  - first:
+      1: 100190
+    second: knee_IK.R_end
+  - first:
+      1: 100192
+    second: quad.L
+  - first:
+      1: 100194
+    second: quad.R
+  - first:
+      1: 100196
+    second: shoulder.L
+  - first:
+      1: 100198
+    second: shoulder.R
+  - first:
+      1: 100200
+    second: slot_1 1
+  - first:
+      1: 100202
+    second: slot_1_end
+  - first:
+      1: 100204
+    second: slot_2 1
+  - first:
+      1: 100206
+    second: slot_2_end
+  - first:
+      1: 100208
+    second: slot_3 1
+  - first:
+      1: 100210
+    second: slot_3_end
+  - first:
+      1: 100212
+    second: thumb.L
+  - first:
+      1: 100214
+    second: thumb.L_end
+  - first:
+      1: 100216
+    second: thumb.R
+  - first:
+      1: 100218
+    second: thumb.R_end
+  - first:
+      1: 100220
+    second: weapon.L
+  - first:
+      1: 100222
+    second: weapon.L_end
+  - first:
+      1: 100224
+    second: weapon.R
+  - first:
+      1: 100226
+    second: weapon.R_end
+  - first:
+      1: 100228
+    second: wrist_IK.L
+  - first:
+      1: 100230
+    second: wrist_IK.L_end
+  - first:
+      1: 100232
+    second: wrist_IK.R
+  - first:
+      1: 100234
+    second: wrist_IK.R_end
+  - first:
+      4: 400000
+    second: ankle_IK_L
+  - first:
+      4: 400002
+    second: ankle_IK_R
+  - first:
+      4: 400004
+    second: arm_L
+  - first:
+      4: 400006
+    second: arm_R
+  - first:
+      4: 400008
+    second: Armature_Warrior
+  - first:
+      4: 400010
+    second: brow_L
+  - first:
+      4: 400012
+    second: brow_R
+  - first:
+      4: 400014
+    second: calf_L
+  - first:
+      4: 400016
+    second: calf_R
+  - first:
+      4: 400018
+    second: clavicle_L
+  - first:
+      4: 400020
+    second: clavicle_R
+  - first:
+      4: 400022
+    second: elbow_IK_L
+  - first:
+      4: 400024
+    second: elbow_IK_R
+  - first:
+      4: 400026
+    second: eyelid_L
+  - first:
+      4: 400028
+    second: eyelid_R
+  - first:
+      4: 400030
+    second: fingers_L
+  - first:
+      4: 400032
+    second: fingers_R
+  - first:
+      4: 400034
+    second: fingertips_L
+  - first:
+      4: 400036
+    second: fingertips_R
+  - first:
+      4: 400038
+    second: foot_L
+  - first:
+      4: 400040
+    second: foot_R
+  - first:
+      4: 400042
+    second: Grenade_Smoke
+  - first:
+      4: 400044
+    second: Grenade_Sulfur
+  - first:
+      4: 400046
+    second: hand_L
+  - first:
+      4: 400048
+    second: hand_R
+  - first:
+      4: 400050
+    second: head
+  - first:
+      4: 400052
+    second: hips
+  - first:
+      4: 400054
+    second: jaw
+  - first:
+      4: 400056
+    second: knee_IK_L
+  - first:
+      4: 400058
+    second: knee_IK_R
+  - first:
+      4: 400060
+    second: main
+  - first:
+      4: 400062
+    second: neck
+  - first:
+      4: 400064
+    second: Potion_Mana
+  - first:
+      4: 400066
+    second: quad_L
+  - first:
+      4: 400068
+    second: quad_R
+  - first:
+      4: 400070
+    second: Shield
+  - first:
+      4: 400072
+    second: shoulder_L
+  - first:
+      4: 400074
+    second: shoulder_R
+  - first:
+      4: 400076
+    second: slot_1
+  - first:
+      4: 400078
+    second: slot_2
+  - first:
+      4: 400080
+    second: slot_3
+  - first:
+      4: 400082
+    second: slot_4
+  - first:
+      4: 400084
+    second: slot_5
+  - first:
+      4: 400086
+    second: slot_6
+  - first:
+      4: 400088
+    second: spine
+  - first:
+      4: 400090
+    second: Sword
+  - first:
+      4: 400092
+    second: thumb_L
+  - first:
+      4: 400094
+    second: thumb_R
+  - first:
+      4: 400096
+    second: torso
+  - first:
+      4: 400098
+    second: //RootNode
+  - first:
+      4: 400100
+    second: Warrior_Skin_1
+  - first:
+      4: 400102
+    second: Warrior_Skin_2
+  - first:
+      4: 400104
+    second: Warrior_Skin_3
+  - first:
+      4: 400106
+    second: weapon_L
+  - first:
+      4: 400108
+    second: weapon_R
+  - first:
+      4: 400110
+    second: wrist_IK_L
+  - first:
+      4: 400112
+    second: wrist_IK_R
+  - first:
+      4: 400114
+    second: ankle_IK.L
+  - first:
+      4: 400116
+    second: ankle_IK.L_end
+  - first:
+      4: 400118
+    second: ankle_IK.R
+  - first:
+      4: 400120
+    second: ankle_IK.R_end
+  - first:
+      4: 400122
+    second: arm.L
+  - first:
+      4: 400124
+    second: arm.R
+  - first:
+      4: 400126
+    second: brow.L
+  - first:
+      4: 400128
+    second: brow.L_end
+  - first:
+      4: 400130
+    second: brow.R
+  - first:
+      4: 400132
+    second: brow.R_end
+  - first:
+      4: 400134
+    second: calf.L
+  - first:
+      4: 400136
+    second: calf.R
+  - first:
+      4: 400138
+    second: clavicle.L
+  - first:
+      4: 400140
+    second: clavicle.R
+  - first:
+      4: 400142
+    second: elbow_IK.L
+  - first:
+      4: 400144
+    second: elbow_IK.L_end
+  - first:
+      4: 400146
+    second: elbow_IK.R
+  - first:
+      4: 400148
+    second: elbow_IK.R_end
+  - first:
+      4: 400150
+    second: eyelid.L
+  - first:
+      4: 400152
+    second: eyelid.L_end
+  - first:
+      4: 400154
+    second: eyelid.R
+  - first:
+      4: 400156
+    second: eyelid.R_end
+  - first:
+      4: 400158
+    second: fingers.L
+  - first:
+      4: 400160
+    second: fingers.R
+  - first:
+      4: 400162
+    second: fingertips.L
+  - first:
+      4: 400164
+    second: fingertips.L_end
+  - first:
+      4: 400166
+    second: fingertips.R
+  - first:
+      4: 400168
+    second: fingertips.R_end
+  - first:
+      4: 400170
+    second: foot.L
+  - first:
+      4: 400172
+    second: foot.L_end
+  - first:
+      4: 400174
+    second: foot.R
+  - first:
+      4: 400176
+    second: foot.R_end
+  - first:
+      4: 400178
+    second: hand.L
+  - first:
+      4: 400180
+    second: hand.R
+  - first:
+      4: 400182
+    second: jaw_end
+  - first:
+      4: 400184
+    second: knee_IK.L
+  - first:
+      4: 400186
+    second: knee_IK.L_end
+  - first:
+      4: 400188
+    second: knee_IK.R
+  - first:
+      4: 400190
+    second: knee_IK.R_end
+  - first:
+      4: 400192
+    second: quad.L
+  - first:
+      4: 400194
+    second: quad.R
+  - first:
+      4: 400196
+    second: shoulder.L
+  - first:
+      4: 400198
+    second: shoulder.R
+  - first:
+      4: 400200
+    second: slot_1 1
+  - first:
+      4: 400202
+    second: slot_1_end
+  - first:
+      4: 400204
+    second: slot_2 1
+  - first:
+      4: 400206
+    second: slot_2_end
+  - first:
+      4: 400208
+    second: slot_3 1
+  - first:
+      4: 400210
+    second: slot_3_end
+  - first:
+      4: 400212
+    second: thumb.L
+  - first:
+      4: 400214
+    second: thumb.L_end
+  - first:
+      4: 400216
+    second: thumb.R
+  - first:
+      4: 400218
+    second: thumb.R_end
+  - first:
+      4: 400220
+    second: weapon.L
+  - first:
+      4: 400222
+    second: weapon.L_end
+  - first:
+      4: 400224
+    second: weapon.R
+  - first:
+      4: 400226
+    second: weapon.R_end
+  - first:
+      4: 400228
+    second: wrist_IK.L
+  - first:
+      4: 400230
+    second: wrist_IK.L_end
+  - first:
+      4: 400232
+    second: wrist_IK.R
+  - first:
+      4: 400234
+    second: wrist_IK.R_end
+  - first:
+      23: 2300000
+    second: Grenade_Smoke
+  - first:
+      23: 2300002
+    second: Grenade_Sulfur
+  - first:
+      23: 2300004
+    second: Potion_Mana
+  - first:
+      23: 2300006
+    second: Shield
+  - first:
+      23: 2300008
+    second: Sword
+  - first:
+      33: 3300000
+    second: Grenade_Smoke
+  - first:
+      33: 3300002
+    second: Grenade_Sulfur
+  - first:
+      33: 3300004
+    second: Potion_Mana
+  - first:
+      33: 3300006
+    second: Shield
+  - first:
+      33: 3300008
+    second: Sword
+  - first:
+      43: 4300000
+    second: Shield
+  - first:
+      43: 4300002
+    second: Sword
+  - first:
+      43: 4300004
+    second: Warrior_Skin_3
+  - first:
+      43: 4300006
+    second: Warrior_Skin_2
+  - first:
+      43: 4300008
+    second: Warrior_Skin_1
+  - first:
+      43: 4300010
+    second: Potion_Mana
+  - first:
+      43: 4300012
+    second: Grenade_Sulfur
+  - first:
+      43: 4300014
+    second: Grenade_Smoke
+  - first:
+      74: 7400000
+    second: Default Take
+  - first:
+      74: 7400002
+    second: Archer_Attack_1
+  - first:
+      74: 7400004
+    second: Archer_Attack_2
+  - first:
+      74: 7400006
+    second: Archer_Damage
+  - first:
+      74: 7400008
+    second: Archer_Jump
+  - first:
+      74: 7400010
+    second: Archer_Use_1
+  - first:
+      74: 7400012
+    second: Archer_Use_2
+  - first:
+      74: 7400014
+    second: Archer_Use_3
+  - first:
+      74: 7400016
+    second: Character_Idle_1
+  - first:
+      74: 7400018
+    second: Character_Idle_2
+  - first:
+      74: 7400020
+    second: Character_Idle_3
+  - first:
+      74: 7400022
+    second: Character_RunCycle
+  - first:
+      74: 7400024
+    second: Character_WalkCycle
+  - first:
+      74: 7400026
+    second: Rogue_Attack_1
+  - first:
+      74: 7400028
+    second: Rogue_Attack_2
+  - first:
+      74: 7400030
+    second: Rogue_Damage
+  - first:
+      74: 7400032
+    second: Character_Death
+  - first:
+      74: 7400034
+    second: Rogue_Jump
+  - first:
+      74: 7400036
+    second: Rogue_Use_1
+  - first:
+      74: 7400038
+    second: Rogue_Use_2
+  - first:
+      74: 7400040
+    second: Rogue_Use_3
+  - first:
+      74: 7400042
+    second: Warrior_Attack_1
+  - first:
+      74: 7400044
+    second: Warrior_Attack_2
+  - first:
+      74: 7400046
+    second: Warrior_Damage
+  - first:
+      74: 7400048
+    second: Warrior_Jump
+  - first:
+      74: 7400050
+    second: Warrior_Use_1
+  - first:
+      74: 7400052
+    second: Warrior_Use_2
+  - first:
+      74: 7400054
+    second: Warrior_Use_3
+  - first:
+      74: 7400056
+    second: Armature_Warrior|Archer_Attack_2
+  - first:
+      74: 7400058
+    second: Armature_Warrior|Archer_Damage
+  - first:
+      74: 7400060
+    second: Armature_Warrior|Archer_Jump
+  - first:
+      74: 7400062
+    second: Armature_Warrior|Archer_Use_1
+  - first:
+      74: 7400064
+    second: Armature_Warrior|Archer_Use_2
+  - first:
+      74: 7400066
+    second: Armature_Warrior|Archer_Use_3
+  - first:
+      74: 7400068
+    second: Armature_Warrior|Character_Idle_1
+  - first:
+      74: 7400070
+    second: Armature_Warrior|Character_Idle_2
+  - first:
+      74: 7400072
+    second: Armature_Warrior|Character_Idle_3
+  - first:
+      74: 7400074
+    second: Armature_Warrior|Character_RunCycle
+  - first:
+      74: 7400076
+    second: Armature_Warrior|Character_WalkCycle
+  - first:
+      74: 7400078
+    second: Armature_Warrior|Rogue_Attack_1
+  - first:
+      74: 7400080
+    second: Armature_Warrior|Rogue_Attack_2
+  - first:
+      74: 7400082
+    second: Armature_Warrior|Rogue_Damage
+  - first:
+      74: 7400084
+    second: Armature_Warrior|Character_Death
+  - first:
+      74: 7400086
+    second: Armature_Warrior|Rogue_Jump
+  - first:
+      74: 7400088
+    second: Armature_Warrior|Rogue_Use_1
+  - first:
+      74: 7400090
+    second: Armature_Warrior|Rogue_Use_2
+  - first:
+      74: 7400092
+    second: Armature_Warrior|Rogue_Use_3
+  - first:
+      74: 7400094
+    second: Armature_Warrior|Warrior_Attack_1
+  - first:
+      74: 7400096
+    second: Armature_Warrior|Warrior_Attack_2
+  - first:
+      74: 7400098
+    second: Armature_Warrior|Warrior_Damage
+  - first:
+      74: 7400100
+    second: Armature_Warrior|Warrior_Jump
+  - first:
+      74: 7400102
+    second: Armature_Warrior|Warrior_Use_1
+  - first:
+      74: 7400104
+    second: Armature_Warrior|Warrior_Use_2
+  - first:
+      74: 7400106
+    second: Armature_Warrior|Warrior_Use_3
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Shield
+  - first:
+      137: 13700002
+    second: Sword
+  - first:
+      137: 13700004
+    second: Warrior_Skin_1
+  - first:
+      137: 13700006
+    second: Warrior_Skin_2
+  - first:
+      137: 13700008
+    second: Warrior_Skin_3
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Armature_Warrior|Archer_Attack_2' has import
       animation warnings that might lower retargeting quality:\n\t'hips' is inbetween
@@ -348,9 +981,9 @@ ModelImporter:
       rotation animation that will be discarded.\n\nClip 'Armature_Warrior|Character_WalkCycle'
       has import animation warnings that might lower retargeting quality:\n\t'hips'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
-      'Armature_Warrior|Rogue_Attack_1' has import animation warnings that might lower
-      retargeting quality:\n\t'hips' is inbetween humanoid transforms and has rotation
-      animation that will be discarded.\n\nClip 'Armature_Warrior|Rogue_Attack_2'
+      'Armature_Warrior|Rogue_Attack_1' has import animation warnings that might
+      lower retargeting quality:\n\t'hips' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Armature_Warrior|Rogue_Attack_2'
       has import animation warnings that might lower retargeting quality:\n\t'hips'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'Armature_Warrior|Rogue_Damage' has import animation warnings that might lower
@@ -375,84 +1008,89 @@ ModelImporter:
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'Armature_Warrior|Warrior_Use_1' has import animation warnings that might lower
       retargeting quality:\n\t'hips' is inbetween humanoid transforms and has rotation
-      animation that will be discarded.\n\nClip 'Armature_Warrior|Warrior_Use_2' has
-      import animation warnings that might lower retargeting quality:\n\t'hips' is
-      inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      animation that will be discarded.\n\nClip 'Armature_Warrior|Warrior_Use_2'
+      has import animation warnings that might lower retargeting quality:\n\t'hips'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
       'Armature_Warrior|Warrior_Use_3' has import animation warnings that might lower
       retargeting quality:\n\t'hips' is inbetween humanoid transforms and has rotation
       animation that will be discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Armature_Warrior|Archer_Attack_2':\n\tRightLowerLeg
-      average position error 0.3 mm and maximum position error 1.7 mm at time 0: 8
-      (27.6%) Frame 8\n\tLeftLowerArm average position error 1.4 mm and maximum position
-      error 7.4 mm at time 0:19 (65.5%) Frame 19\n\nRetargeting quality report for
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'Armature_Warrior|Archer_Attack_2':\n\tRightFoot
+      average position error 0.3 mm and maximum position error 2.5 mm at time 0:
+      8 (27.6%) Frame 8\n\tLeftHand average position error 2.1 mm and maximum position
+      error 17.9 mm at time 0:18 (62.1%) Frame 18\n\nRetargeting quality report for
       clip 'Armature_Warrior|Archer_Damage':\n\tRetargeting quality is good. No significant
       differences with original animation were found.\n\nRetargeting quality report
-      for clip 'Armature_Warrior|Archer_Jump':\n\tLeftLowerArm average position error
-      1.0 mm and maximum position error 8.0 mm at time 0: 2 (5.6%) Frame 2\n\nRetargeting
-      quality report for clip 'Armature_Warrior|Archer_Use_1':\n\tRightLowerArm average
-      position error 0.2 mm and maximum position error 5.0 mm at time 1: 7 (64.6%)
-      Frame 31\n\nRetargeting quality report for clip 'Armature_Warrior|Archer_Use_2':\n\tRightLowerArm
-      average position error 0.2 mm and maximum position error 3.8 mm at time 1: 9
-      (68.8%) Frame 33\n\nRetargeting quality report for clip 'Armature_Warrior|Archer_Use_3':\n\tRightLowerArm
-      average position error 0.3 mm and maximum position error 5.6 mm at time 0: 6
-      (10.0%) Frame 6\n\nRetargeting quality report for clip 'Armature_Warrior|Character_Idle_1':\n\tRetargeting
+      for clip 'Armature_Warrior|Archer_Jump':\n\tLeftHand average position error
+      0.4 mm and maximum position error 3.7 mm at time 0: 2 (5.6%) Frame 2\n\nRetargeting
+      quality report for clip 'Armature_Warrior|Archer_Use_1':\n\tRightHand average
+      position error 0.1 mm and maximum position error 2.2 mm at time 1: 7 (64.6%)
+      Frame 31\n\nRetargeting quality report for clip 'Armature_Warrior|Archer_Use_2':\n\tRightFoot
+      average position error 0.3 mm and maximum position error 1.5 mm at time 0:10
+      (20.8%) Frame 10\n\tRightHand average position error 0.2 mm and maximum position
+      error 5.5 mm at time 1: 9 (68.8%) Frame 33\n\nRetargeting quality report for
+      clip 'Armature_Warrior|Archer_Use_3':\n\tRightHand average position error 0.2
+      mm and maximum position error 3.0 mm at time 0: 6 (10.0%) Frame 6\n\nRetargeting
+      quality report for clip 'Armature_Warrior|Character_Idle_1':\n\tRetargeting
       quality is good. No significant differences with original animation were found.\n\nRetargeting
       quality report for clip 'Armature_Warrior|Character_Idle_2':\n\tRetargeting
       quality is good. No significant differences with original animation were found.\n\nRetargeting
       quality report for clip 'Armature_Warrior|Character_Idle_3':\n\tRetargeting
       quality is good. No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature_Warrior|Character_RunCycle':\n\tRightLowerArm
-      average position error 0.2 mm and maximum position error 1.1 mm at time 0:23
-      (95.8%) Frame 23\n\nRetargeting quality report for clip 'Armature_Warrior|Character_WalkCycle':\n\tRetargeting
+      quality report for clip 'Armature_Warrior|Character_RunCycle':\n\tRetargeting
+      quality is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'Armature_Warrior|Character_WalkCycle':\n\tRetargeting
       quality is good. No significant differences with original animation were found.\n\nRetargeting
       quality report for clip 'Armature_Warrior|Rogue_Attack_1':\n\tRetargeting quality
       is good. No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature_Warrior|Rogue_Attack_2':\n\tLeftLowerArm average
-      position error 0.2 mm and maximum position error 1.1 mm at time 1: 1 (83.3%)
-      Frame 25\n\nRetargeting quality report for clip 'Armature_Warrior|Rogue_Damage':\n\tRetargeting
+      quality report for clip 'Armature_Warrior|Rogue_Attack_2':\n\tRetargeting quality
+      is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'Armature_Warrior|Rogue_Damage':\n\tRetargeting quality
+      is good. No significant differences with original animation were found.\n\nRetargeting
+      quality report for clip 'Armature_Warrior|Character_Death':\n\tLeftFoot average
+      position error 0.8 mm and maximum position error 2.1 mm at time 1:20 (100.0%)
+      Frame 44\n\tRightFoot average position error 0.5 mm and maximum position error
+      1.9 mm at time 1:20 (100.0%) Frame 44\n\tLeftHand average position error 0.1
+      mm and maximum position error 1.4 mm at time 0: 5 (11.4%) Frame 5\n\nRetargeting
+      quality report for clip 'Armature_Warrior|Rogue_Jump':\n\tLeftHand average
+      position error 0.4 mm and maximum position error 3.7 mm at time 0: 2 (5.6%)
+      Frame 2\n\nRetargeting quality report for clip 'Armature_Warrior|Rogue_Use_1':\n\tRightHand
+      average position error 0.1 mm and maximum position error 2.2 mm at time 1:
+      7 (64.6%) Frame 31\n\nRetargeting quality report for clip 'Armature_Warrior|Rogue_Use_2':\n\tRightHand
+      average position error 0.2 mm and maximum position error 5.5 mm at time 1:
+      9 (68.8%) Frame 33\n\nRetargeting quality report for clip 'Armature_Warrior|Rogue_Use_3':\n\tRightHand
+      average position error 0.2 mm and maximum position error 3.0 mm at time 0:
+      6 (10.0%) Frame 6\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Attack_1':\n\tLeftFoot
+      average position error 0.3 mm and maximum position error 2.9 mm at time 0:
+      5 (17.2%) Frame 5\n\tRightHand average position error 2.1 mm and maximum position
+      error 17.9 mm at time 0:18 (62.1%) Frame 18\n\nRetargeting quality report for
+      clip 'Armature_Warrior|Warrior_Attack_2':\n\tLeftFoot average position error
+      0.5 mm and maximum position error 3.3 mm at time 0: 3 (12.5%) Frame 3\n\tRightHand
+      average position error 0.2 mm and maximum position error 2.0 mm at time 0:11
+      (45.8%) Frame 11\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Damage':\n\tRetargeting
       quality is good. No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature_Warrior|Character_Death':\n\tLeftLowerLeg
-      average position error 1.2 mm and maximum position error 2.4 mm at time 1:20
-      (100.0%) Frame 44\n\tLeftLowerArm average position error 0.5 mm and maximum
-      position error 7.4 mm at time 0: 5 (11.4%) Frame 5\n\nRetargeting quality report
-      for clip 'Armature_Warrior|Rogue_Jump':\n\tLeftLowerArm average position error
-      1.0 mm and maximum position error 8.0 mm at time 0: 2 (5.6%) Frame 2\n\nRetargeting
-      quality report for clip 'Armature_Warrior|Rogue_Use_1':\n\tRightLowerArm average
-      position error 0.3 mm and maximum position error 5.0 mm at time 1: 7 (64.6%)
-      Frame 31\n\nRetargeting quality report for clip 'Armature_Warrior|Rogue_Use_2':\n\tRightLowerArm
-      average position error 0.2 mm and maximum position error 3.8 mm at time 1: 9
-      (68.8%) Frame 33\n\nRetargeting quality report for clip 'Armature_Warrior|Rogue_Use_3':\n\tRightLowerArm
-      average position error 0.3 mm and maximum position error 5.6 mm at time 0: 6
-      (10.0%) Frame 6\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Attack_1':\n\tLeftLowerLeg
-      average position error 0.3 mm and maximum position error 2.6 mm at time 0: 5
-      (17.2%) Frame 5\n\tRightLowerArm average position error 1.4 mm and maximum position
-      error 7.4 mm at time 0:19 (65.5%) Frame 19\n\nRetargeting quality report for
-      clip 'Armature_Warrior|Warrior_Attack_2':\n\tLeftLowerLeg average position error
-      0.3 mm and maximum position error 2.3 mm at time 0: 3 (12.5%) Frame 3\n\tRightLowerLeg
-      average position error 0.3 mm and maximum position error 1.1 mm at time 0:14
-      (58.3%) Frame 14\n\tRightLowerArm average position error 0.4 mm and maximum
-      position error 3.4 mm at time 0:11 (45.8%) Frame 11\n\nRetargeting quality report
-      for clip 'Armature_Warrior|Warrior_Damage':\n\tRetargeting quality is good.
-      No significant differences with original animation were found.\n\nRetargeting
-      quality report for clip 'Armature_Warrior|Warrior_Jump':\n\tLeftLowerArm average
-      position error 1.0 mm and maximum position error 8.0 mm at time 0: 2 (5.6%)
-      Frame 2\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Use_1':\n\tRightLowerArm
-      average position error 0.3 mm and maximum position error 5.0 mm at time 1: 7
-      (64.6%) Frame 31\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Use_2':\n\tRightLowerArm
-      average position error 0.2 mm and maximum position error 3.8 mm at time 1: 9
-      (68.8%) Frame 33\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Use_3':\n\tRetargeting
+      quality report for clip 'Armature_Warrior|Warrior_Jump':\n\tLeftHand average
+      position error 0.4 mm and maximum position error 3.7 mm at time 0: 2 (5.6%)
+      Frame 2\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Use_1':\n\tRightHand
+      average position error 0.1 mm and maximum position error 1.0 mm at time 1:
+      7 (64.6%) Frame 31\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Use_2':\n\tRightHand
+      average position error 0.4 mm and maximum position error 15.2 mm at time 1:
+      9 (68.8%) Frame 33\n\nRetargeting quality report for clip 'Armature_Warrior|Warrior_Use_3':\n\tRetargeting
       quality is good. No significant differences with original animation were found.\n"
     animationDoRetargetingWarnings: 1
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 0
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Armature_Warrior|Character_Idle_1
       takeName: Armature_Warrior|Character_Idle_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 48
       wrapMode: 0
@@ -460,6 +1098,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
@@ -638,9 +1277,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Character_Idle_2
       takeName: Armature_Warrior|Character_Idle_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 96
       wrapMode: 0
@@ -648,6 +1289,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
@@ -826,9 +1468,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Character_Idle_3
       takeName: Armature_Warrior|Character_Idle_3
+      internalID: 0
       firstFrame: 0
       lastFrame: 96
       wrapMode: 0
@@ -836,6 +1480,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1014,9 +1659,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Character_RunCycle
       takeName: Armature_Warrior|Character_RunCycle
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -1024,6 +1671,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1202,9 +1850,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Character_WalkCycle
       takeName: Armature_Warrior|Character_WalkCycle
+      internalID: 0
       firstFrame: 0
       lastFrame: 36
       wrapMode: 0
@@ -1212,6 +1862,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1390,9 +2041,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Character_Death
       takeName: Armature_Warrior|Character_Death
+      internalID: 0
       firstFrame: 0
       lastFrame: 44
       wrapMode: 0
@@ -1400,6 +2053,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1578,9 +2232,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Warrior_Attack_1
       takeName: Armature_Warrior|Warrior_Attack_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 29
       wrapMode: 0
@@ -1588,6 +2244,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1766,9 +2423,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Warrior_Attack_2
       takeName: Armature_Warrior|Warrior_Attack_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -1776,6 +2435,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1954,9 +2614,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Warrior_Damage
       takeName: Armature_Warrior|Warrior_Damage
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -1964,6 +2626,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -2142,9 +2805,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Warrior_Jump
       takeName: Armature_Warrior|Warrior_Jump
+      internalID: 0
       firstFrame: 0
       lastFrame: 36
       wrapMode: 0
@@ -2152,6 +2817,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -2330,9 +2996,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Warrior_Use_1
       takeName: Armature_Warrior|Warrior_Use_1
+      internalID: 0
       firstFrame: 0
       lastFrame: 48
       wrapMode: 0
@@ -2340,6 +3008,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -2518,9 +3187,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Warrior_Use_2
       takeName: Armature_Warrior|Warrior_Use_2
+      internalID: 0
       firstFrame: 0
       lastFrame: 48
       wrapMode: 0
@@ -2528,6 +3199,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -2706,9 +3378,11 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Armature_Warrior|Warrior_Use_3
       takeName: Armature_Warrior|Warrior_Use_3
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -2716,6 +3390,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -2894,32 +3569,52 @@ ModelImporter:
         weight: 0
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human:
     - boneName: spine
       humanName: Hips
@@ -3123,422 +3818,428 @@ ModelImporter:
         modified: 0
     skeleton:
     - name: Warrior(Clone)
+      parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Armature_Warrior
+      parentName: 
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
-      scale: {x: 100, y: 100.000008, z: 100.000008}
-      transformModified: 1
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100.00001, z: 100.00001}
     - name: main
+      parentName: 
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: .707106709, y: 5.96046448e-08, z: .707106829, w: 2.98023224e-08}
-      scale: {x: 1, y: .999999702, z: .999999702}
-      transformModified: 1
+      rotation: {x: 0.7071067, y: 0.000000059604645, z: 0.7071068, w: 0.000000029802322}
+      scale: {x: 1, y: 0.9999997, z: 0.9999997}
     - name: wrist_IK.R
-      position: {x: .0487455167, y: -.00111038564, z: .0106738312}
-      rotation: {x: -.707106709, y: -4.19488288e-07, z: -.707106829, w: 2.52907597e-08}
-      scale: {x: 1.00000036, y: 1, z: .999999762}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.048745517, y: -0.0011103856, z: 0.010673831}
+      rotation: {x: -0.7071067, y: -0.0000004194883, z: -0.7071068, w: 0.00000002529076}
+      scale: {x: 1.0000004, y: 1, z: 0.99999976}
     - name: wrist_IK.R_end
-      position: {x: -0, y: .00891658012, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.00891658, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: wrist_IK.L
-      position: {x: .0488282591, y: -.00198727567, z: -.0106420266}
-      rotation: {x: -.707106709, y: -4.19488288e-07, z: -.707106829, w: 2.52907455e-08}
-      scale: {x: 1.00000036, y: 1, z: .999999762}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.04882826, y: -0.0019872757, z: -0.010642027}
+      rotation: {x: -0.7071067, y: -0.0000004194883, z: -0.7071068, w: 0.000000025290745}
+      scale: {x: 1.0000004, y: 1, z: 0.99999976}
     - name: wrist_IK.L_end
-      position: {x: -0, y: .00891657732, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.008916577, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: elbow_IK.L
-      position: {x: .0698815212, y: -.0228949022, z: -.0183667224}
-      rotation: {x: -.707106709, y: -5.85475313e-09, z: -.707106829, w: 7.76974787e-08}
-      scale: {x: 1.00000036, y: 1, z: .999999762}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.06988152, y: -0.022894902, z: -0.018366722}
+      rotation: {x: -0.7071067, y: -0.000000005854753, z: -0.7071068, w: 0.00000007769748}
+      scale: {x: 1.0000004, y: 1, z: 0.99999976}
     - name: elbow_IK.L_end
-      position: {x: -0, y: .00999952294, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.009999523, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: elbow_IK.R
-      position: {x: .0698815063, y: -.0228949133, z: .0183667317}
-      rotation: {x: -.707106709, y: -7.05782668e-07, z: -.707106829, w: -2.49274819e-07}
-      scale: {x: 1.00000036, y: .999999762, z: .999999464}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.069881506, y: -0.022894913, z: 0.018366732}
+      rotation: {x: -0.7071067, y: -0.00000070578267, z: -0.7071068, w: -0.00000024927482}
+      scale: {x: 1.0000004, y: 0.99999976, z: 0.99999946}
     - name: elbow_IK.R_end
-      position: {x: -0, y: .00999952294, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.009999523, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: knee_IK.L
-      position: {x: .0291405488, y: .0279682633, z: -.0102592725}
-      rotation: {x: -5.96046448e-08, y: .707106709, z: 3.26754765e-08, w: .707106829}
-      scale: {x: .999999762, y: 1, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.029140549, y: 0.027968263, z: -0.0102592725}
+      rotation: {x: -0.000000059604645, y: 0.7071067, z: 0.000000032675477, w: 0.7071068}
+      scale: {x: 0.99999976, y: 1, z: 0.9999999}
     - name: knee_IK.L_end
-      position: {x: -0, y: .0122001143, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.012200114, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: knee_IK.R
-      position: {x: .0291405488, y: .0279682633, z: .00711735897}
-      rotation: {x: -1.78813934e-07, y: .70710659, z: 1.64229291e-07, w: .707106948}
-      scale: {x: 1.00000012, y: .99999994, z: .999999702}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.029140549, y: 0.027968263, z: 0.007117359}
+      rotation: {x: -0.00000017881393, y: 0.7071066, z: 0.00000016422929, w: 0.70710695}
+      scale: {x: 1.0000001, y: 0.99999994, z: 0.9999997}
     - name: knee_IK.R_end
-      position: {x: -0, y: .0122001125, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.012200112, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: ankle_IK.L
-      position: {x: .00534781022, y: .00341157126, z: -.0060954052}
-      rotation: {x: 1, y: 2.98023224e-08, z: -4.08291817e-06, w: 2.68220901e-07}
-      scale: {x: .999999523, y: .999999642, z: .999999821}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.00534781, y: 0.0034115713, z: -0.006095405}
+      rotation: {x: 1, y: 0.000000029802322, z: -0.000004082918, w: 0.0000002682209}
+      scale: {x: 0.9999995, y: 0.99999964, z: 0.9999998}
     - name: ankle_IK.L_end
-      position: {x: -0, y: .00805969257, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.008059693, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: ankle_IK.R
-      position: {x: .00534781022, y: -.00415098295, z: .00187837088}
-      rotation: {x: -3.33786011e-06, y: 5.96046448e-08, z: 1, w: -1.1920929e-07}
-      scale: {x: .99999994, y: .999999821, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.00534781, y: -0.004150983, z: 0.0018783709}
+      rotation: {x: -0.00000333786, y: 0.000000059604645, z: 1, w: -0.00000011920929}
+      scale: {x: 0.99999994, y: 0.9999998, z: 1.0000002}
     - name: ankle_IK.R_end
-      position: {x: -0, y: .00805969443, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.008059694, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: spine
-      position: {x: .0603513978, y: -.00239658076, z: 8.54840732e-09}
-      rotation: {x: -2.98023473e-08, y: -.707106948, z: 0, w: .70710665}
-      scale: {x: 1.00000036, y: .999999583, z: .999999285}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.060351398, y: -0.0023965808, z: 0.000000008548407}
+      rotation: {x: -0.000000029802347, y: -0.70710695, z: 0, w: 0.70710665}
+      scale: {x: 1.0000004, y: 0.9999996, z: 0.9999993}
     - name: hips
-      position: {x: 4.55688098e-10, y: -.000647073903, z: .00220531388}
-      rotation: {x: .462725788, y: .534682035, z: .46272558, w: .534682095}
-      scale: {x: 1.00000036, y: .999999583, z: .999999285}
-      transformModified: 1
+      parentName: 
+      position: {x: 4.556881e-10, y: -0.0006470739, z: 0.0022053139}
+      rotation: {x: 0.4627258, y: 0.53468204, z: 0.46272558, w: 0.5346821}
+      scale: {x: 1.0000004, y: 0.9999996, z: 0.9999993}
     - name: quad.L
-      position: {x: -.00116243097, y: .00390571891, z: -.0037764688}
-      rotation: {x: -.0256065968, y: .741753757, z: .0216455739, w: .66983366}
-      scale: {x: .999999702, y: 1, z: 1.00000072}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.001162431, y: 0.003905719, z: -0.0037764688}
+      rotation: {x: -0.025606597, y: 0.74175376, z: 0.021645574, w: 0.66983366}
+      scale: {x: 0.9999997, y: 1, z: 1.0000007}
     - name: calf.L
-      position: {x: 1.86264504e-10, y: .0231770519, z: -1.11758706e-10}
-      rotation: {x: -.0734770447, y: -.0439477898, z: -.00200096075, w: .996326149}
-      scale: {x: 1.00000119, y: 1.00000131, z: .999999106}
-      transformModified: 1
+      parentName: 
+      position: {x: 1.862645e-10, y: 0.023177052, z: -1.11758706e-10}
+      rotation: {x: -0.073477045, y: -0.04394779, z: -0.0020009608, w: 0.99632615}
+      scale: {x: 1.0000012, y: 1.0000013, z: 0.9999991}
     - name: foot.L
-      position: {x: -1.11758706e-10, y: .026783593, z: 4.05125322e-10}
-      rotation: {x: .549951375, y: .0112565449, z: -.0193898603, w: .83489567}
-      scale: {x: 1.00000024, y: 1.0000006, z: .999999046}
-      transformModified: 1
+      parentName: 
+      position: {x: -1.11758706e-10, y: 0.026783593, z: 4.0512532e-10}
+      rotation: {x: 0.5499514, y: 0.011256545, z: -0.01938986, w: 0.8348957}
+      scale: {x: 1.0000002, y: 1.0000006, z: 0.99999905}
     - name: foot.L_end
-      position: {x: -0, y: .0109276148, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.010927615, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: quad.R
-      position: {x: -.00116242794, y: .00390568818, z: .00377646461}
-      rotation: {x: -.021647213, y: .669833243, z: .0256075785, w: .741754055}
-      scale: {x: 1.00000012, y: 1.00000095, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.001162428, y: 0.0039056882, z: 0.0037764646}
+      rotation: {x: -0.021647213, y: 0.66983324, z: 0.025607578, w: 0.74175406}
+      scale: {x: 1.0000001, y: 1.000001, z: 1}
     - name: calf.R
-      position: {x: 8.80099826e-10, y: .0231770407, z: 2.60770322e-10}
-      rotation: {x: -.073473461, y: .0439474061, z: .00200175843, w: .996326387}
-      scale: {x: .999999583, y: .999999642, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: 8.800998e-10, y: 0.02317704, z: 2.6077032e-10}
+      rotation: {x: -0.07347346, y: 0.043947406, z: 0.0020017584, w: 0.9963264}
+      scale: {x: 0.9999996, y: 0.99999964, z: 1.0000001}
     - name: foot.R
-      position: {x: 2.14204182e-10, y: .026783593, z: 1.49011609e-10}
-      rotation: {x: .549950182, y: -.0112579092, z: .0193875618, w: .834896564}
-      scale: {x: 1.00000072, y: .999999046, z: 1.00000036}
-      transformModified: 1
+      parentName: 
+      position: {x: 2.1420418e-10, y: 0.026783593, z: 1.4901161e-10}
+      rotation: {x: 0.5499502, y: -0.011257909, z: 0.019387562, w: 0.83489656}
+      scale: {x: 1.0000007, y: 0.99999905, z: 1.0000004}
     - name: foot.R_end
-      position: {x: -0, y: .0109276148, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.010927615, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: slot_3
-      position: {x: -.00324646919, y: .0113862837, z: -.00200975197}
-      rotation: {x: -.0509283356, y: -.0384952947, z: -.997959733, w: .000866091868}
-      scale: {x: 1.0000006, y: 1.00000095, z: 1.00003922}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0032464692, y: 0.011386284, z: -0.002009752}
+      rotation: {x: -0.050928336, y: -0.038495295, z: -0.99795973, w: 0.00086609187}
+      scale: {x: 1.0000006, y: 1.000001, z: 1.0000392}
     - name: slot_3 1
-      position: {x: .000997358584, y: -.00245987345, z: .00039960249}
-      rotation: {x: -.720400512, y: -.0224218238, z: -.0227712151, w: .692821622}
-      scale: {x: .999998987, y: .999961793, z: .999999583}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0009973586, y: -0.0024598734, z: 0.0003996025}
+      rotation: {x: -0.7204005, y: -0.022421824, z: -0.022771215, w: 0.6928216}
+      scale: {x: 0.999999, y: 0.9999618, z: 0.9999996}
     - name: Potion_Mana
-      position: {x: -.000194723601, y: -.000651123817, z: .0014904117}
-      rotation: {x: -.0119695663, y: .030844545, z: .259110332, w: .96528089}
-      scale: {x: .999598801, y: .999166608, z: .99999702}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0001947236, y: -0.0006511238, z: 0.0014904117}
+      rotation: {x: -0.011969566, y: 0.030844545, z: 0.25911033, w: 0.9652809}
+      scale: {x: 0.9995988, y: 0.9991666, z: 0.999997}
     - name: slot_3_end
-      position: {x: -0, y: .00499999989, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.005, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: slot_1
-      position: {x: .000251718709, y: -.00110416138, z: .00598032214}
-      rotation: {x: -.705273926, y: -.0508809239, z: -.705273688, w: .0508808941}
-      scale: {x: 1.00000167, y: 1.00000131, z: 1.00000048}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0002517187, y: -0.0011041614, z: 0.005980322}
+      rotation: {x: -0.7052739, y: -0.050880924, z: -0.7052737, w: 0.050880894}
+      scale: {x: 1.0000017, y: 1.0000013, z: 1.0000005}
     - name: slot_1 1
-      position: {x: 1.19209287e-09, y: 4.76837148e-09, z: -1.19209287e-09}
-      rotation: {x: -.7383551, y: .011253383, z: -.00736795412, w: .674278021}
-      scale: {x: .999999404, y: 1.00000012, z: 1.00000036}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0000000011920929, y: 0.0000000047683715, z: -0.0000000011920929}
+      rotation: {x: -0.7383551, y: 0.011253383, z: -0.007367954, w: 0.674278}
+      scale: {x: 0.9999994, y: 1.0000001, z: 1.0000004}
     - name: Grenade_Smoke
-      position: {x: .000668805849, y: -.000283318164, z: .000241503716}
-      rotation: {x: .196797341, y: -.0754994228, z: .0105771581, w: .977475703}
-      scale: {x: .999999404, y: 1, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.00066880585, y: -0.00028331816, z: 0.00024150372}
+      rotation: {x: 0.19679734, y: -0.07549942, z: 0.010577158, w: 0.9774757}
+      scale: {x: 0.9999994, y: 1, z: 1}
     - name: slot_1_end
-      position: {x: -0, y: .00499999989, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.005, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: slot_2
-      position: {x: -.0015190494, y: -.00201494503, z: .00491919275}
-      rotation: {x: -.705273926, y: -.0508808941, z: -.705273688, w: .0508809164}
-      scale: {x: 1.00000131, y: 1.00000155, z: 1.00000048}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0015190494, y: -0.002014945, z: 0.0049191928}
+      rotation: {x: -0.7052739, y: -0.050880894, z: -0.7052737, w: 0.050880916}
+      scale: {x: 1.0000013, y: 1.0000015, z: 1.0000005}
     - name: slot_2 1
-      position: {x: -1.19209287e-09, y: 0, z: 0}
-      rotation: {x: -.738355041, y: .0112533839, z: -.00736797787, w: .674278021}
-      scale: {x: .999999702, y: 1.00000012, z: 1.00000036}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0000000011920929, y: 0, z: 0}
+      rotation: {x: -0.73835504, y: 0.011253384, z: -0.007367978, w: 0.674278}
+      scale: {x: 0.9999997, y: 1.0000001, z: 1.0000004}
     - name: Grenade_Sulfur
-      position: {x: -.000244260416, y: .00153638539, z: .000456371286}
-      rotation: {x: .100190677, y: .0301183723, z: .923224807, w: .369744211}
-      scale: {x: .999999046, y: .999999166, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.00024426042, y: 0.0015363854, z: 0.0004563713}
+      rotation: {x: 0.10019068, y: 0.030118372, z: 0.9232248, w: 0.3697442}
+      scale: {x: 0.99999905, y: 0.99999917, z: 0.9999999}
     - name: slot_2_end
-      position: {x: -0, y: .00499999989, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.005, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: torso
-      position: {x: -6.0451999e-10, y: -1.2681084e-10, z: -.00292558246}
-      rotation: {x: -.718240321, y: 1.11378753e-07, z: 1.76962985e-07, w: .695795119}
-      scale: {x: .999999821, y: 1.0000006, z: 1.0000006}
-      transformModified: 1
+      parentName: 
+      position: {x: -6.0452e-10, y: -1.2681084e-10, z: -0.0029255825}
+      rotation: {x: -0.7182403, y: 0.00000011137875, z: 0.00000017696298, w: 0.6957951}
+      scale: {x: 0.9999998, y: 1.0000006, z: 1.0000006}
     - name: neck
-      position: {x: 1.16965071e-09, y: .0134941218, z: -.000964300823}
-      rotation: {x: -.0803054795, y: 8.81830076e-08, z: -1.35201148e-07, w: .996770322}
-      scale: {x: 1.00000012, y: 1.00000024, z: 1.00000036}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0000000011696507, y: 0.013494122, z: -0.0009643008}
+      rotation: {x: -0.08030548, y: 0.00000008818301, z: -0.00000013520115, w: 0.9967703}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
     - name: head
-      position: {x: -5.3290704e-17, y: .00442511449, z: 2.08616258e-09}
-      rotation: {x: .0928979069, y: -6.02892669e-09, z: 7.21110425e-08, w: .995675623}
-      scale: {x: .999999821, y: .999999523, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -5.3290704e-17, y: 0.0044251145, z: 0.0000000020861626}
+      rotation: {x: 0.09289791, y: -0.0000000060289267, z: 0.00000007211104, w: 0.9956756}
+      scale: {x: 0.9999998, y: 0.9999995, z: 0.9999999}
     - name: brow.L
-      position: {x: -.00212859153, y: .00529860985, z: .00343847182}
-      rotation: {x: -.0586739816, y: .702371359, z: .706925988, w: .0590548664}
-      scale: {x: .99999994, y: 1.00000024, z: 1.00000048}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0021285915, y: 0.00529861, z: 0.0034384718}
+      rotation: {x: -0.05867398, y: 0.70237136, z: 0.706926, w: 0.059054866}
+      scale: {x: 0.99999994, y: 1.0000002, z: 1.0000005}
     - name: brow.L_end
-      position: {x: -0, y: .00382070825, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0038207083, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: brow.R
-      position: {x: .00212858105, y: .00529860985, z: .00343847158}
-      rotation: {x: .0586753674, y: .702371538, z: .706925929, w: -.0590534508}
-      scale: {x: .999999583, y: 1.00000024, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.002128581, y: 0.00529861, z: 0.0034384716}
+      rotation: {x: 0.058675367, y: 0.70237154, z: 0.7069259, w: -0.05905345}
+      scale: {x: 0.9999996, y: 1.0000002, z: 0.9999999}
     - name: brow.R_end
-      position: {x: -0, y: .00382070825, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0038207083, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: eyelid.L
-      position: {x: -.00160360604, y: .00421497505, z: .00434376253}
-      rotation: {x: -.0752881244, y: .700785339, z: .705329537, w: .0757755116}
-      scale: {x: .999998569, y: 1, z: 1.00000012}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.001603606, y: 0.004214975, z: 0.0043437625}
+      rotation: {x: -0.075288124, y: 0.70078534, z: 0.70532954, w: 0.07577551}
+      scale: {x: 0.99999857, y: 1, z: 1.0000001}
     - name: eyelid.L_end
-      position: {x: -0, y: .00292215985, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0029221599, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: eyelid.R
-      position: {x: .00160359556, y: .00421497505, z: .00434376253}
-      rotation: {x: .0752880648, y: .700785279, z: .705329597, w: -.0757756829}
-      scale: {x: .999999106, y: .999999881, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0016035956, y: 0.004214975, z: 0.0043437625}
+      rotation: {x: 0.075288065, y: 0.7007853, z: 0.7053296, w: -0.07577568}
+      scale: {x: 0.9999991, y: 0.9999999, z: 1}
     - name: eyelid.R_end
-      position: {x: -0, y: .00292215846, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0029221585, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: jaw
-      position: {x: 3.54229784e-10, y: -.000551334699, z: .000908771588}
-      rotation: {x: -1.98220874e-07, y: .621865869, z: .783123732, w: -1.45617847e-07}
-      scale: {x: .999999881, y: .999999821, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: 3.5422978e-10, y: -0.0005513347, z: 0.0009087716}
+      rotation: {x: -0.00000019822087, y: 0.62186587, z: 0.78312373, w: -0.00000014561785}
+      scale: {x: 0.9999999, y: 0.9999998, z: 1.0000002}
     - name: jaw_end
-      position: {x: -0, y: .00773130637, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0077313064, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: clavicle.L
-      position: {x: -6.91290269e-09, y: .011660818, z: -.00134945789}
-      rotation: {x: .574491262, y: -.451960623, z: -.524797678, w: -.436209619}
-      scale: {x: .999999404, y: 1.00000012, z: .999999642}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0000000069129027, y: 0.011660818, z: -0.0013494579}
+      rotation: {x: 0.57449126, y: -0.45196062, z: -0.5247977, w: -0.43620962}
+      scale: {x: 0.9999994, y: 1.0000001, z: 0.99999964}
     - name: shoulder.L
-      position: {x: -2.42143861e-10, y: .00672740303, z: 1.4416873e-08}
-      rotation: {x: .0687538758, y: .108631261, z: .0215213913, w: .991468132}
-      scale: {x: 1.00000048, y: .999998927, z: .999999523}
-      transformModified: 1
+      parentName: 
+      position: {x: -2.4214386e-10, y: 0.006727403, z: 0.000000014416873}
+      rotation: {x: 0.068753876, y: 0.10863126, z: 0.021521391, w: 0.99146813}
+      scale: {x: 1.0000005, y: 0.9999989, z: 0.9999995}
     - name: arm.L
-      position: {x: -2.98023217e-10, y: .0121875424, z: 1.49011603e-09}
-      rotation: {x: -.0477570705, y: .844609737, z: -.0162048638, w: -.533002079}
-      scale: {x: 1.00000012, y: 1.00000024, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -2.9802322e-10, y: 0.012187542, z: 0.000000001490116}
+      rotation: {x: -0.04775707, y: 0.84460974, z: -0.016204864, w: -0.5330021}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
     - name: hand.L
-      position: {x: 1.08033416e-09, y: .0139182257, z: -1.49011603e-09}
-      rotation: {x: -.023903437, y: -.0211830512, z: .13163808, w: .990783274}
-      scale: {x: 1.00000036, y: 1.00000095, z: .999999642}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0000000010803342, y: 0.013918226, z: -0.000000001490116}
+      rotation: {x: -0.023903437, y: -0.021183051, z: 0.13163808, w: 0.9907833}
+      scale: {x: 1.0000004, y: 1.000001, z: 0.99999964}
     - name: fingers.L
-      position: {x: 1.00772009e-10, y: .00695511745, z: -9.18225829e-10}
-      rotation: {x: -.0170144029, y: -.00866084918, z: -.0672032461, w: .997556686}
-      scale: {x: .999999404, y: .999999106, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: 1.0077201e-10, y: 0.0069551175, z: -9.1822583e-10}
+      rotation: {x: -0.017014403, y: -0.008660849, z: -0.067203246, w: 0.9975567}
+      scale: {x: 0.9999994, y: 0.9999991, z: 1.0000002}
     - name: fingertips.L
-      position: {x: -4.28408364e-10, y: .00142668304, z: 3.72529022e-11}
-      rotation: {x: -2.16066809e-07, y: -1.40815962e-06, z: -1.13761041e-06, w: 1}
-      scale: {x: .999999762, y: .999999821, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -4.2840836e-10, y: 0.001426683, z: 3.7252902e-11}
+      rotation: {x: -0.00000021606681, y: -0.0000014081596, z: -0.0000011376104, w: 1}
+      scale: {x: 0.99999976, y: 0.9999998, z: 1.0000002}
     - name: fingertips.L_end
-      position: {x: -0, y: .00285337074, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0028533707, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: thumb.L
-      position: {x: -.00113299896, y: .00391400745, z: .00166094478}
-      rotation: {x: .343981683, y: .0891632959, z: -.0817884803, w: .931148291}
-      scale: {x: .999999225, y: .999998927, z: .999999881}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.001132999, y: 0.0039140075, z: 0.0016609448}
+      rotation: {x: 0.34398168, y: 0.089163296, z: -0.08178848, w: 0.9311483}
+      scale: {x: 0.9999992, y: 0.9999989, z: 0.9999999}
     - name: thumb.L_end
-      position: {x: -0, y: .00354620512, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0035462051, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: weapon.L
-      position: {x: -.0010294664, y: .00598601671, z: -.000174949513}
-      rotation: {x: .64351207, y: .40062356, z: .288516849, w: .584936917}
-      scale: {x: .999998748, y: .999998689, z: .999998271}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0010294664, y: 0.0059860167, z: -0.00017494951}
+      rotation: {x: 0.64351207, y: 0.40062356, z: 0.28851685, w: 0.5849369}
+      scale: {x: 0.99999875, y: 0.9999987, z: 0.9999983}
     - name: Shield
-      position: {x: -.00201230519, y: -.000127103325, z: .00391864777}
-      rotation: {x: -.668848693, y: .287231803, z: .250398755, w: .638310134}
-      scale: {x: .999999881, y: .999999881, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0020123052, y: -0.00012710333, z: 0.0039186478}
+      rotation: {x: -0.6688487, y: 0.2872318, z: 0.25039876, w: 0.63831013}
+      scale: {x: 0.9999999, y: 0.9999999, z: 1.0000002}
     - name: weapon.L_end
-      position: {x: -0, y: .00580922514, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.005809225, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: clavicle.R
-      position: {x: -4.05493472e-10, y: .0116608161, z: -.00134945812}
-      rotation: {x: .574492037, y: .451960087, z: .524797916, w: -.436208814}
-      scale: {x: .99999994, y: .999999821, z: .999999702}
-      transformModified: 1
+      parentName: 
+      position: {x: -4.0549347e-10, y: 0.011660816, z: -0.0013494581}
+      rotation: {x: 0.57449204, y: 0.4519601, z: 0.5247979, w: -0.4362088}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999997}
     - name: shoulder.R
-      position: {x: 5.02914155e-10, y: .0067274021, z: -5.06639486e-09}
-      rotation: {x: .0687553585, y: -.108632192, z: -.0215220451, w: .991467893}
-      scale: {x: 1.00000048, y: 1.00000036, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: 5.0291415e-10, y: 0.006727402, z: -0.000000005066395}
+      rotation: {x: 0.06875536, y: -0.10863219, z: -0.021522045, w: 0.9914679}
+      scale: {x: 1.0000005, y: 1.0000004, z: 1}
     - name: arm.R
-      position: {x: -1.7881393e-09, y: .0121875377, z: -5.3644178e-09}
-      rotation: {x: -.0477559417, y: -.844609439, z: .0162052847, w: -.533002615}
-      scale: {x: .999999881, y: 1.00000024, z: .999999702}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.0000000017881393, y: 0.012187538, z: -0.000000005364418}
+      rotation: {x: -0.04775594, y: -0.84460944, z: 0.016205285, w: -0.5330026}
+      scale: {x: 0.9999999, y: 1.0000002, z: 0.9999997}
     - name: hand.R
-      position: {x: 1.52736901e-09, y: .0139182098, z: 2.08616258e-09}
-      rotation: {x: .0239019655, y: -.0211830437, z: .13163808, w: -.990783215}
-      scale: {x: .999999523, y: .999999642, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.000000001527369, y: 0.01391821, z: 0.0000000020861626}
+      rotation: {x: 0.023901965, y: -0.021183044, z: 0.13163808, w: -0.9907832}
+      scale: {x: 0.9999995, y: 0.99999964, z: 1}
     - name: fingers.R
-      position: {x: 1.19209287e-09, y: .00695512537, z: 6.70552225e-10}
-      rotation: {x: -.0170171782, y: .00866322964, z: .0672005117, w: .997556746}
-      scale: {x: 1.00000167, y: 1.00000048, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0000000011920929, y: 0.0069551254, z: 6.705522e-10}
+      rotation: {x: -0.017017178, y: 0.00866323, z: 0.06720051, w: 0.99755675}
+      scale: {x: 1.0000017, y: 1.0000005, z: 1.0000002}
     - name: fingertips.R
-      position: {x: -4.84287721e-09, y: .0014266884, z: 1.11758702e-09}
-      rotation: {x: 1.26659856e-07, y: -6.63101616e-07, z: -2.27708341e-07, w: 1}
-      scale: {x: .999999225, y: 1.00000036, z: .99999994}
-      transformModified: 1
+      parentName: 
+      position: {x: -0.000000004842877, y: 0.0014266884, z: 0.000000001117587}
+      rotation: {x: 0.00000012665986, y: -0.0000006631016, z: -0.00000022770834, w: 1}
+      scale: {x: 0.9999992, y: 1.0000004, z: 0.99999994}
     - name: fingertips.R_end
-      position: {x: -0, y: .00285338005, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.00285338, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: thumb.R
-      position: {x: .00113299652, y: .00391400652, z: .0016609513}
-      rotation: {x: .343979865, y: -.0891621709, z: .0817885399, w: .931149125}
-      scale: {x: 1.00000024, y: 1.00000024, z: 1.00000024}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0011329965, y: 0.0039140065, z: 0.0016609513}
+      rotation: {x: 0.34397987, y: -0.08916217, z: 0.08178854, w: 0.9311491}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
     - name: thumb.R_end
-      position: {x: -0, y: .00354620139, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.0035462014, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: weapon.R
-      position: {x: .00102946267, y: .00598602742, z: -.000174963687}
-      rotation: {x: .643511355, y: -.400622159, z: -.288517565, w: .584938228}
-      scale: {x: .999999881, y: .999999642, z: .999999821}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.0010294627, y: 0.0059860274, z: -0.00017496369}
+      rotation: {x: 0.64351135, y: -0.40062216, z: -0.28851756, w: 0.5849382}
+      scale: {x: 0.9999999, y: 0.99999964, z: 0.9999998}
     - name: Sword
-      position: {x: .000614614459, y: .00204125699, z: -.000588436087}
-      rotation: {x: -.3917588, y: .736696303, z: .545012772, w: .0822475553}
-      scale: {x: 1.00000012, y: .999999821, z: 1}
-      transformModified: 1
+      parentName: 
+      position: {x: 0.00061461446, y: 0.002041257, z: -0.0005884361}
+      rotation: {x: -0.3917588, y: 0.7366963, z: 0.5450128, w: 0.082247555}
+      scale: {x: 1.0000001, y: 0.9999998, z: 1}
     - name: weapon.R_end
-      position: {x: -0, y: .00580922514, z: 0}
+      parentName: 
+      position: {x: -0, y: 0.005809225, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-      transformModified: 1
     - name: Warrior_Skin_1
+      parentName: 
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
-      scale: {x: 100, y: 100.000008, z: 100.000008}
-      transformModified: 1
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100.00001, z: 100.00001}
     - name: Warrior_Skin_2
+      parentName: 
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
-      scale: {x: 100, y: 100.000008, z: 100.000008}
-      transformModified: 1
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100.00001, z: 100.00001}
     - name: Warrior_Skin_3
+      parentName: 
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: -.707106829, y: 0, z: -0, w: .707106709}
-      scale: {x: 100, y: 100.000008, z: 100.000008}
-      transformModified: 1
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100.00001, z: 100.00001}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 1
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -8,7 +8,7 @@ public struct InputData
     public float LookX;
     public float LookY;
 
-    public objectsTag Arrow;
+    public ObjectsTag Arrow;
 
     public bool Jump;
     public bool Run;

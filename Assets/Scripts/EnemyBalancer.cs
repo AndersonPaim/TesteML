@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyBalancer : ScriptableObject
 {
     public int speed;
-    public int attackDistance;
+    public float attackDistance;
 
     public float health;
     public float attackCooldown;
@@ -14,7 +14,7 @@ public class EnemyBalancer : ScriptableObject
     public float damage;
     public float dropChance; //item drop chance  1-100 value
 
-    public Material armorTexture;
+    public Material[] armorTexture;
 
-    public objectsTag[] itensDrop;
+    public ObjectsTag[] itensDrop;
 }

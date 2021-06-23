@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum objectsTag
+public enum ObjectsTag
 {
     ArcherArrow, //enemy arrow
     RegularArrow,
@@ -13,4 +13,6 @@ public enum objectsTag
     ExplosiveArrowDrop,
     WarriorEnemy,
     ArcherEnemy,
+    DamageText,
+    AudioSource,
 }

@@ -7,29 +7,29 @@ public class BowController : MonoBehaviour
     public delegate void PlayerDataHandler(PlayerData playerData);
     public PlayerDataHandler OnPlayerDataUpdate;
 
-    [SerializeField] Transform _shootPosition;
+    public delegate void ArrowInventoryHandler( Dictionary<ObjectsTag, float> arrowInventory);
+    public ArrowInventoryHandler OnUpdateInventory;
 
-    [SerializeField] GameObject[] _bowArrows; 
+    [SerializeField] private Transform _shootPosition;
 
-    [SerializeField] float _shootForce; 
-    [SerializeField] float _holdAimForceGain; 
+    [SerializeField] private GameObject[] _bowArrows; 
 
-    [SerializeField] private objectsTag _startArrow;
+    [SerializeField] private float _shootForce; 
 
-    private float _forceMultiplier = 0;
+    [SerializeField] private ObjectsTag _startArrow;
 
     private bool _isPaused = false;
     private bool _isAiming = false;
     private bool _isShooting = false;
     private bool _isChangingArrow = false;
 
-    private objectsTag _selectedArrow;
+    private ObjectsTag _selectedArrow;
 
     private ObjectPooler _objectPooler;
 
     private PlayerData _playerData;
 
-    private Dictionary<objectsTag, float> _arrowInventory;
+    private Dictionary<ObjectsTag, float> _arrowInventory;
 
     private void Start()
     {
@@ -63,10 +63,12 @@ public class BowController : MonoBehaviour
     {
         SetupDelegates();
         _objectPooler = GameManager.sInstance.ObjectPooler;
-        _arrowInventory = new Dictionary<objectsTag, float>();
-        _arrowInventory.Add(objectsTag.PiercingArrow, 0);
-        _arrowInventory.Add(objectsTag.ExplosiveArrow, 0);
+        _arrowInventory = new Dictionary<ObjectsTag, float>();
+        _arrowInventory.Add(ObjectsTag.PiercingArrow, 0);
+        _arrowInventory.Add(ObjectsTag.ExplosiveArrow, 0);
         _selectedArrow = _startArrow;
+
+       OnUpdateInventory?.Invoke(_arrowInventory);
     }
 
     private void PauseInputs(bool isPaused)
@@ -102,12 +104,13 @@ public class BowController : MonoBehaviour
         OnPlayerDataUpdate?.Invoke(_playerData);
     }
 
-    private void CollectArrow(objectsTag objectTag, float arrowAmount)
+    private void CollectArrow(ObjectsTag objectTag, float arrowAmount)
     {
         _arrowInventory[objectTag] += arrowAmount;
+        OnUpdateInventory?.Invoke(_arrowInventory); //update hud
     }
 
-    private void ArrowSelection(objectsTag arrow) //select arrow with keyboard input
+    private void ArrowSelection(ObjectsTag arrow) //select arrow with keyboard input
     { 
         if(_selectedArrow != arrow) //if a different arrow is selected
         {
@@ -131,17 +134,17 @@ public class BowController : MonoBehaviour
     {
         switch(_selectedArrow)
             {
-                case objectsTag.RegularArrow:
+                case ObjectsTag.RegularArrow:
                     _bowArrows[0].SetActive(true);
                     _bowArrows[1].SetActive(false);
                     _bowArrows[2].SetActive(false);
                     break;
-                case objectsTag.PiercingArrow:
+                case ObjectsTag.PiercingArrow:
                     _bowArrows[0].SetActive(false);
                     _bowArrows[1].SetActive(true);
                     _bowArrows[2].SetActive(false);
                     break;
-                case objectsTag.ExplosiveArrow:
+                case ObjectsTag.ExplosiveArrow:
                     _bowArrows[0].SetActive(false);
                     _bowArrows[1].SetActive(false);
                     _bowArrows[2].SetActive(true);
@@ -152,19 +155,6 @@ public class BowController : MonoBehaviour
     private void AimState(bool isAiming)
     {
         _isAiming = isAiming;
-
-        if(_isAiming)
-        {
-            if(_forceMultiplier <= 1)
-            {
-                _forceMultiplier += _holdAimForceGain * Time.deltaTime;  //increase the force of the arrow shoot by holding aim
-            }
-        }
-        else if(!_isAiming && !_isShooting)
-        {
-            _forceMultiplier = 0; //reset force when release aim
-        }
-
     }
 
     private void ShootState(bool isShooting) 
@@ -180,6 +170,8 @@ public class BowController : MonoBehaviour
         {
             _arrowInventory[_selectedArrow]--;
 
+            OnUpdateInventory?.Invoke(_arrowInventory); //update ui inventory
+
             if(_arrowInventory[_selectedArrow] <= 0) //if arrow inventory is empty after shoot, return to start arrow
             {
                 _selectedArrow = _startArrow;
@@ -190,9 +182,7 @@ public class BowController : MonoBehaviour
         obj.transform.rotation = _shootPosition.transform.rotation; 
 
         Rigidbody rb = obj.GetComponent<Rigidbody>();
-        rb.velocity = (_shootPosition.transform.forward * _shootForce) * _forceMultiplier;
-
-        _forceMultiplier = 0; //reset force after shoot
+        rb.velocity = (_shootPosition.transform.forward * _shootForce);
     }
 
 }

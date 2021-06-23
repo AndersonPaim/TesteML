@@ -2,40 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+
 public class AudioController : MonoBehaviour
 {
-    public static AudioController sInstance;
+    [SerializeField] private AudioMixer _gameAudioMixer;
 
-   /* [SerializeField] private AudioClip _walkAudio;
-    [SerializeField] private AudioClip _runAudio;
-    [SerializeField] private AudioClip _jumpAudio;
-    [SerializeField] private AudioClip teste;*/
-
-    [SerializeField] private AudioMixer _audioMixer;
-
-    [SerializeField] private AudioSource _footstepsAudioSource;
-
-   // [SerializeField] private AudioMixerGroup _playerMixer;
-
-
-    private ObjectPooler _objectPooler;
-
+    protected ObjectPooler _objectPooler;
+    
     private AudioSource _audioSource;
 
     private float _volume;
 
-    private void Awake()
-    {
-        if (sInstance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            sInstance = this;
-        }
-    }
 
     private void Start() 
     {
@@ -45,12 +22,9 @@ public class AudioController : MonoBehaviour
 
     private void Initialize()
     {
-        SaveSystem.Load(); //TODO TEMPORARIO, COLOCAR NO MENU
         SaveData data = SaveSystem.localData;
 
-        _audioMixer.SetFloat("effectsVolume", Mathf.Log10(data.soundfxVolume) * 20);
-
-        _objectPooler = GameManager.sInstance.ObjectPooler;
+        _gameAudioMixer.SetFloat("effectsVolume", Mathf.Log10(data.soundfxVolume) * 20);
     }
 
     private void SetupDelegates()
@@ -67,7 +41,7 @@ public class AudioController : MonoBehaviour
 
     private void EffectsVolume(float volume)
     {
-        _audioMixer.SetFloat("effectsVolume", Mathf.Log10(volume) * 20);
+        _gameAudioMixer.SetFloat("effectsVolume", Mathf.Log10(volume) * 20);
         _volume = volume;
     }
 
@@ -75,43 +49,49 @@ public class AudioController : MonoBehaviour
     {
         if (isPaused)
         {
-            _audioMixer.SetFloat("masterVolume", -80);
+            _gameAudioMixer.SetFloat("masterVolume", -80);
         }
         else
         {
-            _audioMixer.SetFloat("masterVolume", 0);
+            _gameAudioMixer.SetFloat("masterVolume", 0);
         }
     }
 
-    public void PlayAudio(AudioClip audio, float volume, AudioMixerGroup audioMixer)
+    protected void PlayAudio(AudioClip audioClip, AudioMixerGroup audioMixer, float volume, float spatialBlend)  //create a object with the audiosource to play multiples audios at the same time
     {
-       /* GameObject obj = _objectPooler.SpawnFromPool(10);
-        _audioSource = obj.GetComponent<AudioSource>();
+      
+        AudioSource audioSource;
+
+        GameObject obj = _objectPooler.SpawnFromPool(ObjectsTag.AudioSource);
+        audioSource = obj.GetComponent<AudioSource>();
         obj.transform.position = transform.position;
 
-        _audioSource.outputAudioMixerGroup = audioMixer;
+        audioSource.outputAudioMixerGroup = audioMixer;
 
-        _audioSource.clip = audio;
-        _audioSource.volume = volume;*/
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.spatialBlend = spatialBlend; //0 for 2d audio and 1 for 3d audio
       
-        //obj.GetComponent<AudioSourceObject>().Disable();
-        //TODO DISABILITAR O OBJETO INSTANCIADO COM O AUDIO SOURCE
-
-        if (!_audioSource.isPlaying)
+        if (!audioSource.isPlaying)
         {
-            _audioSource.Play();
+            audioSource.Play();
         }
     }
-    private void PlayFootstepsAudio(AudioClip audio, float volume)
+
+    protected void PlayFootstepsAudio(AudioClip audio, AudioSource audioSource, float volume)
     {
-        _footstepsAudioSource.clip = audio;
-        _footstepsAudioSource.volume = volume;
+        audioSource.clip = audio;
+        audioSource.volume = volume;
 
-        if (!_footstepsAudioSource.isPlaying)
+        if (!audioSource.isPlaying)
         {
-            _footstepsAudioSource.Play();
+            audioSource.Play();
         }
     }
 
+    protected void StopAudio(AudioSource audioSource)
+    {
+        audioSource.Stop();
+    }
     
 }

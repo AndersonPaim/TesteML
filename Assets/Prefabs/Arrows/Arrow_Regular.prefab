@@ -112,8 +112,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.117694505, y: 0.09800661, z: 0.37464046}
-  m_Center: {x: 0.004221145, y: 0.005438637, z: 0.2542411}
+  m_Size: {x: 0.05, y: 0.05, z: 0.37464046}
+  m_Center: {x: 0, y: 0, z: 0.2542411}
 --- !u!114 &4125964528162455258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e50c014b9ab8847b667eeb04f8589d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 30
+  _damage: 35
   _destroyDelay: 5
 --- !u!96 &1419997723174135420
 TrailRenderer:

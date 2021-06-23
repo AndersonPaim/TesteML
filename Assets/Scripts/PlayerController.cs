@@ -5,16 +5,16 @@ using Cinemachine;
 using UnityEngine.Audio;
 
 
-public class PlayerController : MonoBehaviour, IDamageable, IHealable
+public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
 {
     public delegate void PlayerDataHandler(PlayerData playerData);
     public PlayerDataHandler OnPlayerDataUpdate;
 
-   /* public delegate void AmmoHandler(float ammo);
-    public AmmoHandler OnAmmo;*/
-
     public delegate void PlayerHealthHandler(float currentHealth, float maxHealth);
     public PlayerHealthHandler OnUpdateHealth;
+
+    public delegate void HealingHandler();
+    public HealingHandler OnReceiveHealing;
 
     public delegate void PlayerDeathHandler();
     public PlayerDeathHandler OnPlayerDeath;
@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable
 
     [SerializeField] private PlayerBalancer _playerBalancer;
     [SerializeField] private GameObject _playerPivot;
+
+    [SerializeField] private AudioSource _footstepsAudioSource;
+
+    private AudioMixerGroup _audioMixer;
 
     //[SerializeField] private AudioClip _jumpAudio;
     //[SerializeField] private AudioClip _walkAudio;
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable
     private Rigidbody _rb;
 
     private Vector3 _vel;
+
     private PlayerData _playerData;
     
     private ObjectPooler _objectPooler;
@@ -84,6 +89,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable
     {
         Cursor.lockState = CursorLockMode.Locked;
         _rb = GetComponent<Rigidbody>();
+        _audioMixer = GetComponent<AudioMixerGroup>();
         _playerData = new PlayerData();
         _vel = _rb.velocity;
         SetupDelegates();
@@ -98,7 +104,6 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable
     {
         _isPaused = isPaused;
     }
-
 
     private void ReceiveInputs(InputData inputData)
     {
@@ -117,7 +122,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable
         _playerData.OnGround = _isGrounded;
         _playerData.Jump = _isJumping;
         _playerData.Ammo = _ammo;
-        _playerData.Movement = _movement.y;
+        _playerData.Movement = _movement;
         _playerData.Speed = _speed;
 
         if(_isJumping)
@@ -208,20 +213,36 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable
         }
     }
 
-    public virtual void ReceiveHealing(float health)
+    public virtual void ReceiveHealing(float heal)
+    {        
+        if(_health != _maxHealth)
+        {
+            if(_health + heal >= _maxHealth)
+            {
+                _health = _maxHealth;
+                OnReceiveHealing?.Invoke();
+                OnUpdateHealth?.Invoke(_health, _maxHealth);
+            }
+            else
+            {
+                _health += heal;
+                OnReceiveHealing?.Invoke();
+                OnUpdateHealth?.Invoke(_health, _maxHealth);
+            }
+        }
+    }
+
+    public virtual bool IsInjured()
     {
-        Debug.Log("HEAL");
-
-        if(_health + health >= _maxHealth)
+        if(_health != _maxHealth)
         {
-            _health = _maxHealth;
+            return true;
         }
-        else if(_health + health <= _maxHealth)
+        else
         {
-            _health = health;
+            return false;
         }
 
-        OnUpdateHealth?.Invoke(_health, _maxHealth);
     }
 
     private void Rotate(float xRot, float yRot)

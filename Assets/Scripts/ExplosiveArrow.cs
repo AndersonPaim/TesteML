@@ -23,7 +23,7 @@ public class ExplosiveArrow : Arrows
         _collider.enabled = false;
         _rb.isKinematic = true;
 
-        DisableObject(_destroyDelay);
+        DisableObject(0);
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, _blastRadius);
         foreach (Collider enemies in colliders)

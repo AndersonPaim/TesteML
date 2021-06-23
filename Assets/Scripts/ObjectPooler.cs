@@ -9,13 +9,13 @@ public class ObjectPooler : MonoBehaviour
     public class Pool
     {
         public GameObject prefab;
-        public objectsTag tag; 
+        public ObjectsTag tag; 
         public int size;
     }
 
     [SerializeField]  private List<Pool> _pools;
 
-    private Dictionary<objectsTag, List<GameObject>> _poolDictionary;
+    private Dictionary<ObjectsTag, List<GameObject>> _poolDictionary;
 
     private List<GameObject> _objectPool;
 
@@ -27,7 +27,7 @@ public class ObjectPooler : MonoBehaviour
 
     private void InitializePool()
     {
-        _poolDictionary = new Dictionary<objectsTag, List<GameObject>>();
+        _poolDictionary = new Dictionary<ObjectsTag, List<GameObject>>();
 
         foreach (Pool pool in _pools)
         {   
@@ -46,7 +46,7 @@ public class ObjectPooler : MonoBehaviour
     }
 
 
-    public GameObject SpawnFromPool(objectsTag id)
+    public GameObject SpawnFromPool(ObjectsTag id)
     {
         bool isPoolAvailable = false;
         GameObject objectToSpawn = null;
@@ -72,7 +72,7 @@ public class ObjectPooler : MonoBehaviour
     }
 
 
-    private GameObject AddToPool(objectsTag id)
+    private GameObject AddToPool(ObjectsTag id)
     {
         GameObject newObject = _poolDictionary[id][0]; //TODO ARRUMAR UM JEITO MELHOR DE PEGAR ESSE PREFAB, ELE CLONA MAS N ADICIONA NA POOL
         _poolDictionary[id].Add(newObject);

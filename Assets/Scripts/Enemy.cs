@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
-    public delegate void EnemyDeathHandle(objectsTag enemyTag);
+    public delegate void EnemyDataHandler(EnemyData enemyData);
+    public EnemyDataHandler OnUpdateEnemyData;
+
+    public delegate void EnemyDeathHandle(ObjectsTag enemyTag);
     public static EnemyDeathHandle OnEnemyDeath;
 
     [SerializeField] protected EnemyBalancer _enemyBalancer;
@@ -25,9 +29,16 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected ObjectPooler _objectPooler;
 
+    protected EnemyData _enemyData;
+
     protected bool _isAttacking = false;
+    protected bool _isTakingDamage = false;
+    protected bool _isWalking = true;
+    protected bool _hasHittedPlayer = false;
     protected bool _canMove = true;
+    protected bool _canAttack = true;
     protected bool _isDead = false;
+
 
     protected void Awake()
     {
@@ -36,32 +47,78 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Update()
     {
-        Movement();
-        Patrol();
+        CreateEnemyStruct();
+    }
+    public virtual void TakeDamage(float damage)
+    {
+        _health -= damage;
+
+        GameObject obj = _objectPooler.SpawnFromPool(ObjectsTag.DamageText);
+
+        obj.transform.position = transform.position;
+        obj.transform.LookAt(_attackTarget.transform.position);
+        obj.GetComponentInChildren<TextMeshPro>().text = damage.ToString();
+
+        if(_health <= 0 && !_isDead)
+        {
+            Death();
+        }
+        else
+        {
+            _isTakingDamage = true;
+        }
     }
 
     protected abstract void OnEnable();
 
+    protected abstract void Patrol();
+
+    protected void Damage(IDamageable idamageable)
+    {
+        idamageable.TakeDamage(_enemyBalancer.damage);
+    }
+
     protected virtual void Initialize()
     {
-        _health = _enemyBalancer.health;
-        _objectPooler = GameManager.sInstance.ObjectPooler;
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _collider = GetComponent<Collider>();
+        _health = _enemyBalancer.health;
+        _objectPooler = GameManager.sInstance.ObjectPooler;
         _navMeshAgent.speed = _enemyBalancer.speed;
-        _armor.GetComponent<SkinnedMeshRenderer>().material = _enemyBalancer.armorTexture;
         _attackTarget = GameManager.sInstance.Player;
-        //_objectPooler = GameManager.sInstance.GetObjectPooler();
+        RandomSkin();
     }
 
-    protected abstract void Movement();
+    protected virtual void CreateEnemyStruct()
+    {
+        _enemyData = new EnemyData();
 
-    protected abstract void Patrol();
+        _enemyData.isWalking = _isWalking;
+        _enemyData.isAttacking = _isAttacking;
+        _enemyData.isTakingDamage = _isTakingDamage;
+        _enemyData.hasHittedPlayer = _hasHittedPlayer;
+
+        if(_isTakingDamage)
+        {
+            _isTakingDamage = false;
+        }
+        if(_isAttacking)
+        {
+            _isAttacking = false;
+        }
+        if(_hasHittedPlayer)
+        {
+            _hasHittedPlayer = false;
+        }
+
+        OnUpdateEnemyData?.Invoke(_enemyData);
+    }
 
     protected virtual void Attack()
     {
         _isAttacking = true;
+        _canAttack = false;
 
         StartCoroutine(AttackCooldown());
     }
@@ -69,40 +126,18 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     protected IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(_enemyBalancer.attackCooldown);
-        _isAttacking = false;
-    }
-    
-    protected void Damage(IDamageable idamageable)
-    {
-        idamageable.TakeDamage(_enemyBalancer.damage);
-    }
-
-    public virtual void TakeDamage(float damage)
-    {
-        _health -= damage;
-
-        /*GameObject obj = _objectPooler.SpawnFromPool(7);
-
-        obj.transform.position = transform.position;
-        obj.transform.LookAt(_player.transform.position);
-        obj.GetComponentInChildren<TextMesh>().text = damage.ToString();
-        obj.GetComponent<FloatingText>().Initialize();*/
-
-        if(_health <= 0 && !_isDead)
-        {
-            _isDead = true;
-            Death();
-        }
+        _canAttack = true;
     }
 
     protected virtual void Death()
     {
+        _isDead = true;
         _collider.enabled = false;
         StartCoroutine(DisableObject());
         DropItem();
     }
 
-    public virtual void DropItem()
+    protected virtual void DropItem()
     {
         int dropRandom = Random.Range(1, 100);
 
@@ -112,7 +147,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             GameObject obj = _objectPooler.SpawnFromPool(_enemyBalancer.itensDrop[randomItem]);
             obj.transform.position = gameObject.transform.position;
         }
-
     }
 
     protected IEnumerator DisableObject()
@@ -120,4 +154,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(_enemyBalancer.destroyDelay);
         gameObject.SetActive(false);
     }
+    private void RandomSkin()
+    {
+        int randomSkin = Random.Range(0, _enemyBalancer.armorTexture.Length);
+        _armor.GetComponent<SkinnedMeshRenderer>().material = _enemyBalancer.armorTexture[randomSkin];
+    }
+
 }
