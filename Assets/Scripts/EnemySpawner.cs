@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     private ObjectPooler _objectPooler;
 
-    private float _totalCurrentEnemies = 0; //TODO ajeitar essas variavel
+    private float _totalCurrentEnemies = 0;
     private float _totalMaxEnemies;
 
     private int _randomEnemy;
@@ -61,12 +61,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void SetupDelegates()
     {
-        Enemy.OnEnemyDeath += EnemyDeath;
+        Enemy.OnDeath += EnemyDeath;
     }
 
     private void RemoveDelegates()
     {
-        Enemy.OnEnemyDeath -= EnemyDeath;
+        Enemy.OnDeath -= EnemyDeath;
     }
 
     private void EnemyDeath(ObjectsTag enemy)

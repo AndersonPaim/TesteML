@@ -128,6 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 35
   _destroyDelay: 5
+  _damageAudio: {fileID: 8300000, guid: 40cd44e91a8eb4a46bcc13706efe8211, type: 3}
+  _hitAudio: {fileID: 8300000, guid: c29876ca39ddafa40aadfa0d6cfcd85f, type: 3}
 --- !u!96 &1419997723174135420
 TrailRenderer:
   serializedVersion: 2

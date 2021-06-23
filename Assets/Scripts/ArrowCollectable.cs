@@ -13,7 +13,7 @@ public class ArrowCollectable : Collectable
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<IHealable>() != null) //TODO ajeitar essa interface
+        if(other.gameObject.GetComponent<IHealable>() != null) //TODO ajeitar essa interface, colocar collider dos coletaveis só com o player
         {
             CollectItem(other.gameObject);
         }

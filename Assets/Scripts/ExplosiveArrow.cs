@@ -8,7 +8,7 @@ public class ExplosiveArrow : Arrows
 
     [SerializeField] private float _blastRadius;
 
-    private void OnEnable() //TODO AJEITAR
+    private void OnEnable()
     {
         _collider.enabled = true;
         _rb.isKinematic = false;
@@ -25,12 +25,15 @@ public class ExplosiveArrow : Arrows
 
         DisableObject(0);
 
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, _blastRadius);
         foreach (Collider enemies in colliders)
         {
-            if(enemies.GetComponent<IDamageable>() != null)
+            IDamageable damageable = enemies.GetComponent<IDamageable>();
+
+            if(damageable != null)
             {
-                Damage(enemies.GetComponent<IDamageable>()); 
+                Damage(damageable); 
             }
         }
 

@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _loadingProgressText;
 
-    [SerializeField] private SceneController _sceneController; //TODO VER SE PRECISA COLOCAR ELE AQUI
+    [SerializeField] private SceneController _sceneController;
 
     private void Awake()
     {
@@ -51,8 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButton()
     {
-        //TODO AJEITAR A CENA DO LOADING
-        _mainMenu.SetActive(false); //TODO COLOCAR ISSO NA CLASSE DO SCENECONTROLLER
+        _mainMenu.SetActive(false);
         _loadingScreen.SetActive(true);
         OnSetScene?.Invoke("Game");
     }

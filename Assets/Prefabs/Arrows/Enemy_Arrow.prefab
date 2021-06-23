@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2374320}
   - component: {fileID: -5354842835743618343}
   - component: {fileID: 5299921144597243369}
-  - component: {fileID: 4125964528162455258}
   - component: {fileID: 1419997723174135420}
+  - component: {fileID: 7795392147559549789}
   m_Layer: 9
-  m_Name: Archer_Arrow
+  m_Name: Enemy_Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,20 +114,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.117694505, y: 0.09800661, z: 0.37464046}
   m_Center: {x: 0.004221145, y: 0.005438637, z: 0.2542411}
---- !u!114 &4125964528162455258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5e50c014b9ab8847b667eeb04f8589d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 30
-  _destroyDelay: 5
 --- !u!96 &1419997723174135420
 TrailRenderer:
   serializedVersion: 2
@@ -244,3 +230,17 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &7795392147559549789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1df01bd092d4294abb572a93c09e6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 25
+  _destroyDelay: 5

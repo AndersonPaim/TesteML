@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegularArrow : Arrows
-{   
+public class EnemyArrow : Arrows
+{
+    public delegate void ArrowHitHandler();
+    public static ArrowHitHandler OnArrowDamage;
+
     private void OnEnable()
     {
         _collider.enabled = true;
@@ -24,6 +27,7 @@ public class RegularArrow : Arrows
         if(damageable != null)
         {
             Damage(damageable); 
+            OnArrowDamage?.Invoke();
             StartCoroutine(DisableObject(0)); //disable object instantly when hit an enemy
         }
         else
@@ -37,5 +41,4 @@ public class RegularArrow : Arrows
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
     }
-    
 }

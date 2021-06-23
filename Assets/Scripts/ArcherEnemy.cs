@@ -96,10 +96,9 @@ public class ArcherEnemy : Enemy
     protected override void Death()  
     { 
         base.Death();
-        _navMeshAgent.isStopped = true;
-       //TODO avoid archer to walk after death
+        _navMeshAgent.isStopped = true;    //avoid archer to walk after death
         
-        OnEnemyDeath?.Invoke(ObjectsTag.ArcherEnemy);
+        OnDeath?.Invoke(ObjectsTag.ArcherEnemy);
         _animator.SetTrigger(EnemyAnimationParameters.DEATH);
     }
 

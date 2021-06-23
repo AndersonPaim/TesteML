@@ -75,7 +75,7 @@ public class WarriorEnemy : Enemy
         _navMeshAgent.isStopped = true; 
         _canMove = false;
         _animator.SetTrigger(EnemyAnimationParameters.DEATH);
-        OnEnemyDeath?.Invoke(ObjectsTag.WarriorEnemy);
+        OnDeath?.Invoke(ObjectsTag.WarriorEnemy);
     }
 
     private IEnumerator MovementCooldown()

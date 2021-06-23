@@ -6,11 +6,14 @@ using TMPro;
 
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
+    public delegate void EnemyDeathHandle(ObjectsTag enemyTag);
+    public static EnemyDeathHandle OnDeath;
+    
     public delegate void EnemyDataHandler(EnemyData enemyData);
     public EnemyDataHandler OnUpdateEnemyData;
 
-    public delegate void EnemyDeathHandle(ObjectsTag enemyTag);
-    public static EnemyDeathHandle OnEnemyDeath;
+    public delegate void EnemyDamageHandler();
+    public EnemyDamageHandler OnTakeDamage;
 
     [SerializeField] protected EnemyBalancer _enemyBalancer;
 
@@ -58,6 +61,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         obj.transform.position = transform.position;
         obj.transform.LookAt(_attackTarget.transform.position);
         obj.GetComponentInChildren<TextMeshPro>().text = damage.ToString();
+
+        OnTakeDamage?.Invoke();
 
         if(_health <= 0 && !_isDead)
         {

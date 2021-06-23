@@ -74,7 +74,7 @@ public class ObjectPooler : MonoBehaviour
 
     private GameObject AddToPool(ObjectsTag id)
     {
-        GameObject newObject = _poolDictionary[id][0]; //TODO ARRUMAR UM JEITO MELHOR DE PEGAR ESSE PREFAB, ELE CLONA MAS N ADICIONA NA POOL
+        GameObject newObject = _poolDictionary[id][0]; 
         _poolDictionary[id].Add(newObject);
         Debug.Log(_poolDictionary[id].Count);
         newObject.SetActive(true);

@@ -159,7 +159,7 @@ public class InputListener : MonoBehaviour
         _arrow = ObjectsTag.ExplosiveArrow;
     }
 
-    private void LookX() //TODO JUNTAR EM UM INPUT SÓ
+    private void LookX()
     {
         _lookX = _input.Player.LookX.ReadValue<float>();
     }

@@ -15,6 +15,7 @@ public class EnemyAudioController : AudioController
     [SerializeField] private AudioClip _damageAudio;
 
     [SerializeField] private AudioMixerGroup _audioMixer;
+
     private bool _isAttacking;
     private bool _isTakingDamage;
 
@@ -37,11 +38,13 @@ public class EnemyAudioController : AudioController
     private void SetupDelegates()
     {
         _enemy.OnUpdateEnemyData += ReceiveEnemyData;
+        _enemy.OnTakeDamage += TakeDamageSound;
     }
 
     private void RemoveDelegates()
     {
         _enemy.OnUpdateEnemyData -= ReceiveEnemyData;
+        _enemy.OnTakeDamage -= TakeDamageSound;
     }
 
     private void ReceiveEnemyData(EnemyData enemyData)
@@ -84,7 +87,7 @@ public class EnemyAudioController : AudioController
 
     private void TakeDamageSound()
     {
-        Debug.Log("SOFREU DANO");
+        PlayAudio(_damageAudio, _audioMixer, 1, 0.7f); //TODO AJEITAR ESSES NUMEROS
     }
 
 }

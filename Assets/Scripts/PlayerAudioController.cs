@@ -10,9 +10,11 @@ public class PlayerAudioController : AudioController
     [SerializeField] protected AudioMixerGroup _audioMixer;
 
     [SerializeField] private AudioClip _footstepsAudio;
-    [SerializeField] private AudioClip _bowAimAudio;
+    [SerializeField] private AudioClip _bowLoadingAudio;
+    [SerializeField] private AudioClip _arrowEquipAudio;
     [SerializeField] private AudioClip _arrowShootAudio;
     [SerializeField] private AudioClip _healingAudio;
+    [SerializeField] private AudioClip _arrowDamageAudio;
 
     private bool _isAttacking;
     private bool _isAiming;
@@ -37,12 +39,14 @@ public class PlayerAudioController : AudioController
     {
         GameManager.sInstance.PlayerController.OnPlayerDataUpdate += ReceivePlayerData;
         GameManager.sInstance.PlayerController.OnReceiveHealing += HealingAudio;
+        EnemyArrow.OnArrowDamage += ArrowDamage;
     }
 
     private void RemoveDelegates()
     {
         GameManager.sInstance.PlayerController.OnPlayerDataUpdate -= ReceivePlayerData;
         GameManager.sInstance.PlayerController.OnReceiveHealing -= HealingAudio;
+        EnemyArrow.OnArrowDamage -= ArrowDamage;
     }
 
     private void ReceivePlayerData(PlayerData playerData)
@@ -56,19 +60,29 @@ public class PlayerAudioController : AudioController
         _isAttacking = enemyData.isAttacking;  //saving current data localy to avoid playing the same audio twice*/
     }
 
+    private void ArrowDamage()
+    {
+        PlayAudio(_arrowDamageAudio, _audioMixer, 1, 1);
+    }
+
     private void HealingAudio()
     {
         PlayAudio(_healingAudio, _audioMixer, 1, 0);
     }
 
-    private void BowAimAudio() //play on player aim animation event
+    private void ArrowEquipAudio()
     {
-        PlayAudio(_bowAimAudio, _audioMixer, 1, 0);
+        PlayAudio(_arrowEquipAudio, _audioMixer, 1, 0);
     }
 
-    private void ArrowShootAudio()
+    private void BowLoadingAudio() //play on player aim animation event
     {
-        PlayAudio(_arrowShootAudio, _audioMixer, 1, 0);
+        PlayAudio(_bowLoadingAudio, _audioMixer, 1, 0);
+    }
+
+    private void ArrowShootAudio() //play on player shoot animation event
+    {
+        PlayAudio(_arrowShootAudio, _audioMixer, 0.7f, 0);
     }
 
     private void MovementAudio(Vector2 movement, bool isGrounded)
