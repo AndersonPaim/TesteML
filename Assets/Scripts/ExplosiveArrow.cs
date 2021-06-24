@@ -21,12 +21,11 @@ public class ExplosiveArrow : Arrows
     protected override void OnCollisionEnter(Collision other) 
     {
         _collider.enabled = false;
-        _rb.isKinematic = true;
 
-        DisableObject(0);
-
+        DisableObject(0);//TODO REVER
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, _blastRadius);
+        //find for damageable entities in area
         foreach (Collider enemies in colliders)
         {
             IDamageable damageable = enemies.GetComponent<IDamageable>();

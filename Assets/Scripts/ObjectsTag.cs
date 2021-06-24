@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum ObjectsTag
 {
-    ArcherArrow, //enemy arrow
+    //instantiatable objects
+    ArcherArrow,
     RegularArrow,
     PiercingArrow,
     ExplosiveArrow,

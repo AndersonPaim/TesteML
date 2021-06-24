@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public delegate void CameraRotateHandler(float yRot, float xRot);
     public CameraRotateHandler OnCameraRotate;
 
-    [SerializeField] private float _sensibility;
+    [SerializeField] private float _sensitivity;
     [SerializeField] private float _maxVerticalRot;
     [SerializeField] private float _minVerticalRot;
 
@@ -16,28 +16,15 @@ public class CameraController : MonoBehaviour
     
     private bool _isPaused = false;
 
-    private float _verticalAxis;
     private void Start()
     {
-        Initialize();
         SetupDelegates();
-    }
-
-    private void Update() 
-    {
-        
     }
 
     private void OnDestroy() 
     {
         RemoveDelegates();
     }
-
-    private void Initialize()
-    {
-       //
-    }
-
 
     private void SetupDelegates()
     {
@@ -66,9 +53,10 @@ public class CameraController : MonoBehaviour
 
     private void CamMovement(float lookX, float lookY)
     {
-        float mouseX = lookX * _sensibility * Time.deltaTime;
-        float mouseY = lookY * -_sensibility * Time.deltaTime;
+        float mouseX = lookX * _sensitivity * Time.deltaTime;
+        float mouseY = lookY * -_sensitivity * Time.deltaTime;
      
+        //check vertical camera max and min rotation
         if(_player.transform.rotation.eulerAngles.x + mouseY > _maxVerticalRot || _player.transform.rotation.eulerAngles.x + mouseY < _minVerticalRot) 
         {
             OnCameraRotate?.Invoke(mouseX, mouseY);

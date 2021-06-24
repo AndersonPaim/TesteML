@@ -13,11 +13,12 @@ public class EnemySpawner : MonoBehaviour
         public int currentEnemies;
     }
     [SerializeField] private float _spawnDelay;
+
     [SerializeField] private Transform[] _spawnPos;
 
-    [SerializeField] private List<EnemyToSpawn> _enemy;
+    [SerializeField] private List<EnemyToSpawn> _enemies;
 
-    public Dictionary<ObjectsTag, EnemyToSpawn> _enemyDictionary;
+    public Dictionary<ObjectsTag, EnemyToSpawn> _enemiesDictionary;
 
     private ObjectPooler _objectPooler;
 
@@ -34,7 +35,6 @@ public class EnemySpawner : MonoBehaviour
         SetupDelegates();
     }
 
-
     private void OnDestroy()
     {
         RemoveDelegates();
@@ -44,16 +44,16 @@ public class EnemySpawner : MonoBehaviour
         
         _objectPooler = GameManager.sInstance.ObjectPooler;
         
-        _enemyDictionary = new Dictionary<ObjectsTag, EnemyToSpawn>();
+        _enemiesDictionary = new Dictionary<ObjectsTag, EnemyToSpawn>();
 
-        for(int i = 0; i < _enemy.Count; i++)
+        for(int i = 0; i < _enemies.Count; i++) //calculate max number of enemies with the max of each enemy 
         {
-            _totalMaxEnemies += _enemy[i].maxEnemies;
+            _totalMaxEnemies += _enemies[i].maxEnemies;
         }
 
-        foreach(EnemyToSpawn enemyToSpawn in _enemy)
+        foreach(EnemyToSpawn enemyToSpawn in _enemies)
         {
-            _enemyDictionary.Add(enemyToSpawn.enemySpawnTag, enemyToSpawn);
+            _enemiesDictionary.Add(enemyToSpawn.enemySpawnTag, enemyToSpawn);
         }
 
         StartCoroutine(SpawnEnemy());
@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void EnemyDeath(ObjectsTag enemy)
     {
-        _enemyDictionary[enemy].currentEnemies--;
+        _enemiesDictionary[enemy].currentEnemies--;
         _totalCurrentEnemies--;
     }
 
@@ -83,10 +83,10 @@ public class EnemySpawner : MonoBehaviour
                 
             if(CanSpawn())
             {
-                _enemy[_randomEnemy].currentEnemies++;
+                _enemies[_randomEnemy].currentEnemies++;
                 _totalCurrentEnemies++;
-                GameObject obj = _objectPooler.SpawnFromPool(_enemy[_randomEnemy].enemySpawnTag);
-
+                
+                GameObject obj = _objectPooler.SpawnFromPool(_enemies[_randomEnemy].enemySpawnTag);
                 int randomPos = Random.Range(0, _spawnPos.Length);
                 obj.transform.position = _spawnPos[randomPos].position;
 
@@ -99,11 +99,11 @@ public class EnemySpawner : MonoBehaviour
     {
         if(_totalCurrentEnemies < _totalMaxEnemies)
         {
-            while(!_canSpawn)
+            while(!_canSpawn) //randomize an enemy until finds one that is not at max number
             {
-                _randomEnemy = Random.Range(0, _enemy.Count);
+                _randomEnemy = Random.Range(0, _enemies.Count);
 
-                if(_enemy[_randomEnemy].currentEnemies < _enemy[_randomEnemy].maxEnemies)
+                if(_enemies[_randomEnemy].currentEnemies < _enemies[_randomEnemy].maxEnemies)
                 {
                     _canSpawn = true;
                 }

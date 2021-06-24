@@ -12,22 +12,21 @@ public abstract class Collectable : MonoBehaviour
         Initialize();
     }
 
-    protected virtual void Initialize()
-    {
-        _collider = GetComponent<Collider>();
-    }
-
     protected virtual void OnEnable()
     {
         _collider.enabled = true;
     }
- 
+
     protected abstract void OnTriggerEnter(Collider other);
 
+    protected virtual void Initialize()
+    {
+        _collider = GetComponent<Collider>();
+    }
+ 
     protected virtual void CollectItem(GameObject obj)
     {
         _collider.enabled = false;
         gameObject.SetActive(false);
     }
-
 }

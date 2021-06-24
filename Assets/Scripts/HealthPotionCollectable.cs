@@ -15,9 +15,9 @@ public class HealthPotionCollectable : Collectable
         _healable = other.gameObject.GetComponent<IHealable>();  
         _injured = other.gameObject.GetComponent<IInjured>();
 
-        if(_healable != null)  
+        if(_healable != null) 
         {
-            if(CanHeal(_injured))
+            if(CanHeal(_injured)) //check if the player is not full heath
             {
                 CollectItem(other.gameObject);
             }
@@ -47,5 +47,4 @@ public class HealthPotionCollectable : Collectable
             return false;
         }
     }
-
 }

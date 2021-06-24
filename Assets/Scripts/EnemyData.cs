@@ -4,8 +4,8 @@ using UnityEngine;
 
 public struct EnemyData
 {
-    public bool isWalking;
-    public bool isAttacking;
-    public bool hasHittedPlayer;
-    public bool isTakingDamage;
+    public bool Walking;
+    public bool Attacking;
+    public bool HittedPlayer;
+    public bool TakeDamage;
 }

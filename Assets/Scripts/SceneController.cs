@@ -35,7 +35,6 @@ public class SceneController : MonoBehaviour
     private void SetScene(string scene)
     {
         StartCoroutine(LoadASync(scene));
-        GetCurrentScene();
     }
     
     private IEnumerator LoadASync(string scene)
@@ -49,12 +48,6 @@ public class SceneController : MonoBehaviour
            
             yield return null;
         }
-    }
-
-    private void GetCurrentScene()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        currentScene = scene.buildIndex;
     }
 
     private void RestartScene(string scene)

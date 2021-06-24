@@ -8,6 +8,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 {
     public delegate void EnemyDeathHandle(ObjectsTag enemyTag);
     public static EnemyDeathHandle OnDeath;
+
+    public delegate void EnemyKillPoints(float points);
+    public static EnemyKillPoints OnKill;
     
     public delegate void EnemyDataHandler(EnemyData enemyData);
     public EnemyDataHandler OnUpdateEnemyData;
@@ -18,6 +21,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected EnemyBalancer _enemyBalancer;
 
     [SerializeField] protected GameObject _armor;
+
+    [SerializeField] protected float _killPoints;
 
     protected float _health;
     protected float _distance;
@@ -99,10 +104,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         _enemyData = new EnemyData();
 
-        _enemyData.isWalking = _isWalking;
-        _enemyData.isAttacking = _isAttacking;
-        _enemyData.isTakingDamage = _isTakingDamage;
-        _enemyData.hasHittedPlayer = _hasHittedPlayer;
+        _enemyData.Walking = _isWalking;
+        _enemyData.Attacking = _isAttacking;
+        _enemyData.TakeDamage = _isTakingDamage;
+        _enemyData.HittedPlayer = _hasHittedPlayer;
 
         if(_isTakingDamage)
         {
@@ -127,15 +132,10 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
         StartCoroutine(AttackCooldown());
     }
-      
-    protected IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(_enemyBalancer.attackCooldown);
-        _canAttack = true;
-    }
 
     protected virtual void Death()
     {
+        OnKill?.Invoke(_killPoints);
         _isDead = true;
         _collider.enabled = false;
         StartCoroutine(DisableObject());
@@ -152,6 +152,12 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             GameObject obj = _objectPooler.SpawnFromPool(_enemyBalancer.itensDrop[randomItem]);
             obj.transform.position = gameObject.transform.position;
         }
+    }
+    
+    protected IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(_enemyBalancer.attackCooldown);
+        _canAttack = true;
     }
 
     protected IEnumerator DisableObject()

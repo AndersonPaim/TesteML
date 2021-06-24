@@ -80,8 +80,8 @@ public class BowController : MonoBehaviour
     {
         if (!_isPaused)
         {
-            AimState(inputData.Aim);
-            ShootState(inputData.Shoot);
+            IsAiming(inputData.isAiming);
+            IsShooting(inputData.isShooting);
             ArrowSelection(inputData.Arrow);
         }
     }
@@ -92,6 +92,7 @@ public class BowController : MonoBehaviour
         _playerData.Shoot = _isShooting;
         _playerData.ChangeArrow = _isChangingArrow;
 
+        //reset data that only needs to be received once
         if(_isShooting)
         {
             _isShooting = false;
@@ -130,9 +131,10 @@ public class BowController : MonoBehaviour
         }
     }
 
-    private void EquipArrow() //animation event
+    private void EquipArrow() //run on player aim animation event
     {
-        switch(_selectedArrow)
+        //enable arrow gameobject equipped in the bow
+        switch(_selectedArrow)  
             {
                 case ObjectsTag.RegularArrow:
                     _bowArrows[0].SetActive(true);
@@ -152,17 +154,17 @@ public class BowController : MonoBehaviour
             }
     }
 
-    private void AimState(bool isAiming)
+    private void IsAiming(bool isAiming)
     {
         _isAiming = isAiming;
     }
 
-    private void ShootState(bool isShooting) 
+    private void IsShooting(bool isShooting) 
     {
         _isShooting = isShooting;
     }
 
-    private void ArrowShoot() //animation event
+    private void ArrowShoot() //run on player shoot animation event
     {   
         GameObject obj = _objectPooler.SpawnFromPool(_selectedArrow);
 

@@ -23,6 +23,9 @@ public class InGameMenus : MonoBehaviour
     [SerializeField] private Slider _loadingBar;
 
     [SerializeField] private TextMeshProUGUI _loadingProgressText;
+    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _killsText;
+
 
     private bool _isPaused = false;
     private bool _canResume = true;
@@ -44,6 +47,7 @@ public class InGameMenus : MonoBehaviour
         GameManager.sInstance.OnFinish += Finish;
         GameManager.sInstance.OnGameOver += GameOver;
         GameManager.sInstance.SceneController.OnUpdateProgress += LoadingScreen;
+        GameManager.sInstance.ScoreManager.OnSetFinalScore += SetScore;
     }
 
     private void RemoveDelegates()
@@ -52,6 +56,41 @@ public class InGameMenus : MonoBehaviour
         GameManager.sInstance.OnFinish -= Finish;
         GameManager.sInstance.OnGameOver -= GameOver;
         GameManager.sInstance.SceneController.OnUpdateProgress -= LoadingScreen;
+        GameManager.sInstance.ScoreManager.OnSetFinalScore -= SetScore;
+    }
+
+    public void Resume() //resume game button
+    {
+        OnPause?.Invoke(false);
+        _isPaused = false;
+        Time.timeScale = 1;
+        _pauseMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void SettingsButton() //settings menu button
+    {
+        _pauseMenu.SetActive(false);
+        _settingsMenu.SetActive(true);
+        _canResume = false;
+    }
+
+    public void BackButton() //menu back button
+    {
+        _pauseMenu.SetActive(true);
+        _settingsMenu.SetActive(false);
+        _canResume = true;
+    }
+
+    public void Restart() //restart game button
+    {
+        OnRestartScene?.Invoke("Game"); 
+    }
+
+    public void Quit() //quit game button
+    {
+        _loadingScreen.SetActive(true);
+        OnSetScene?.Invoke("Menu");
     }
 
     private void PauseInput()
@@ -66,14 +105,14 @@ public class InGameMenus : MonoBehaviour
         }
     }
 
-    private void LoadingScreen(float progress)
+    private void LoadingScreen(float progress) //update loading screen progress text and slider
     {
         _loadingBar.value = progress;
         _loadingProgressText.text = (progress * 100).ToString() + "%" ;
     }
 
 
-    public void Pause()
+    private void Pause() //enable pause menu
     {
         OnPause?.Invoke(true);
         _isPaused = true;
@@ -82,7 +121,7 @@ public class InGameMenus : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void GameOver()
+    private void GameOver() //enable game over menu
     {
         OnPause?.Invoke(true);
         _canResume = false;
@@ -91,7 +130,7 @@ public class InGameMenus : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void Finish()
+    private void Finish() //enable finish menu
     {
         OnPause?.Invoke(true);
         _canResume = false;
@@ -100,37 +139,9 @@ public class InGameMenus : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void Resume()
+    private void SetScore(float kills, float score) //set score text when the game ends
     {
-        OnPause?.Invoke(false);
-        _isPaused = false;
-        Time.timeScale = 1;
-        _pauseMenu.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    public void Settings()
-    {
-        _pauseMenu.SetActive(false);
-        _settingsMenu.SetActive(true);
-        _canResume = false;
-    }
-
-    public void BackButton()
-    {
-        _pauseMenu.SetActive(true);
-        _settingsMenu.SetActive(false);
-        _canResume = true;
-    }
-
-    public void Restart()
-    {
-        OnRestartScene?.Invoke("Game"); 
-    }
-
-    public void Quit()
-    {
-        _loadingScreen.SetActive(true);
-        OnSetScene?.Invoke("Menu");
+        _scoreText.text = "Score: " + score.ToString();
+        _killsText.text = "Kills: " + kills.ToString();
     }
 }

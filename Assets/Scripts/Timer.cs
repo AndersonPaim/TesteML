@@ -16,7 +16,8 @@ public class Timer : MonoBehaviour
     [SerializeField] private GameObject _gameTimerObject;
 
     private bool _isPaused;
-    private bool _gameStarted;
+    private bool _gameStarted = false;
+    private bool _gameFinished = false;
 
     private float _startTime;
     private float _gameTime;
@@ -78,11 +79,10 @@ public class Timer : MonoBehaviour
 
     private void StartCountdown()
     {   
-        
         _startTime -= Time.deltaTime;
         _seconds = Mathf.FloorToInt(_startTime % 60);
 
-        OnUpdateStartTimer?.Invoke(0, _seconds);
+        OnUpdateStartTimer?.Invoke(0, _seconds); //update start countdown time to show in the ui
 
         if(_startTime <= 0)
         {
@@ -100,10 +100,11 @@ public class Timer : MonoBehaviour
         _minutes = Mathf.FloorToInt(_gameTime / 60);
         _seconds = Mathf.FloorToInt(_gameTime % 60);
         
-        OnUpdateGameTimer?.Invoke(_minutes, _seconds);
+        OnUpdateGameTimer?.Invoke(_minutes, _seconds); //update game time to show in the ui
 
-        if(_gameTime <= 0)
+        if(_gameTime <= 0 && !_gameFinished)
         {
+            _gameFinished = true;
             OnFinishGameTimer?.Invoke();
         }
 

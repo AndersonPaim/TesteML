@@ -8,11 +8,11 @@ public class AudioSourceObject : MonoBehaviour
     private void OnEnable() 
     {
         _audioClip = GetComponent<AudioSource>().clip;
-
-        if(_audioClip != null)
+        
+        if(_audioClip != null)     
         {
             StartCoroutine(DisableObject(_audioClip.length));
-        }
+        }  
     }
 
     private IEnumerator DisableObject(float time)

@@ -60,7 +60,7 @@ public class PlayerAudioController : AudioController
         _isAttacking = enemyData.isAttacking;  //saving current data localy to avoid playing the same audio twice*/
     }
 
-    private void ArrowDamage()
+    private void ArrowDamage() //player receive damage from an arrow
     {
         PlayAudio(_arrowDamageAudio, _audioMixer, 1, 1);
     }
@@ -70,12 +70,12 @@ public class PlayerAudioController : AudioController
         PlayAudio(_healingAudio, _audioMixer, 1, 0);
     }
 
-    private void ArrowEquipAudio()
+    private void ArrowEquipAudio() //play on player aim animation event
     {
         PlayAudio(_arrowEquipAudio, _audioMixer, 1, 0);
     }
 
-    private void BowLoadingAudio() //play on player aim animation event
+    private void BowLoadingAudio() //play on player loading animation event
     {
         PlayAudio(_bowLoadingAudio, _audioMixer, 1, 0);
     }
@@ -85,7 +85,7 @@ public class PlayerAudioController : AudioController
         PlayAudio(_arrowShootAudio, _audioMixer, 0.7f, 0);
     }
 
-    private void MovementAudio(Vector2 movement, bool isGrounded)
+    private void MovementAudio(Vector2 movement, bool isGrounded) //footsteps audio //TODO SOM DE CORRIDA
     {
         if(movement.x != 0 && isGrounded || movement.y != 0 && isGrounded)
         {

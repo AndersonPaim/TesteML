@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyBalancer: {fileID: 11400000, guid: c167b9d936329674fb644e8b013996c9, type: 2}
   _armor: {fileID: 8869058872237750326}
+  _killPoints: 300
   _shootPosition: {fileID: 8869058871861206266}
   _shootForce: 80
   _arrow: 0

@@ -49,25 +49,25 @@ public class EnemyAudioController : AudioController
 
     private void ReceiveEnemyData(EnemyData enemyData)
     {
-        if(enemyData.hasHittedPlayer)
+        if(enemyData.HittedPlayer)
         {
             HitSound();
         }
-        if (enemyData.isAttacking && !_isAttacking)
+        if (enemyData.Attacking && !_isAttacking)
         {
             AttackSound();
         }
-        if (enemyData.isTakingDamage && !_isTakingDamage)
+        if (enemyData.TakeDamage && !_isTakingDamage)
         {
             TakeDamageSound();
         }
-        if(enemyData.isWalking)
+        if(enemyData.Walking)
         {
             WalkSound();
         }
 
-        _isAttacking = enemyData.isAttacking;  //saving current data localy to avoid playing the same audio twice
-        _isTakingDamage = enemyData.isTakingDamage;
+        _isAttacking = enemyData.Attacking;  //saving current data localy to avoid playing the same audio twice
+        _isTakingDamage = enemyData.TakeDamage;
     }
 
     private void WalkSound()
@@ -87,7 +87,7 @@ public class EnemyAudioController : AudioController
 
     private void TakeDamageSound()
     {
-        PlayAudio(_damageAudio, _audioMixer, 1, 0.7f); //TODO AJEITAR ESSES NUMEROS
+        //PlayAudio(_damageAudio, _audioMixer, 1, 0.5f); //TODO AJEITAR ESSES NUMEROS |||||||||||| AUDIO NAO TA LEGAL
     }
 
 }

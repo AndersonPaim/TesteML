@@ -17,6 +17,8 @@ public abstract class Arrows : MonoBehaviour
     {
         Initialize(); 
     }
+    protected abstract void OnCollisionEnter(Collision other);
+    protected abstract IEnumerator DisableObject(float time);
 
     protected virtual void Initialize()
     {
@@ -25,13 +27,8 @@ public abstract class Arrows : MonoBehaviour
         _objectPooler = GameManager.sInstance.ObjectPooler;
     }
 
-    protected abstract void OnCollisionEnter(Collision other);
-
     protected void Damage(IDamageable idamageable)
     {   
         idamageable.TakeDamage(_damage);
     }
-
-    protected abstract IEnumerator DisableObject(float time);
-
 }

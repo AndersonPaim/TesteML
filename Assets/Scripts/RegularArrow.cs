@@ -28,7 +28,7 @@ public class RegularArrow : Arrows
         }
         else
         {
-            StartCoroutine(DisableObject(_destroyDelay));
+            StartCoroutine(DisableObject(_destroyDelay)); //disable object with delay when hit other things
         }
     }
 

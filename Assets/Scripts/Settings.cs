@@ -33,6 +33,7 @@ public class Settings : MonoBehaviour
 
     private void Initialize()
     {
+        //load last settings from local save data
         SaveData data = SaveSystem.localData;
         _soundfxSlider.value = data.soundfxVolume;
         _musicSlider.value = data.musicVolume;
@@ -45,31 +46,31 @@ public class Settings : MonoBehaviour
         _startCountdownSlider.maxValue = _maxStartCountdown;
     }
 
-    public void SoundfxVolume(float volume)
+    public void SoundfxVolume(float volume) //on change slider value set sound effects volume value
     {
         SaveSystem.localData.soundfxVolume = volume;
         OnSetEffectsVolume?.Invoke(volume);
     }
 
-    public void MusicVolume(float volume)
+    public void MusicVolume(float volume) //on change slider value set music volume value
     {
         SaveSystem.localData.musicVolume = volume;
         OnSetMusicVolume?.Invoke(volume);
     }
 
-    public void StartCountdown(float time)
+    public void StartCountdown(float time) //on change slider value set start countdown time value
     {
         _startCountdownText.text = _startCountdownSlider.value.ToString() + "sec";
         SaveSystem.localData.startCountdown = time;
     }
 
-    public void GameTime(float time)
+    public void GameTime(float time) //on change slider value set game time value
     {
         _gameTimeText.text = _gameTimeSlider.value.ToString() + "min";
         SaveSystem.localData.gameTime = time;
     }
 
-    public void Save()
+    public void Save() //save changes on exit button 
     {
         SaveSystem.Save();
     }

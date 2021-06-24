@@ -32,24 +32,20 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
     //[SerializeField] private AudioClip _runAudio;
 
     //[SerializeField] private AudioMixerGroup _audioMixer;
-    private float _ammo;
     private float _speed;
     private float _health;
     private float _maxHealth;
-    private float _selectedArrow;
 
     private Vector2 _movement;
 
     private bool _isAiming = false;
     private bool _isGrounded = true;
-    private bool _isWalking = false;
     private bool _isRunning = false;
     private bool _isJumping = false;
+    private bool _isTakingDamage = false;
     private bool _isPaused = false;
 
     private Rigidbody _rb;
-
-    private Vector3 _vel;
 
     private PlayerData _playerData;
     
@@ -59,7 +55,6 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
     {
         Initialize();
     }
-
 
     private void Update()
     {
@@ -71,6 +66,49 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
     private void OnDestroy()
     {
         RemoveDelegates();
+    }
+
+    public virtual void TakeDamage(float damage) //take damage through the idamageable interface 
+    {
+        _health -= damage;
+        _isTakingDamage = true;
+        OnUpdateHealth?.Invoke(_health, _maxHealth);
+
+        if(_health <= 0)
+        {
+            OnPlayerDeath?.Invoke();
+        }
+    }
+
+    public virtual void ReceiveHealing(float heal) //heal through the ihealable interface 
+    {        
+        if(_health != _maxHealth)
+        {
+            if(_health + heal >= _maxHealth)
+            {
+                _health = _maxHealth;
+                OnReceiveHealing?.Invoke();
+                OnUpdateHealth?.Invoke(_health, _maxHealth);
+            }
+            else
+            {
+                _health += heal;
+                OnReceiveHealing?.Invoke();
+                OnUpdateHealth?.Invoke(_health, _maxHealth);
+            }
+        }
+    }
+
+    public virtual bool IsInjured() //check if is injured
+    {
+        if(_health != _maxHealth)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void SetupDelegates()
@@ -90,15 +128,13 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
         Cursor.lockState = CursorLockMode.Locked;
         _rb = GetComponent<Rigidbody>();
         _audioMixer = GetComponent<AudioMixerGroup>();
-        _playerData = new PlayerData();
-        _vel = _rb.velocity;
-        SetupDelegates();
         _speed = _playerBalancer.walkSpeed;
         _health = _playerBalancer.health;
         _maxHealth = _playerBalancer.health;
         _objectPooler = GameManager.sInstance.ObjectPooler;
+        _playerData = new PlayerData();
+        SetupDelegates();
     }
-
 
     private void PauseInputs(bool isPaused)
     {
@@ -110,24 +146,27 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
         if (!_isPaused)
         {
             Movement(inputData.Movement);
-            Jump(inputData.Jump);
-            Run(inputData.Run);
-            Aim(inputData.Aim);
+            Jump(inputData.isJumping);
+            Run(inputData.isRunning);
+            Aim(inputData.isAiming);
         }
     }
 
     private void CreatePlayerStruct()
     {
-        _playerData.Walk = _isWalking;
         _playerData.OnGround = _isGrounded;
         _playerData.Jump = _isJumping;
-        _playerData.Ammo = _ammo;
         _playerData.Movement = _movement;
         _playerData.Speed = _speed;
+        _playerData.TakeDamage = _isTakingDamage;
 
         if(_isJumping)
         {
             _isJumping = false;
+        }
+        if(_isTakingDamage)
+        {
+            _isTakingDamage = false;
         }
       
         OnPlayerDataUpdate?.Invoke(_playerData);
@@ -169,7 +208,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
             }
             else //walking
             {
-                if (_speed <= _playerBalancer.walkSpeed)
+                if (_speed <= _playerBalancer.walkSpeed) //increases speed until hit max walk speed 
                 {
                     _speed += Time.deltaTime * _playerBalancer.acceleration;
 
@@ -178,7 +217,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
                         _speed = _playerBalancer.walkSpeed;
                     }
                 }
-                else
+                else //if its not running go back to walk speed
                 {
                     _speed -= Time.deltaTime * _playerBalancer.deceleration;
                 }
@@ -201,51 +240,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IHealable, IInjured
         }
     }
 
-    public virtual void TakeDamage(float damage)
-    {
-        _health -= damage;
-
-        OnUpdateHealth?.Invoke(_health, _maxHealth);
-
-        if(_health <= 0)
-        {
-            OnPlayerDeath?.Invoke();
-        }
-    }
-
-    public virtual void ReceiveHealing(float heal)
-    {        
-        if(_health != _maxHealth)
-        {
-            if(_health + heal >= _maxHealth)
-            {
-                _health = _maxHealth;
-                OnReceiveHealing?.Invoke();
-                OnUpdateHealth?.Invoke(_health, _maxHealth);
-            }
-            else
-            {
-                _health += heal;
-                OnReceiveHealing?.Invoke();
-                OnUpdateHealth?.Invoke(_health, _maxHealth);
-            }
-        }
-    }
-
-    public virtual bool IsInjured()
-    {
-        if(_health != _maxHealth)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-
-    }
-
-    private void Rotate(float xRot, float yRot)
+    private void Rotate(float xRot, float yRot) //rotate player with the camera rotation
     {
         gameObject.transform.Rotate(Vector3.up * xRot);
         _playerPivot.transform.Rotate(Vector3.right * yRot);

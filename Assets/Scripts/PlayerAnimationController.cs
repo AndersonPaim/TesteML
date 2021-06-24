@@ -6,8 +6,6 @@ public class PlayerAnimationController : MonoBehaviour
 {
     private Animator _animator;
 
-    private bool _isAiming = false;
-
     private void Start()
     {
         Initialize();
@@ -21,43 +19,57 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void SetupDelegates()
     {
-        GameManager.sInstance.BowController.OnPlayerDataUpdate += ReceiveInputs;
+        GameManager.sInstance.BowController.OnPlayerDataUpdate += ReceiveBowData;
+        GameManager.sInstance.PlayerController.OnPlayerDataUpdate += ReceivePlayerData;
     }
 
     private void RemoveDelegates()
     {
-        GameManager.sInstance.BowController.OnPlayerDataUpdate -= ReceiveInputs;
+        GameManager.sInstance.BowController.OnPlayerDataUpdate -= ReceiveBowData;
+        GameManager.sInstance.PlayerController.OnPlayerDataUpdate -= ReceivePlayerData;
     }
-
 
     private void Initialize()
     {
         _animator = GetComponent<Animator>();
     }
 
-    private void ReceiveInputs(PlayerData playerData)
+    private void ReceiveBowData(PlayerData playerData) //receive bow data from player struct
     {
         Aim(playerData.Aim);
         Shoot(playerData.Shoot);
         ChangeArrow(playerData.ChangeArrow);
+        TakeDamage(playerData.TakeDamage);
+    }
+
+    private void ReceivePlayerData(PlayerData playerData) //receive player data from player struct
+    {
+        TakeDamage(playerData.TakeDamage);
     }
 
     private void Aim(bool isAiming)
     {
-        _isAiming = isAiming;
-        _animator.SetBool(PlayerAnimationParameters.ISAIMING, isAiming);
+        _animator.SetBool(PlayerAnimationParameters.isAiming, isAiming);
     }
 
     private void Shoot(bool isShooting)
     {
-        _animator.SetBool(PlayerAnimationParameters.SHOOT, isShooting);
+        _animator.SetBool(PlayerAnimationParameters.isShooting, isShooting);
     }
 
     private void ChangeArrow(bool isChangingArrow)
     {
         if(isChangingArrow)
         {
-            _animator.SetTrigger(PlayerAnimationParameters.CHANGEARROW);
+            _animator.SetTrigger(PlayerAnimationParameters.changeArrow);
+        }
+    }
+
+    private void TakeDamage(bool isTakingDamage)
+    {
+        if(isTakingDamage)
+        {
+            _animator.SetTrigger(PlayerAnimationParameters.takeDamage);
         }
     }
 }

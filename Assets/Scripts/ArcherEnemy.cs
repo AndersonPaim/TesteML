@@ -61,7 +61,7 @@ public class ArcherEnemy : Enemy
         
         if(!_isDead)
         {
-            _animator.SetTrigger(EnemyAnimationParameters.DAMAGE);
+            _animator.SetTrigger(EnemyAnimationParameters.TakeDamage);
         }
     }
 
@@ -73,7 +73,6 @@ public class ArcherEnemy : Enemy
         
         _navMeshPath = new NavMeshPath();
         _navMeshObstacle = GetComponent<NavMeshObstacle>();
-        //FindClosestWaypoint();
     }
 
     protected override void Patrol()
@@ -90,7 +89,7 @@ public class ArcherEnemy : Enemy
     protected override void Attack()  
     {   
         base.Attack(); 
-        _animator.SetTrigger(EnemyAnimationParameters.ATTACK); 
+        _animator.SetTrigger(EnemyAnimationParameters.Attack); 
     }
 
     protected override void Death()  
@@ -99,7 +98,7 @@ public class ArcherEnemy : Enemy
         _navMeshAgent.isStopped = true;    //avoid archer to walk after death
         
         OnDeath?.Invoke(ObjectsTag.ArcherEnemy);
-        _animator.SetTrigger(EnemyAnimationParameters.DEATH);
+        _animator.SetTrigger(EnemyAnimationParameters.Death);
     }
 
     private void Walking()
@@ -113,7 +112,7 @@ public class ArcherEnemy : Enemy
                 _navMeshObstacle.enabled = true;
                 _isWalking = false;
 
-                _animator.SetBool(EnemyAnimationParameters.ISRUNNING, false);
+                _animator.SetBool(EnemyAnimationParameters.IsRunning, false);
             }
 
             if(_isWalking)
@@ -158,7 +157,7 @@ public class ArcherEnemy : Enemy
         }
 
         _navMeshAgent.SetDestination(_closestWaypoint.position);
-        _animator.SetBool(EnemyAnimationParameters.ISRUNNING, true);
+        _animator.SetBool(EnemyAnimationParameters.IsRunning, true);
     }
 
     private void Shoot() //animation event

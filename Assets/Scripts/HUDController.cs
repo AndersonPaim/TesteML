@@ -11,7 +11,6 @@ public class HUDController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _piercingArrowText;
     [SerializeField] private TextMeshProUGUI _explosiveArrowText;
 
-
     [SerializeField] private Slider _healthBar;
 
     private Dictionary<ObjectsTag, TextMeshProUGUI> _arrowInventoryText;
@@ -53,7 +52,7 @@ public class HUDController : MonoBehaviour
 
     private void UpdateArrowInventory(Dictionary<ObjectsTag, float> arrowInventory)
     {
-        foreach(System.Collections.Generic.KeyValuePair<ObjectsTag, float> arrow in arrowInventory)
+        foreach(KeyValuePair<ObjectsTag, float> arrow in arrowInventory)
         {
             _arrowInventoryText[arrow.Key].text = arrow.Value.ToString();
         }
@@ -65,7 +64,7 @@ public class HUDController : MonoBehaviour
         _healthBar.value = health;
     }
 
-    private void GameTimer(float minutes, float seconds)
+    private void GameTimer(float minutes, float seconds) //set timer ui text
     {
         if(seconds < 10)
         {
@@ -77,7 +76,7 @@ public class HUDController : MonoBehaviour
         }
     }
 
-    private void StartTimer(float minutes, float seconds)
+    private void StartTimer(float minutes, float seconds) //set initial countdown ui text
     {
         if(seconds == 0)
         {

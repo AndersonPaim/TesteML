@@ -1,10 +1,9 @@
 public static class PlayerAnimationParameters
 {
-    public const string ISGROUNDED = "isGrounded";
-    public const string ISAIMING = "isAiming";
-    public const string ISWALKING = "isWalking";
-    public const string ISFALLING = "isFalling";
-    public const string SPEED = "Speed";
-    public const string SHOOT = "isShooting";
-    public const string CHANGEARROW = "isChangingArrow"; //TODO NOMES
+    public const string isGrounded = "isGrounded";
+    public const string isAiming = "isAiming";
+    public const string isWalking = "isWalking";
+    public const string isShooting = "isShooting";
+    public const string changeArrow = "isChangingArrow"; //TODO NOMES
+    public const string takeDamage = "takeDamage";
 }

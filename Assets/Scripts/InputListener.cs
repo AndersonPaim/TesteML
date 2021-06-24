@@ -23,13 +23,13 @@ public class InputListener : MonoBehaviour
     [SerializeField] private float _lookX;
     [SerializeField] private float _lookY;
 
-    [SerializeField] private ObjectsTag _arrow;
-
     [SerializeField] private bool _jump;
     [SerializeField] private bool _run;
     [SerializeField] private bool _walk;
     [SerializeField] private bool _shoot;
     [SerializeField] private bool _aim;
+
+    [SerializeField] private ObjectsTag _arrow = ObjectsTag.RegularArrow;
 
     private PlayerInputActions _input;
 
@@ -80,8 +80,6 @@ public class InputListener : MonoBehaviour
         _input.Player.Arrow1.performed += _ => SelectArrow1();
         _input.Player.Arrow2.performed += _ => SelectArrow2();
         _input.Player.Arrow3.performed += _ => SelectArrow3();
-
-        _arrow = ObjectsTag.RegularArrow;
     }
 
     private void DestroyInputs()
@@ -104,16 +102,17 @@ public class InputListener : MonoBehaviour
 
     private void CreateInputStruct()
     {
-        _inputData.Jump = _jump;
-        _inputData.Run = _run;
+        _inputData.isJumping = _jump;
+        _inputData.isRunning = _run;
         _inputData.Movement = _movement;
-        _inputData.Walk = _walk;
+        _inputData.isWalking = _walk;
         _inputData.LookX = _lookX;
         _inputData.LookY = _lookY;
-        _inputData.Aim = _aim;
-        _inputData.Shoot = _shoot;
+        _inputData.isAiming = _aim;
+        _inputData.isShooting = _shoot;
         _inputData.Arrow = _arrow;
 
+        //reset variables that only need to be read once
         if (_jump)
         {
             _jump = false;
@@ -144,7 +143,8 @@ public class InputListener : MonoBehaviour
         }
     }
 
-    private void SelectArrow1() //TODO JUNTAR ESSES INPUTS NUMA FUNÇÃO SÓ
+    //equip arrows
+    private void SelectArrow1()
     {
         _arrow = ObjectsTag.RegularArrow;
     }
@@ -159,6 +159,7 @@ public class InputListener : MonoBehaviour
         _arrow = ObjectsTag.ExplosiveArrow;
     }
 
+    //camera view
     private void LookX()
     {
         _lookX = _input.Player.LookX.ReadValue<float>();
@@ -168,7 +169,7 @@ public class InputListener : MonoBehaviour
     {
         _lookY = _input.Player.LookY.ReadValue<float>();
     }
-
+    
     private void Movement()
     {
         _movement = _input.Player.Movement.ReadValue<Vector2>();
@@ -208,6 +209,4 @@ public class InputListener : MonoBehaviour
     {
         OnPause?.Invoke();
     }
-
-
 }

@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioController _audioController;
 
+    [SerializeField] private ScoreManager _scoreManager;
+
     [SerializeField] private GameObject _player;
 
     private void Awake()
@@ -120,6 +122,11 @@ public class GameManager : MonoBehaviour
     public AudioController AudioController
     {
         get { return _audioController; }
+    }
+
+    public ScoreManager ScoreManager
+    {
+        get { return _scoreManager; }
     }
 
     public GameObject Player

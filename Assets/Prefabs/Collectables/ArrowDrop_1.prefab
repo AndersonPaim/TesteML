@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7400413614302520609}
   - component: {fileID: 411944653276128829}
   - component: {fileID: 4542916187963624089}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4830,7 +4830,7 @@ GameObject:
   - component: {fileID: 1788397313019563921}
   - component: {fileID: 1788397313019563919}
   - component: {fileID: 1788397313019563920}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Embers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9623,7 +9623,7 @@ GameObject:
   - component: {fileID: 3638934021685801133}
   - component: {fileID: -2345512360737906875}
   - component: {fileID: 5613404992995570748}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ArrowDrop_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9658,7 +9658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3ce24cfb6c243448b98b8492cd2f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _disableDelay: 0
+  _collectAudio: {fileID: 0}
   _arrowAmount: 5
   _arrowType: 3
 --- !u!65 &5613404992995570748
@@ -9685,7 +9685,7 @@ GameObject:
   - component: {fileID: 6845069351296531345}
   - component: {fileID: 6845069351296531359}
   - component: {fileID: 6845069351296531358}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14568,7 +14568,7 @@ GameObject:
   - component: {fileID: 8831479676557288636}
   - component: {fileID: 8831479676557288637}
   - component: {fileID: 8831479676557288638}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19441,6 +19441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 714174223814619921, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 714174223814619923, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -19452,6 +19456,14 @@ PrefabInstance:
     - target: {fileID: 2292145239539780546, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292145239539780548, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3466980540702223394, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3466980540702223396, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
       propertyPath: m_Materials.Array.size
@@ -19472,6 +19484,10 @@ PrefabInstance:
     - target: {fileID: 4748730675913877244, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
       propertyPath: m_Name
       value: CollectParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748730675913877244, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4748730675913877245, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
       propertyPath: m_Materials.Array.size
@@ -19532,6 +19548,10 @@ PrefabInstance:
     - target: {fileID: 8393762634687683997, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8393762634687683999, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}

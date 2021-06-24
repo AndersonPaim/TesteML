@@ -1,18 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class LevelAudioController : AudioController //TODO AUDIOS DO LEVEL, WIN, GAME OVER, START
+public class LevelAudioController : AudioController
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AudioClip _finishAudio;
+    [SerializeField] private AudioClip _gameOverAudio;
+
+    [SerializeField] private AudioMixerGroup _audioMixer;
+
+    private void Start()
     {
-        
+        SetupDelegates();
+        Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy() 
     {
-        
+        RemoveDelegates();
+    }
+
+    private void Initialize()
+    {
+        _objectPooler = GameManager.sInstance.ObjectPooler;
+    }
+
+    private void SetupDelegates()
+    {
+        GameManager.sInstance.OnFinish += FinishAudio;
+        GameManager.sInstance.OnGameOver += GameOverAudio;
+    }
+
+    private void RemoveDelegates()
+    {
+        GameManager.sInstance.OnFinish -= FinishAudio;
+        GameManager.sInstance.OnGameOver -= GameOverAudio;
+    }
+
+    private void FinishAudio()
+    {
+        PlayAudio(_finishAudio, _audioMixer, 0.3f, 0);
+    }
+
+    private void GameOverAudio()
+    {
+        PlayAudio(_gameOverAudio, _audioMixer, 0.3f, 0);
     }
 }

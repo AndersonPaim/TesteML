@@ -8,8 +8,6 @@ public struct PlayerData
     public Vector2 Movement;
 
     public float Speed;
-    public float RunSpeed;
-    public float Ammo;
     
     public bool Walk;
     public bool Jump;
@@ -17,4 +15,5 @@ public struct PlayerData
     public bool Aim;
     public bool Shoot;
     public bool ChangeArrow;
+    public bool TakeDamage;
 }

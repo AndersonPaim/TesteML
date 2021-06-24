@@ -20,43 +20,6 @@ public class AudioController : MonoBehaviour
         SetupDelegates();
     }
 
-    private void Initialize()
-    {
-        SaveData data = SaveSystem.localData;
-
-        _gameAudioMixer.SetFloat("effectsVolume", Mathf.Log10(data.soundfxVolume) * 20);
-    }
-
-    private void SetupDelegates()
-    {
-        GameManager.sInstance.InGameMenus.OnPause += PauseAudio;
-        GameManager.sInstance.Settings.OnSetEffectsVolume += EffectsVolume;
-    }
-
-    private void RemoveDelegates()
-    {
-        GameManager.sInstance.InGameMenus.OnPause -= PauseAudio;
-        GameManager.sInstance.Settings.OnSetEffectsVolume -= EffectsVolume;
-    }
-
-    private void EffectsVolume(float volume)
-    {
-        _gameAudioMixer.SetFloat("effectsVolume", Mathf.Log10(volume) * 20);
-        _volume = volume;
-    }
-
-    private void PauseAudio(bool isPaused)
-    {
-        if (isPaused)
-        {
-            _gameAudioMixer.SetFloat("masterVolume", -80);
-        }
-        else
-        {
-            _gameAudioMixer.SetFloat("masterVolume", 0);
-        }
-    }
-
     protected void PlayAudio(AudioClip audioClip, AudioMixerGroup audioMixer, float volume, float spatialBlend)  //create a object with the audiosource to play multiples audios at the same time
     {
       
@@ -69,6 +32,8 @@ public class AudioController : MonoBehaviour
         audioSource.outputAudioMixerGroup = audioMixer;
 
         audioSource.clip = audioClip;
+        obj.SetActive(false); //restart object from object pooler to only play after receive audioclip
+        obj.SetActive(true); 
         audioSource.volume = volume;
         audioSource.spatialBlend = spatialBlend; //0 for 2d audio and 1 for 3d audio
       
@@ -92,6 +57,48 @@ public class AudioController : MonoBehaviour
     protected void StopAudio(AudioSource audioSource)
     {
         audioSource.Stop();
+    }
+
+    private void Initialize()
+    {
+        SaveData data = SaveSystem.localData;
+
+        _gameAudioMixer.SetFloat("effectsVolume", Mathf.Log10(data.soundfxVolume) * 20);
+    }
+
+    private void SetupDelegates()
+    {
+        GameManager.sInstance.InGameMenus.OnPause += PauseAudio;
+        GameManager.sInstance.Settings.OnSetEffectsVolume += EffectsVolume;
+    }
+
+    private void RemoveDelegates()
+    {
+        GameManager.sInstance.InGameMenus.OnPause -= PauseAudio;
+        GameManager.sInstance.Settings.OnSetEffectsVolume -= EffectsVolume;
+    }
+
+    private void EffectsVolume(float volume)
+    {
+        _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, Mathf.Log10(volume) * 20);
+        _gameAudioMixer.SetFloat(AudioMixerParameters.finalSoundEffects,  Mathf.Log10(volume) * 20);
+        _volume = volume;
+    }
+
+    private void PauseAudio(bool isPaused)
+    {
+        if (isPaused)
+        {
+           // _gameAudioMixer.SetFloat(AudioMixerParameters.masterVolume, -80);
+            _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, -80);
+            _gameAudioMixer.SetFloat(AudioMixerParameters.musicVolume, -80);
+        }
+        else
+        {
+            //_gameAudioMixer.SetFloat(AudioMixerParameters.masterVolume, 0);
+            _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, 0);
+            _gameAudioMixer.SetFloat(AudioMixerParameters.musicVolume, 0);
+        }
     }
     
 }

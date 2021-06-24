@@ -51,7 +51,7 @@ public class ObjectPooler : MonoBehaviour
         bool isPoolAvailable = false;
         GameObject objectToSpawn = null;
 
-        for(int i = 0; i < _poolDictionary[id].Count; i++)
+        for(int i = 0; i < _poolDictionary[id].Count; i++) //search for a disabled object in the pool
         {   
             if(!_poolDictionary[id][i].activeInHierarchy)
             {
@@ -62,7 +62,7 @@ public class ObjectPooler : MonoBehaviour
             
         if (!isPoolAvailable)
         {
-            return AddToPool(id);
+            return AddToPool(id); //if every object in the pool is active add new object
         }
         else
         {
@@ -72,11 +72,10 @@ public class ObjectPooler : MonoBehaviour
     }
 
 
-    private GameObject AddToPool(ObjectsTag id)
+    private GameObject AddToPool(ObjectsTag id) //add new object to the pool
     {
         GameObject newObject = _poolDictionary[id][0]; 
         _poolDictionary[id].Add(newObject);
-        Debug.Log(_poolDictionary[id].Count);
         newObject.SetActive(true);
         
         GameObject obj = Instantiate(newObject);

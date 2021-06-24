@@ -7,7 +7,7 @@ public static class SaveSystem
 {
     public static SaveData localData { get; private set; }
 
-    public static void Save()
+    public static void Save() 
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/save.data";
@@ -19,7 +19,7 @@ public static class SaveSystem
     public static SaveData Load()
     {
         string path = Application.persistentDataPath + "/save.data";
-        if (File.Exists(path))
+        if (File.Exists(path)) //load from an existing save
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
@@ -28,9 +28,9 @@ public static class SaveSystem
             SaveData data = formatter.Deserialize(stream) as SaveData;
             stream.Close();
 
-            localData = data;
+            localData = data; //store save data locally to dont need to load again
         }
-        else
+        else //create new save file
         {
             localData = new SaveData();
         }

@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyBalancer: {fileID: 11400000, guid: 019366efe05d5bc40a4de9f6554ad94d, type: 2}
   _armor: {fileID: 805194896368659048}
+  _killPoints: 200
   _movementCooldown: 1.5
   _attackRange: 3
 --- !u!136 &868921834

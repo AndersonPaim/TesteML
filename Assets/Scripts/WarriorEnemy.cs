@@ -6,7 +6,9 @@ public class WarriorEnemy : Enemy
 {
     [Tooltip("Cooldown to move after attack")]
     [SerializeField] protected float _movementCooldown;
-    [SerializeField] protected float _attackRange; //distance at which the attack deals damage
+
+    [Tooltip("distance at which the attack deals damage")]
+    [SerializeField] protected float _attackRange; 
 
     protected override void Update() 
     {
@@ -29,7 +31,7 @@ public class WarriorEnemy : Enemy
         
         if(!_isDead)
         {
-            _animator.SetTrigger(EnemyAnimationParameters.DAMAGE);
+            _animator.SetTrigger(EnemyAnimationParameters.TakeDamage);
         }
     }
 
@@ -40,21 +42,21 @@ public class WarriorEnemy : Enemy
 
     protected override void Patrol()
     {
-        if(_distance >= _enemyBalancer.attackDistance && _canMove)
+        if(_distance >= _enemyBalancer.attackDistance && _canMove) //follow player
         {
-            _animator.SetBool(EnemyAnimationParameters.ISRUNNING, true);
+            _animator.SetBool(EnemyAnimationParameters.IsRunning, true);
             _navMeshAgent.SetDestination(_attackTarget.transform.position);
             _isWalking = true;
         }
-        else
+        else 
         {
-            _animator.SetBool(EnemyAnimationParameters.ISRUNNING, false);
+            _animator.SetBool(EnemyAnimationParameters.IsRunning, false);
             _isWalking = false;
         }
 
         _distance = Vector3.Distance(_attackTarget.transform.position, transform.position);
         
-        if(_distance <= _enemyBalancer.attackDistance && _canAttack && !_isDead)
+        if(_distance <= _enemyBalancer.attackDistance && _canAttack && !_isDead) //attack range
         {
             Attack();
         }
@@ -64,8 +66,8 @@ public class WarriorEnemy : Enemy
     {   
         base.Attack(); 
 
-        _animator.SetTrigger(EnemyAnimationParameters.ATTACK);
-        _canMove = false;
+        _animator.SetTrigger(EnemyAnimationParameters.Attack);
+        _canMove = false; 
         StartCoroutine(MovementCooldown());
     }
 
@@ -74,22 +76,23 @@ public class WarriorEnemy : Enemy
         base.Death();
         _navMeshAgent.isStopped = true; 
         _canMove = false;
-        _animator.SetTrigger(EnemyAnimationParameters.DEATH);
+        _animator.SetTrigger(EnemyAnimationParameters.Death);
         OnDeath?.Invoke(ObjectsTag.WarriorEnemy);
     }
 
-    private IEnumerator MovementCooldown()
-    {
-        yield return new WaitForSeconds(_movementCooldown);
-        _canMove = true;
-    }
-    private void Hit() //animation event
+    private void Hit() //run on warrior attack animation event
     {
         if(_distance <= _attackRange)
         {
             _hasHittedPlayer = true;
             Damage(_attackTarget.GetComponent<IDamageable>());     
         }
+    }
+
+    private IEnumerator MovementCooldown() //movement cooldown after attack
+    {
+        yield return new WaitForSeconds(_movementCooldown);
+        _canMove = true;
     }
 
 }

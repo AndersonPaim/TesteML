@@ -33,6 +33,32 @@ public class MainMenu : MonoBehaviour
         RemoveDelegates();
     }
 
+    //menu buttons
+    public void PlayButton()
+    {
+        _mainMenu.SetActive(false);
+        _loadingScreen.SetActive(true);
+        OnSetScene?.Invoke("Game");
+    }
+    public void SettingsButton()
+    {
+        _settingsMenu.SetActive(true);
+        _mainMenu.SetActive(false);
+    }
+
+    public void BackButton()
+    {
+        _settingsMenu.SetActive(false);
+        _mainMenu.SetActive(true);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
+    //
+
     private void Initialize()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -49,33 +75,9 @@ public class MainMenu : MonoBehaviour
         _sceneController.OnUpdateProgress -= LoadingScreen;
     }
 
-    public void PlayButton()
-    {
-        _mainMenu.SetActive(false);
-        _loadingScreen.SetActive(true);
-        OnSetScene?.Invoke("Game");
-    }
-
-    private void LoadingScreen(float progress)
+    private void LoadingScreen(float progress) //update loading screen progress text and slider
     {
         _loadingBar.value = progress;
         _loadingProgressText.text = (progress * 100).ToString() + "%" ;
-    }
-
-    public void SettingsButton()
-    {
-        _settingsMenu.SetActive(true);
-        _mainMenu.SetActive(false);
-    }
-
-    public void BackButton()
-    {
-        _settingsMenu.SetActive(false);
-        _mainMenu.SetActive(true);
-    }
-
-    public void QuitButton()
-    {
-        Application.Quit();
     }
 }
