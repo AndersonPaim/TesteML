@@ -1,8 +1,8 @@
 
 public static class AudioMixerParameters
 {
-    public const string masterVolume = "masterVolume";
-    public const string effectsVolume = "effectsVolume";
-    public const string musicVolume = "musicVolume";
-    public const string finalVolume = "finalVolume";
+    public const string MasterVolume = "masterVolume";
+    public const string EffectsVolume = "effectsVolume";
+    public const string MusicVolume = "musicVolume";
+    public const string FinalVolume = "finalVolume";
 }

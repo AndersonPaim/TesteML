@@ -89,26 +89,26 @@ public class AudioController : MonoBehaviour
 
         SaveData data = SaveSystem.localData;
 
-        _finalAudioMixer.SetFloat(AudioMixerParameters.finalVolume, Mathf.Log10(data.soundfxVolume) * 20); 
-        _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, Mathf.Log10(data.soundfxVolume) * 20);
-        _gameAudioMixer.SetFloat(AudioMixerParameters.musicVolume, Mathf.Log10(data.musicVolume) * 20);
+        _finalAudioMixer.SetFloat(AudioMixerParameters.FinalVolume, Mathf.Log10(data.soundfxVolume) * 20); 
+        _gameAudioMixer.SetFloat(AudioMixerParameters.EffectsVolume, Mathf.Log10(data.soundfxVolume) * 20);
+        _gameAudioMixer.SetFloat(AudioMixerParameters.MusicVolume, Mathf.Log10(data.musicVolume) * 20);
     }
 
     private void EffectsVolume(float volume)
     {
-        _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, Mathf.Log10(volume) * 20);
-        _finalAudioMixer.SetFloat(AudioMixerParameters.finalVolume,  Mathf.Log10(volume) * 20);
+        _gameAudioMixer.SetFloat(AudioMixerParameters.EffectsVolume, Mathf.Log10(volume) * 20);
+        _finalAudioMixer.SetFloat(AudioMixerParameters.FinalVolume,  Mathf.Log10(volume) * 20);
     }
 
     private void PauseAudio(bool isPaused)
     {
         if (isPaused) //mute game on pause
         {
-            _gameAudioMixer.SetFloat(AudioMixerParameters.masterVolume, -80);
+            _gameAudioMixer.SetFloat(AudioMixerParameters.MasterVolume, -80);
         }
         else //return volume to normal when unpause
         {
-            _gameAudioMixer.SetFloat(AudioMixerParameters.masterVolume, 0);
+            _gameAudioMixer.SetFloat(AudioMixerParameters.MasterVolume, 0);
         }
     }
 

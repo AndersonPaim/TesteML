@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675946283358941200, guid: d1ccca7a537c7e34c9f580dcbaaecb66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 30.64
+      value: 28.42
       objectReference: {fileID: 0}
     - target: {fileID: 8675946283358941200, guid: d1ccca7a537c7e34c9f580dcbaaecb66, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8809,7 +8809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675946283358941200, guid: d1ccca7a537c7e34c9f580dcbaaecb66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.58
+      value: 5.65
       objectReference: {fileID: 0}
     - target: {fileID: 8675946283358941200, guid: d1ccca7a537c7e34c9f580dcbaaecb66, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12933,7 +12933,7 @@ GameObject:
   - component: {fileID: 1268199305}
   - component: {fileID: 1268199304}
   - component: {fileID: 1268199303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MapLimits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16387,7 +16387,7 @@ GameObject:
   - component: {fileID: 1616510334}
   - component: {fileID: 1616510333}
   - component: {fileID: 1616510332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MapLimits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17596,7 +17596,7 @@ GameObject:
   - component: {fileID: 1749269022}
   - component: {fileID: 1749269021}
   - component: {fileID: 1749269020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MapLimits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
