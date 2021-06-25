@@ -19,4 +19,5 @@ public enum AudioTags
     BgMusic,
     PlayerJump,
     ArrowImpact,
+    GateOpen,
 }

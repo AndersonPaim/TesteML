@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
+    [SerializeField] SoundEffect _openAudio;
+
     private Animation _animation;
 
     private void Start()
@@ -35,5 +37,7 @@ public class Gate : MonoBehaviour
     private void OpenGate()
     {
         _animation.Play();
+
+        AudioController.sInstance.PlayAudio(_openAudio, transform.position);
     }
 }
