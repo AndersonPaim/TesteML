@@ -36,9 +36,9 @@ public class WarriorEnemy : Enemy
         }
     }
 
-    protected override void AwakeInitialize()
+    protected override void Initialize()
     {
-        base.AwakeInitialize();
+        base.Initialize();
     }
 
     protected override void Patrol()

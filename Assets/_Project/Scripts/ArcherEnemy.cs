@@ -39,12 +39,13 @@ public class ArcherEnemy : Enemy
     {
         _isDead = false;
         _canMove = true;
+        _canAttack = true;
         _isAttacking = false;
         _isWalking = true;
         _health =  _enemyBalancer.health;
+        _collider.enabled = true;
         _navMeshObstacle.enabled = false;
         _navMeshAgent.enabled = true;
-        _collider.enabled = true;
         _navMeshAgent.speed = _enemyBalancer.speed;
 
         FindWaypoint();
@@ -60,9 +61,9 @@ public class ArcherEnemy : Enemy
         }
     }
 
-    protected override void AwakeInitialize()
+    protected override void Initialize()
     {
-        base.AwakeInitialize();
+        base.Initialize();
         
         _waypoints = GameManager.sInstance.waypoints;
         _navMeshPath = new NavMeshPath();
@@ -90,7 +91,7 @@ public class ArcherEnemy : Enemy
     { 
         base.Death();
         _navMeshAgent.speed = 0;    //avoid archer to walk after death
-        
+
         OnDeath?.Invoke(ObjectsTag.ArcherEnemy);
         _animator.SetTrigger(EnemyAnimationParameters.Death);
     }

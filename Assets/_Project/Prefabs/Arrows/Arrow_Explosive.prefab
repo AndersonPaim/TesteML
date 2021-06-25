@@ -248,9 +248,9 @@ MonoBehaviour:
   _explosionParticle: {fileID: 5948098722686822512}
   _soundEffect:
     audioTag: 7
-    audioClip: {fileID: 8300000, guid: d31ad07772a41c44ab576a949ecbf2e2, type: 3}
+    audioClip: {fileID: 8300000, guid: abb08e3575b489a41a5f89cbc48f96fe, type: 3}
     audioMixer: {fileID: -6307883170702335351, guid: aa00000f011d68349b1588532e90dad6, type: 2}
-    volume: 3
+    volume: 30
     is3D: 1
   _blastRadius: 3
 --- !u!1001 &318714378002815436

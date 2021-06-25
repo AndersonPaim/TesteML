@@ -50,7 +50,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected void Awake()
     {
-        AwakeInitialize(); 
+        Initialize(); 
     }
 
     private void Start() 
@@ -93,7 +93,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         idamageable.TakeDamage(_enemyBalancer.damage);
     }
 
-    protected virtual void AwakeInitialize()
+    protected virtual void Initialize()
     {
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
