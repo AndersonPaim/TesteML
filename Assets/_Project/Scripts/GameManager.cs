@@ -49,8 +49,6 @@ public class GameManager : MonoBehaviour
             sInstance = this;
         }
         SetupDelegates();
-
-        SaveSystem.Load();
     }
 
     private void OnDestroy()

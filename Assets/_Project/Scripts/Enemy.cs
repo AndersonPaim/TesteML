@@ -47,7 +47,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     protected bool _canAttack = true;
     protected bool _isDead = false;
 
-
     protected void Awake()
     {
         Initialize(); 
