@@ -8,7 +8,9 @@ public class RegularArrow : Arrows
     {
         _collider.enabled = true;
         _rb.isKinematic = false;
+        _rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
+    
     protected override void Initialize()
     {
         base.Initialize();
@@ -17,6 +19,7 @@ public class RegularArrow : Arrows
     protected override void OnCollisionEnter(Collision other) 
     {
         _collider.enabled = false;
+        _rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative; //change collision detection to enable isKinematic, ContinuousSpeculative doesn't look good in game
         _rb.isKinematic = true;
 
         IDamageable damageable = other.gameObject.GetComponent<IDamageable>();

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CameraController _cameraController;
 
-    [SerializeField] private Settings _settings;
+    [SerializeField] private InGameSettings _inGameSettings;
 
     [SerializeField] private ObjectPooler _objectPooler;
 
@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Timer _timer;
 
     [SerializeField] private BowController _bowController;
-
-    [SerializeField] private AudioController _audioController;
 
     [SerializeField] private ScoreManager _scoreManager;
 
@@ -89,9 +87,9 @@ public class GameManager : MonoBehaviour
         get { return _cameraController; }
     }
 
-    public Settings Settings
+    public InGameSettings InGameSettings
     {
-        get { return _settings; }
+        get { return _inGameSettings; }
     }
 
     public ObjectPooler ObjectPooler
@@ -117,11 +115,6 @@ public class GameManager : MonoBehaviour
     public SceneController SceneController
     {
         get { return _sceneController; }
-    }
-
-    public AudioController AudioController
-    {
-        get { return _audioController; }
     }
 
     public ScoreManager ScoreManager

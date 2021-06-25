@@ -63,12 +63,13 @@ public class BowController : MonoBehaviour
     {
         SetupDelegates();
         _objectPooler = GameManager.sInstance.ObjectPooler;
+        //initialize arrow inventory
         _arrowInventory = new Dictionary<ObjectsTag, float>();
         _arrowInventory.Add(ObjectsTag.PiercingArrow, 0);
         _arrowInventory.Add(ObjectsTag.ExplosiveArrow, 0);
         _selectedArrow = _startArrow;
 
-       OnUpdateInventory?.Invoke(_arrowInventory);
+        OnUpdateInventory?.Invoke(_arrowInventory);
     }
 
     private void PauseInputs(bool isPaused)
@@ -105,6 +106,16 @@ public class BowController : MonoBehaviour
         OnPlayerDataUpdate?.Invoke(_playerData);
     }
 
+    private void IsAiming(bool isAiming)
+    {
+        _isAiming = isAiming;
+    }
+
+    private void IsShooting(bool isShooting) 
+    {
+        _isShooting = isShooting;
+    }
+
     private void CollectArrow(ObjectsTag objectTag, float arrowAmount)
     {
         _arrowInventory[objectTag] += arrowAmount;
@@ -135,37 +146,28 @@ public class BowController : MonoBehaviour
     {
         //enable arrow gameobject equipped in the bow
         switch(_selectedArrow)  
-            {
-                case ObjectsTag.RegularArrow:
-                    _bowArrows[0].SetActive(true);
-                    _bowArrows[1].SetActive(false);
-                    _bowArrows[2].SetActive(false);
-                    break;
-                case ObjectsTag.PiercingArrow:
-                    _bowArrows[0].SetActive(false);
-                    _bowArrows[1].SetActive(true);
-                    _bowArrows[2].SetActive(false);
-                    break;
-                case ObjectsTag.ExplosiveArrow:
-                    _bowArrows[0].SetActive(false);
-                    _bowArrows[1].SetActive(false);
-                    _bowArrows[2].SetActive(true);
-                    break;
-            }
-    }
-
-    private void IsAiming(bool isAiming)
-    {
-        _isAiming = isAiming;
-    }
-
-    private void IsShooting(bool isShooting) 
-    {
-        _isShooting = isShooting;
+        {
+            case ObjectsTag.RegularArrow:
+                _bowArrows[0].SetActive(true);
+                _bowArrows[1].SetActive(false);
+                _bowArrows[2].SetActive(false);
+                break;
+            case ObjectsTag.PiercingArrow:
+                _bowArrows[0].SetActive(false);
+                _bowArrows[1].SetActive(true);
+                _bowArrows[2].SetActive(false);
+                break;
+            case ObjectsTag.ExplosiveArrow:
+                _bowArrows[0].SetActive(false);
+                _bowArrows[1].SetActive(false);
+                _bowArrows[2].SetActive(true);
+                break;
+        }
     }
 
     private void ArrowShoot() //run on player shoot animation event
-    {   
+    {     
+
         GameObject obj = _objectPooler.SpawnFromPool(_selectedArrow);
 
         if(_selectedArrow != _startArrow)

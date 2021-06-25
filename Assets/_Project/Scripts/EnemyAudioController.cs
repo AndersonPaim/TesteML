@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
 
-public class EnemyAudioController : AudioController
+
+public class EnemyAudioController : MonoBehaviour 
 {
     [SerializeField] private Enemy _enemy;
 
     [SerializeField] private AudioSource _footstepsAudioSource;
 
-    [SerializeField] private AudioClip _footstepsAudio;
-    [SerializeField] private AudioClip _attackAudio;
-    [SerializeField] private AudioClip _damageAudio;
-    [SerializeField] private AudioClip _hitAudio;
+    [SerializeField] private List<SoundEffect> _soundEffectList;
 
-    [SerializeField] private AudioMixerGroup _audioMixer;
+    private Dictionary<AudioTags, SoundEffect> _soundEffects; 
 
     private bool _isAttacking;
     private bool _isTakingDamage;
@@ -32,7 +30,13 @@ public class EnemyAudioController : AudioController
 
     private void Initialize()
     {
-        _objectPooler = GameManager.sInstance.ObjectPooler;
+        //initialize sound effects dictionary
+        _soundEffects = new Dictionary<AudioTags, SoundEffect>();
+
+        foreach(SoundEffect soundEffect in _soundEffectList)
+        {
+            _soundEffects.Add(soundEffect.audioTag, soundEffect);
+        }
     }
 
     private void SetupDelegates()
@@ -61,16 +65,16 @@ public class EnemyAudioController : AudioController
 
     private void WalkSound()
     {
-        PlayFootstepsAudio(_footstepsAudio, _footstepsAudioSource, 1);
+        AudioController.sInstance.PlayFootstepsAudio(_soundEffects[AudioTags.Walk], transform.position, _footstepsAudioSource); 
     }
     
     private void AttackSound() //Play on enemies attack animation event
     {
-        PlayAudio(_attackAudio, _audioMixer, 0.7f, 1);
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.EnemyAttack], transform.position); 
     }
 
     private void HitSound()
     {
-        PlayAudio(_hitAudio, _audioMixer, 1, 1);
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.EnemyHit], transform.position); 
     }
 }

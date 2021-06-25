@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ExplosiveArrow : Arrows
 {
-    public delegate void ArrowHitHandler(Vector3 pos);
-    public static ArrowHitHandler OnArrowHit;
-
     [SerializeField] private ParticleSystem _explosionParticle;
+    
+    [SerializeField] private SoundEffect _soundEffect;
 
     [SerializeField] private float _blastRadius;
 
@@ -24,9 +23,10 @@ public class ExplosiveArrow : Arrows
     protected override void OnCollisionEnter(Collision other) 
     {
         _collider.enabled = false;
-        OnArrowHit?.Invoke(transform.position);
         DisableObject(0);
 
+        AudioController.sInstance.PlayAudio(_soundEffect, transform.position);
+        //create damage area
         Collider[] colliders = Physics.OverlapSphere(transform.position, _blastRadius);
         //find for damageable entities in area
         foreach (Collider enemies in colliders)

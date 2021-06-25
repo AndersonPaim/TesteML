@@ -3,20 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
 
-public class PlayerAudioController : AudioController
+
+public class PlayerAudioController : MonoBehaviour 
 {
-    [SerializeField] protected AudioSource _footstepsAudioSource;
+    [SerializeField] private AudioSource _footstepsAudioSource;
 
-    [SerializeField] protected AudioMixerGroup _audioMixer;
+    [SerializeField] private List<SoundEffect> _soundEffectList;
 
-    [SerializeField] private AudioClip _footstepsAudio;
-    [SerializeField] private AudioClip _bowLoadingAudio;
-    [SerializeField] private AudioClip _arrowEquipAudio;
-    [SerializeField] private AudioClip _arrowShootAudio;
-    [SerializeField] private AudioClip _healingAudio;
-    [SerializeField] private AudioClip _arrowDamageAudio;
-    [SerializeField] private AudioClip _collectArrowAudio;
-
+    private Dictionary<AudioTags, SoundEffect> _soundEffects; 
 
     private bool _isAttacking;
     private bool _isAiming;
@@ -34,13 +28,21 @@ public class PlayerAudioController : AudioController
 
     private void Initialize()
     {
-        _objectPooler = GameManager.sInstance.ObjectPooler;
+        //initialize sound effects dictionary
+        _soundEffects = new Dictionary<AudioTags, SoundEffect>();
+
+        foreach(SoundEffect soundEffect in _soundEffectList)
+        {
+            _soundEffects.Add(soundEffect.audioTag, soundEffect);
+        }
     }
 
     private void SetupDelegates()
     {
         GameManager.sInstance.PlayerController.OnPlayerDataUpdate += ReceivePlayerData;
         GameManager.sInstance.PlayerController.OnReceiveHealing += HealingAudio;
+        GameManager.sInstance.PlayerController.OnPlayerDeath += DeathAudio;
+        GameManager.sInstance.OnFinish += WinAudio;
         EnemyArrow.OnArrowDamage += ArrowDamage;
     }
 
@@ -48,6 +50,8 @@ public class PlayerAudioController : AudioController
     {
         GameManager.sInstance.PlayerController.OnPlayerDataUpdate -= ReceivePlayerData;
         GameManager.sInstance.PlayerController.OnReceiveHealing -= HealingAudio;
+        GameManager.sInstance.PlayerController.OnPlayerDeath -= DeathAudio;
+        GameManager.sInstance.OnFinish -= WinAudio;
         EnemyArrow.OnArrowDamage -= ArrowDamage;
     }
 
@@ -64,43 +68,53 @@ public class PlayerAudioController : AudioController
 
     private void ArrowDamage() //player receive damage from an arrow
     {
-        PlayAudio(_arrowDamageAudio, _audioMixer, 1, 1);
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.ArrowDamage], transform.position); 
     }
 
     private void HealingAudio()
     {
-        PlayAudio(_healingAudio, _audioMixer, 1, 0);
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.Healing], transform.position); 
     }
 
     private void ArrowEquipAudio() //play on player aim animation event
     {
-        PlayAudio(_arrowEquipAudio, _audioMixer, 1, 0);
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.ArrowEquip], transform.position); 
     }
 
     private void BowLoadingAudio() //play on player loading animation event
     {
-        PlayAudio(_bowLoadingAudio, _audioMixer, 1, 0);
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.ArrowLoading], transform.position); 
     }
 
     private void ArrowShootAudio() //play on player shoot animation event
     {
-        PlayAudio(_arrowShootAudio, _audioMixer, 0.7f, 0);
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.ArrowShoot], transform.position); 
     }
 
     private void CollectArrowAudio()
     {
-        PlayAudio(_collectArrowAudio, _audioMixer, 1, 0);
+        //TODO
     }
 
-    private void MovementAudio(Vector2 movement, bool isGrounded) //footsteps audio //TODO SOM DE CORRIDA
+    private void DeathAudio()
+    {
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.Death], transform.position); 
+    }
+
+    private void WinAudio()
+    {
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.Win], transform.position); 
+    }
+
+    private void MovementAudio(Vector2 movement, bool isGrounded) //footsteps audio
     {
         if(movement.x != 0 && isGrounded || movement.y != 0 && isGrounded)
         {
-            PlayFootstepsAudio(_footstepsAudio, _footstepsAudioSource, 1);
+            AudioController.sInstance.PlayFootstepsAudio(_soundEffects[AudioTags.Walk], transform.position, _footstepsAudioSource); 
         }
         else
         {
-            StopAudio(_footstepsAudioSource);
+            AudioController.sInstance.StopAudio(_footstepsAudioSource);
         }
     }
 }

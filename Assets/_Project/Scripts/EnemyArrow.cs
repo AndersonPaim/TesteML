@@ -11,6 +11,7 @@ public class EnemyArrow : Arrows
     {
         _collider.enabled = true;
         _rb.isKinematic = false;
+        _rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
     protected override void Initialize()
     {
@@ -20,6 +21,7 @@ public class EnemyArrow : Arrows
     protected override void OnCollisionEnter(Collision other) 
     {
         _collider.enabled = false;
+        _rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative; //change collision detection to enable isKinematic, ContinuousSpeculative doesn't look good in game
         _rb.isKinematic = true;
 
         IDamageable damageable = other.gameObject.GetComponent<IDamageable>();

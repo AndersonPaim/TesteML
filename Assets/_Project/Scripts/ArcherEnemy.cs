@@ -46,11 +46,7 @@ public class ArcherEnemy : Enemy
         _navMeshObstacle.enabled = false;
         _navMeshAgent.enabled = true;
         _collider.enabled = true;
-
-        if(_navMeshAgent.isStopped)
-        {
-            _navMeshAgent.isStopped = false;
-        }
+        _navMeshAgent.speed = _enemyBalancer.speed;
 
         FindWaypoint();
     }
@@ -95,8 +91,7 @@ public class ArcherEnemy : Enemy
     protected override void Death()  
     { 
         base.Death();
-        Debug.Log(GetComponent<Rigidbody>().velocity);
-        //_navMeshAgent.isStopped = true;    //avoid archer to walk after death
+        _navMeshAgent.speed = 0;    //avoid archer to walk after death
         
         OnDeath?.Invoke(ObjectsTag.ArcherEnemy);
         _animator.SetTrigger(EnemyAnimationParameters.Death);
