@@ -49,19 +49,19 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void Aim(bool isAiming)
     {
-        _animator.SetBool(PlayerAnimationParameters.isAiming, isAiming);
+        _animator.SetBool(PlayerAnimationParameters.IsAiming, isAiming);
     }
 
     private void Shoot(bool isShooting)
     {
-        _animator.SetBool(PlayerAnimationParameters.isShooting, isShooting);
+        _animator.SetBool(PlayerAnimationParameters.IsShooting, isShooting);
     }
 
     private void ChangeArrow(bool isChangingArrow)
     {
         if(isChangingArrow)
         {
-            _animator.SetTrigger(PlayerAnimationParameters.changeArrow);
+            _animator.SetTrigger(PlayerAnimationParameters.ChangeArrow);
         }
     }
 
@@ -69,7 +69,7 @@ public class PlayerAnimationController : MonoBehaviour
     {
         if(isTakingDamage)
         {
-            _animator.SetTrigger(PlayerAnimationParameters.takeDamage);
+            _animator.SetTrigger(PlayerAnimationParameters.TakeDamage);
         }
     }
 }

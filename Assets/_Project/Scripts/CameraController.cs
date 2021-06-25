@@ -51,7 +51,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void CamMovement(float lookX, float lookY)
+    private void CamMovement(float lookX, float lookY) //receive input data to rotate
     {
         float mouseX = lookX * _sensitivity * Time.deltaTime;
         float mouseY = lookY * -_sensitivity * Time.deltaTime;

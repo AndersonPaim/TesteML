@@ -65,7 +65,7 @@ public class Timer : MonoBehaviour
         GameManager.sInstance.InputListener.OnPause -= Pause;
     }
 
-    private void Pause()
+    private void Pause() //pause timer
     {
         if(_isPaused)
         {

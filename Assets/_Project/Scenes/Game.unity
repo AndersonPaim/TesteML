@@ -23929,7 +23929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00b574368cc30844fb2c39f51ce9a29c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sensitivity: 6
+  _sensitivity: 5
   _maxVerticalRot: 280
   _minVerticalRot: 80
   _player: {fileID: 1197203877}

@@ -72,7 +72,9 @@ public class ArcherEnemy : Enemy
 
     protected override void Patrol()
     { 
-        gameObject.transform.LookAt(_attackTarget.transform.position);
+        Vector3 target = new Vector3(_attackTarget.transform.position.x, transform.position.y, _attackTarget.transform.position.z);
+        gameObject.transform.LookAt(target);
+        
         _distance = Vector3.Distance(_attackTarget.transform.position, transform.position);
 
         if(_distance <=  _enemyBalancer.attackDistance && _canAttack)
@@ -114,7 +116,7 @@ public class ArcherEnemy : Enemy
             {
                 _pathAvailable = _navMeshAgent.CalculatePath(_closestWaypoint.position, _navMeshPath);
 
-                if(!_pathAvailable)
+                if(!_pathAvailable) //if waypoints is obstructed with another enemy finds another waypoint
                 {
                     FindWaypoint();
                 }
@@ -122,18 +124,18 @@ public class ArcherEnemy : Enemy
         }
     }
 
-    private void FindWaypoint()
+    private void FindWaypoint() 
     {
         float currentWaypointDistance;
         float closestWaypointDistance = 0;
 
-        for(int i = 0; i < _waypoints.Count; i++)
+        for(int i = 0; i < _waypoints.Count; i++) //Find an available waypoint in the waipoints list
         {
             currentWaypointDistance = Vector3.Distance(_waypoints[i].transform.position, transform.position);
 
             bool isPathAvailable = _navMeshAgent.CalculatePath(_waypoints[i].transform.position, _navMeshPath);
 
-            if(closestWaypointDistance == 0)
+            if(closestWaypointDistance == 0) //first waypoint tested
             {
                 if(isPathAvailable)
                 {
@@ -141,7 +143,7 @@ public class ArcherEnemy : Enemy
                     closestWaypointDistance = currentWaypointDistance;
                 }
             }
-            else if(currentWaypointDistance < closestWaypointDistance)
+            else if(currentWaypointDistance < closestWaypointDistance) //compare to others waypoints to find the closest path
             {   
                 if(isPathAvailable)
                 {

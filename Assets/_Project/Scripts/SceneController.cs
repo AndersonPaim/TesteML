@@ -37,13 +37,13 @@ public class SceneController : MonoBehaviour
         StartCoroutine(LoadASync(scene));
     }
     
-    private IEnumerator LoadASync(string scene)
+    private IEnumerator LoadASync(string scene) 
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
 
-        while(!operation.isDone)
+        while(!operation.isDone) //update loading screen progress while is loading
         {
-            float loadingProgress = Mathf.Clamp01(operation.progress / 0.9f);
+            float loadingProgress = Mathf.Clamp01(operation.progress / 0.9f); //convert progress to % numbers
             OnUpdateProgress?.Invoke(loadingProgress);
            
             yield return null;

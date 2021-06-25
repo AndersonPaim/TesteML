@@ -74,7 +74,7 @@ public class PlayerAudioController : MonoBehaviour
         AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.ArrowDamage], transform.position); 
     }
 
-    private void HealingAudio()
+    private void HealingAudio() //play when collect health potion drop
     {
         AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.Healing], transform.position); 
     }
