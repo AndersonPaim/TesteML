@@ -246,6 +246,12 @@ MonoBehaviour:
   _damage: 50
   _destroyDelay: 5
   _explosionParticle: {fileID: 1018666344420621044}
+  _soundEffect:
+    audioTag: 7
+    audioClip: {fileID: 8300000, guid: d31ad07772a41c44ab576a949ecbf2e2, type: 3}
+    audioMixer: {fileID: -6307883170702335351, guid: aa00000f011d68349b1588532e90dad6, type: 2}
+    volume: 3
+    is3D: 1
   _blastRadius: 3
 --- !u!1001 &3041776677533106143
 PrefabInstance:

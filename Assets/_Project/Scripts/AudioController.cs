@@ -6,7 +6,9 @@ using UnityEngine.Audio;
 
 public class AudioController : MonoBehaviour 
 {
-    [SerializeField] private AudioMixer _gameAudioMixer;
+    [SerializeField] private AudioMixer _gameAudioMixer; 
+    [SerializeField] private AudioMixer _finalAudioMixer; //audiomixer for the audios that going to be played after game ends
+
 
     public static AudioController sInstance;
 
@@ -27,55 +29,16 @@ public class AudioController : MonoBehaviour
     private void Start() 
     {
         Initialize();
+        SetupDelegates();
     }
 
-    private void Initialize()
+    private void OnDestroy() 
     {
-        _objectPooler = GameManager.sInstance.ObjectPooler;
-
-        SaveData data = SaveSystem.localData;
-
-        _gameAudioMixer.SetFloat(AudioMixerParameters.finalVolume, Mathf.Log10(data.soundfxVolume) * 20); 
-        _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, Mathf.Log10(data.soundfxVolume) * 20);
-        _gameAudioMixer.SetFloat(AudioMixerParameters.musicVolume, Mathf.Log10(data.musicVolume) * 20);
-    }
-
-    private void EffectsVolume(float volume)
-    {
-        _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, Mathf.Log10(volume) * 20);
-        _gameAudioMixer.SetFloat(AudioMixerParameters.finalVolume,  Mathf.Log10(volume) * 20);
-    }
-
-    private void PauseAudio(bool isPaused)
-    {
-        if (isPaused) //mute game on pause
-        {
-            _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, -80);
-            _gameAudioMixer.SetFloat(AudioMixerParameters.musicVolume, -80);
-        }
-        else //return volume to normal when unpause
-        {
-            SaveData data = SaveSystem.localData;
-            _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, data.soundfxVolume);
-            _gameAudioMixer.SetFloat(AudioMixerParameters.musicVolume, data.musicVolume);
-        }
-    }
-
-    private void SetupDelegates()
-    {
-        GameManager.sInstance.InGameMenus.OnPause += PauseAudio;
-        GameManager.sInstance.InGameSettings.OnSetEffectsVolume += EffectsVolume;
-    }
-
-    private void RemoveDelegates()
-    {
-        GameManager.sInstance.InGameMenus.OnPause -= PauseAudio;
-        GameManager.sInstance.InGameSettings.OnSetEffectsVolume -= EffectsVolume;
+        RemoveDelegates();
     }
 
     public void PlayAudio(SoundEffect soundEffect, Vector3 position)  //create a object with the audiosource to play multiples audios at the same time
     {
-      
         AudioSource audioSource;
 
         GameObject obj = _objectPooler.SpawnFromPool(ObjectsTag.AudioSource);
@@ -104,7 +67,6 @@ public class AudioController : MonoBehaviour
         }
     }
 
-
     public void PlayFootstepsAudio(SoundEffect soundEffect, Vector3 position, AudioSource audioSource)
     {
         audioSource.clip = soundEffect.audioClip;
@@ -119,5 +81,46 @@ public class AudioController : MonoBehaviour
     public void StopAudio(AudioSource audioSource)
     {
         audioSource.Stop();
+    }
+
+    private void Initialize()
+    {
+        _objectPooler = GameManager.sInstance.ObjectPooler;
+
+        SaveData data = SaveSystem.localData;
+
+        _finalAudioMixer.SetFloat(AudioMixerParameters.finalVolume, Mathf.Log10(data.soundfxVolume) * 20); 
+        _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, Mathf.Log10(data.soundfxVolume) * 20);
+        _gameAudioMixer.SetFloat(AudioMixerParameters.musicVolume, Mathf.Log10(data.musicVolume) * 20);
+    }
+
+    private void EffectsVolume(float volume)
+    {
+        _gameAudioMixer.SetFloat(AudioMixerParameters.effectsVolume, Mathf.Log10(volume) * 20);
+        _finalAudioMixer.SetFloat(AudioMixerParameters.finalVolume,  Mathf.Log10(volume) * 20);
+    }
+
+    private void PauseAudio(bool isPaused)
+    {
+        if (isPaused) //mute game on pause
+        {
+            _gameAudioMixer.SetFloat(AudioMixerParameters.masterVolume, -80);
+        }
+        else //return volume to normal when unpause
+        {
+            _gameAudioMixer.SetFloat(AudioMixerParameters.masterVolume, 0);
+        }
+    }
+
+    private void SetupDelegates()
+    {
+        GameManager.sInstance.InGameMenus.OnPause += PauseAudio;
+        GameManager.sInstance.InGameSettings.OnSetEffectsVolume += EffectsVolume;
+    }
+
+    private void RemoveDelegates()
+    {
+        GameManager.sInstance.InGameMenus.OnPause -= PauseAudio;
+        GameManager.sInstance.InGameSettings.OnSetEffectsVolume -= EffectsVolume;
     }
 }

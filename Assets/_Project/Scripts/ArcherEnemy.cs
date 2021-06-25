@@ -7,11 +7,10 @@ public class ArcherEnemy : Enemy
 {
     [SerializeField] private Transform _shootPosition;
 
-    [SerializeField] private float _shootForce; //TODO colocar scriptable diferente entre os inimigos
-
+    [SerializeField] private float _shootForce; 
     [SerializeField] private ObjectsTag _arrow;
     
-    private GameObject[] _waypoints;    
+    private List<Transform> _waypoints;    
 
     private NavMeshObstacle _navMeshObstacle;
 
@@ -64,9 +63,8 @@ public class ArcherEnemy : Enemy
     protected override void AwakeInitialize()
     {
         base.AwakeInitialize();
-
-        _waypoints = GameObject.FindGameObjectsWithTag("waypoints"); //TODO ARRUMAR !!!!!!!!!!!!! IMPORTANTE
         
+        _waypoints = GameManager.sInstance.waypoints;
         _navMeshPath = new NavMeshPath();
         _navMeshObstacle = GetComponent<NavMeshObstacle>();
     }
@@ -128,7 +126,7 @@ public class ArcherEnemy : Enemy
         float currentWaypointDistance;
         float closestWaypointDistance = 0;
 
-        for(int i = 0; i < _waypoints.Length; i++)
+        for(int i = 0; i < _waypoints.Count; i++)
         {
             currentWaypointDistance = Vector3.Distance(_waypoints[i].transform.position, transform.position);
 

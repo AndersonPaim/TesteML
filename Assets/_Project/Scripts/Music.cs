@@ -3,7 +3,7 @@ using UnityEngine;
 
 [System.Serializable]
 
-public class SoundEffect
+public class Music
 {
     public AudioTags audioTag;
 
@@ -12,6 +12,4 @@ public class SoundEffect
     public AudioMixerGroup audioMixer;
 
     public float volume;
-
-    public bool is3D;
 }

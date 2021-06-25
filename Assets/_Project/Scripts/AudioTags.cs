@@ -16,4 +16,7 @@ public enum AudioTags
     Death,
     CollectArrow,
     EnemyAttack,
+    BgMusic,
+    PlayerJump,
+    ArrowImpact,
 }

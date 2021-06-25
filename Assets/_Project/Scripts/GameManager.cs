@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject _player;
 
+    public List<Transform> waypoints;
+
     private void Awake()
     {
         if (sInstance != null)
@@ -47,7 +49,6 @@ public class GameManager : MonoBehaviour
             sInstance = this;
         }
         SetupDelegates();
-        SaveSystem.Load(); //TODO VER MELHOR ONDE COLOCAR
     }
 
     private void OnDestroy()

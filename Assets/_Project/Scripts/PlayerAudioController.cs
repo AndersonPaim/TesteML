@@ -12,7 +12,7 @@ public class PlayerAudioController : MonoBehaviour
 
     private Dictionary<AudioTags, SoundEffect> _soundEffects; 
 
-    private bool _isAttacking;
+    private bool _isJumping;
     private bool _isAiming;
 
     private void Start()
@@ -42,6 +42,7 @@ public class PlayerAudioController : MonoBehaviour
         GameManager.sInstance.PlayerController.OnPlayerDataUpdate += ReceivePlayerData;
         GameManager.sInstance.PlayerController.OnReceiveHealing += HealingAudio;
         GameManager.sInstance.PlayerController.OnPlayerDeath += DeathAudio;
+        ArrowCollectable.OnCollectArrow += CollectArrowAudio;
         GameManager.sInstance.OnFinish += WinAudio;
         EnemyArrow.OnArrowDamage += ArrowDamage;
     }
@@ -51,6 +52,7 @@ public class PlayerAudioController : MonoBehaviour
         GameManager.sInstance.PlayerController.OnPlayerDataUpdate -= ReceivePlayerData;
         GameManager.sInstance.PlayerController.OnReceiveHealing -= HealingAudio;
         GameManager.sInstance.PlayerController.OnPlayerDeath -= DeathAudio;
+        ArrowCollectable.OnCollectArrow -= CollectArrowAudio;
         GameManager.sInstance.OnFinish -= WinAudio;
         EnemyArrow.OnArrowDamage -= ArrowDamage;
     }
@@ -58,12 +60,13 @@ public class PlayerAudioController : MonoBehaviour
     private void ReceivePlayerData(PlayerData playerData)
     {
         MovementAudio(playerData.Movement, playerData.OnGround);
-       /* if (enemyData.isAttacking && !_isAttacking)
+        
+        if (playerData.Jump && !_isJumping)
         {
-            AttackSound();
+            JumpAudio();
         }
   
-        _isAttacking = enemyData.isAttacking;  //saving current data localy to avoid playing the same audio twice*/
+        _isJumping = playerData.Jump;  //saving current data localy to avoid playing the same audio twice
     }
 
     private void ArrowDamage() //player receive damage from an arrow
@@ -91,9 +94,14 @@ public class PlayerAudioController : MonoBehaviour
         AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.ArrowShoot], transform.position); 
     }
 
-    private void CollectArrowAudio()
+    private void CollectArrowAudio(ObjectsTag arrowType, float arrowAmount)
     {
-        //TODO
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.CollectArrow], transform.position); 
+    }
+
+    private void JumpAudio()
+    {
+        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.PlayerJump], transform.position); 
     }
 
     private void DeathAudio()

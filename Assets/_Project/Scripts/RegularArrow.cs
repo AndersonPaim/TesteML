@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class RegularArrow : Arrows
 {   
+    [SerializeField] private SoundEffect _impactAudio;
     private void OnEnable()
     {
         _collider.enabled = true;
         _rb.isKinematic = false;
         _rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
-    
+
     protected override void Initialize()
     {
         base.Initialize();
@@ -33,6 +34,7 @@ public class RegularArrow : Arrows
         else
         {
             StartCoroutine(DisableObject(_destroyDelay)); //disable object with delay when hit other things
+            AudioController.sInstance.PlayAudio(_impactAudio, transform.position);
         }
     }
 
