@@ -5,6 +5,8 @@ using UnityEngine;
 public class RegularArrow : Arrows
 {   
     [SerializeField] private SoundEffect _impactAudio;
+    [SerializeField] private SoundEffect _damageAudio;
+
     private void OnEnable()
     {
         _collider.enabled = true;
@@ -30,6 +32,7 @@ public class RegularArrow : Arrows
             HitParticle();
             Damage(damageable); 
             StartCoroutine(DisableObject(0)); //disable object instantly when hit an enemy
+            AudioController.sInstance.PlayAudio(_damageAudio, transform.position);
         }
         else
         {

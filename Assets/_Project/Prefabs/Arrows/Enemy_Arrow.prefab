@@ -244,3 +244,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 25
   _destroyDelay: 5
+  _impactAudio:
+    audioTag: 14
+    audioClip: {fileID: 8300000, guid: c29876ca39ddafa40aadfa0d6cfcd85f, type: 3}
+    audioMixer: {fileID: 6032540967588201981, guid: aa00000f011d68349b1588532e90dad6, type: 2}
+    volume: 1
+    is3D: 1
+  _damageAudio:
+    audioTag: 4
+    audioClip: {fileID: 8300000, guid: 40cd44e91a8eb4a46bcc13706efe8211, type: 3}
+    audioMixer: {fileID: 6032540967588201981, guid: aa00000f011d68349b1588532e90dad6, type: 2}
+    volume: 1
+    is3D: 1

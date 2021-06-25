@@ -44,7 +44,6 @@ public class PlayerAudioController : MonoBehaviour
         GameManager.sInstance.PlayerController.OnPlayerDeath += DeathAudio;
         ArrowCollectable.OnCollectArrow += CollectArrowAudio;
         GameManager.sInstance.OnFinish += WinAudio;
-        EnemyArrow.OnArrowDamage += ArrowDamage;
     }
 
     private void RemoveDelegates()
@@ -54,7 +53,6 @@ public class PlayerAudioController : MonoBehaviour
         GameManager.sInstance.PlayerController.OnPlayerDeath -= DeathAudio;
         ArrowCollectable.OnCollectArrow -= CollectArrowAudio;
         GameManager.sInstance.OnFinish -= WinAudio;
-        EnemyArrow.OnArrowDamage -= ArrowDamage;
     }
 
     private void ReceivePlayerData(PlayerData playerData)
@@ -67,11 +65,6 @@ public class PlayerAudioController : MonoBehaviour
         }
   
         _isJumping = playerData.Jump;  //saving current data localy to avoid playing the same audio twice
-    }
-
-    private void ArrowDamage() //player receive damage from an arrow
-    {
-        AudioController.sInstance.PlayAudio(_soundEffects[AudioTags.ArrowDamage], transform.position); 
     }
 
     private void HealingAudio() //play when collect health potion drop

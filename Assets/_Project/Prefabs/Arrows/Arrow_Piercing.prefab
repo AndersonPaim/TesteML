@@ -121,6 +121,12 @@ MonoBehaviour:
     audioMixer: {fileID: -6307883170702335351, guid: aa00000f011d68349b1588532e90dad6, type: 2}
     volume: 1
     is3D: 1
+  _damageAudio:
+    audioTag: 4
+    audioClip: {fileID: 8300000, guid: 40cd44e91a8eb4a46bcc13706efe8211, type: 3}
+    audioMixer: {fileID: -6307883170702335351, guid: aa00000f011d68349b1588532e90dad6, type: 2}
+    volume: 1
+    is3D: 1
 --- !u!96 &1419997723174135420
 TrailRenderer:
   serializedVersion: 2

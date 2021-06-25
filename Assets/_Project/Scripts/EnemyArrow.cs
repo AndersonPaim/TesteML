@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyArrow : Arrows
 {
-    public delegate void ArrowHitHandler();
-    public static ArrowHitHandler OnArrowDamage;
+    [SerializeField] private SoundEffect _impactAudio;
+    [SerializeField] private SoundEffect _damageAudio;
 
     private void OnEnable()
     {
@@ -29,11 +29,12 @@ public class EnemyArrow : Arrows
         if(damageable != null)
         {
             Damage(damageable); 
-            OnArrowDamage?.Invoke();
+            AudioController.sInstance.PlayAudio(_damageAudio, transform.position);
             StartCoroutine(DisableObject(0)); //disable object instantly when hit an enemy
         }
         else
         {
+            AudioController.sInstance.PlayAudio(_impactAudio, transform.position);
             StartCoroutine(DisableObject(_destroyDelay));
         }
     }
