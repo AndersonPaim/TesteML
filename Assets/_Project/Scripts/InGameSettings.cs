@@ -10,7 +10,7 @@ public class InGameSettings : MonoBehaviour
     public SetEffectsVolumeHandler OnSetEffectsVolume;
 
     public delegate void SetMusicVolumeHandler(float volume);
-    public SetMusicVolumeHandler OnSetMusicVolume;
+    public static SetMusicVolumeHandler OnSetMusicVolume;
 
     [SerializeField] private Slider _soundfxSlider;
     [SerializeField] private Slider _musicSlider;

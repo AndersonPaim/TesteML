@@ -10,7 +10,7 @@ public class Settings : MonoBehaviour
     public SetEffectsVolumeHandler OnSetEffectsVolume;
 
     public delegate void SetMusicVolumeHandler(float volume);
-    public SetMusicVolumeHandler OnSetMusicVolume;
+    public static SetMusicVolumeHandler OnSetMusicVolume;
 
     [SerializeField] private Slider _soundfxSlider;
     [SerializeField] private Slider _musicSlider;
@@ -19,7 +19,6 @@ public class Settings : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI _gameTimeText;
     [SerializeField] private TextMeshProUGUI _startCountdownText;
-
 
     [SerializeField] private float _maxGameTime;  //game time in minutes
     [SerializeField] private float _minGameTime;

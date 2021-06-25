@@ -11,8 +11,6 @@ public class MusicController : MonoBehaviour
 
     [SerializeField] private Music _bgMusic;
 
-    [SerializeField] private Settings _settings;
-
     private void Start()
     {
         Initialize();
@@ -32,12 +30,14 @@ public class MusicController : MonoBehaviour
 
     private void SetupDelegates()
     {
-        _settings.OnSetMusicVolume += SetMusicVolume;
+        InGameSettings.OnSetMusicVolume += SetMusicVolume;
+        Settings.OnSetMusicVolume += SetMusicVolume;
     }
 
     private void RemoveDelegates()
     {
-        _settings.OnSetMusicVolume -= SetMusicVolume;
+        InGameSettings.OnSetMusicVolume -= SetMusicVolume;
+        Settings.OnSetMusicVolume -= SetMusicVolume;
     }
 
     private void Initialize()
