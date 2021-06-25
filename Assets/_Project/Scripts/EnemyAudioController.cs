@@ -66,7 +66,6 @@ public class EnemyAudioController : AudioController
     
     private void AttackSound() //Play on enemies attack animation event
     {
-        Debug.Log("CHEGOU");
         PlayAudio(_attackAudio, _audioMixer, 0.7f, 1);
     }
 

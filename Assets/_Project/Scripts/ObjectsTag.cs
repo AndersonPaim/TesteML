@@ -16,4 +16,5 @@ public enum ObjectsTag
     ArcherEnemy,
     DamageText,
     AudioSource,
+    HitParticle,
 }

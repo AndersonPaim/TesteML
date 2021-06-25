@@ -71,7 +71,6 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-
     private GameObject AddToPool(ObjectsTag id) //add new object to the pool
     {
         GameObject newObject = _poolDictionary[id][0]; 

@@ -15,6 +15,8 @@ public class PlayerAudioController : AudioController
     [SerializeField] private AudioClip _arrowShootAudio;
     [SerializeField] private AudioClip _healingAudio;
     [SerializeField] private AudioClip _arrowDamageAudio;
+    [SerializeField] private AudioClip _collectArrowAudio;
+
 
     private bool _isAttacking;
     private bool _isAiming;
@@ -83,6 +85,11 @@ public class PlayerAudioController : AudioController
     private void ArrowShootAudio() //play on player shoot animation event
     {
         PlayAudio(_arrowShootAudio, _audioMixer, 0.7f, 0);
+    }
+
+    private void CollectArrowAudio()
+    {
+        PlayAudio(_collectArrowAudio, _audioMixer, 1, 0);
     }
 
     private void MovementAudio(Vector2 movement, bool isGrounded) //footsteps audio //TODO SOM DE CORRIDA

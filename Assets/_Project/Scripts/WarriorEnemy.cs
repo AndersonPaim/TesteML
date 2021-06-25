@@ -25,6 +25,7 @@ public class WarriorEnemy : Enemy
         _collider.enabled = true;
         _navMeshAgent.isStopped = false; 
     }
+
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
@@ -35,9 +36,9 @@ public class WarriorEnemy : Enemy
         }
     }
 
-    protected override void Initialize()
+    protected override void AwakeInitialize()
     {
-        base.Initialize();
+        base.AwakeInitialize();
     }
 
     protected override void Patrol()

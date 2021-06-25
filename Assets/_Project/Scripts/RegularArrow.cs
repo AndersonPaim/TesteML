@@ -23,6 +23,7 @@ public class RegularArrow : Arrows
 
         if(damageable != null)
         {
+            HitParticle();
             Damage(damageable); 
             StartCoroutine(DisableObject(0)); //disable object instantly when hit an enemy
         }
@@ -37,5 +38,10 @@ public class RegularArrow : Arrows
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
     }
-    
+
+    private void HitParticle()
+    {
+        GameObject obj = _objectPooler.SpawnFromPool(ObjectsTag.HitParticle);
+        obj.transform.position = transform.position;
+    }
 }

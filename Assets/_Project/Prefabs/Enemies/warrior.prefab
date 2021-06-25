@@ -191,8 +191,8 @@ MonoBehaviour:
   _footstepsAudioSource: {fileID: 2357427633697486546}
   _footstepsAudio: {fileID: 8300000, guid: bf346d5b1868e604fbcfd7b475193a53, type: 3}
   _attackAudio: {fileID: 8300000, guid: 4784b6b85ed996a4a96c36b2bb277a85, type: 3}
-  _hitAudio: {fileID: 8300000, guid: a574366a9b3c0d5408c1e0ef2a550266, type: 3}
   _damageAudio: {fileID: 8300000, guid: 40cd44e91a8eb4a46bcc13706efe8211, type: 3}
+  _hitAudio: {fileID: 8300000, guid: a574366a9b3c0d5408c1e0ef2a550266, type: 3}
   _audioMixer: {fileID: 6032540967588201981, guid: aa00000f011d68349b1588532e90dad6, type: 2}
 --- !u!82 &2357427633697486546
 AudioSource:

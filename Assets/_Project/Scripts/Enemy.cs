@@ -50,7 +50,12 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected void Awake()
     {
-        Initialize(); 
+        AwakeInitialize(); 
+    }
+
+    private void Start() 
+    {
+        StartInitialize();
     }
 
     protected virtual void Update()
@@ -88,16 +93,20 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         idamageable.TakeDamage(_enemyBalancer.damage);
     }
 
-    protected virtual void Initialize()
+    protected virtual void AwakeInitialize()
     {
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _collider = GetComponent<Collider>();
         _health = _enemyBalancer.health;
-        _objectPooler = GameManager.sInstance.ObjectPooler;
         _navMeshAgent.speed = _enemyBalancer.speed;
-        _attackTarget = GameManager.sInstance.Player;
         RandomSkin();
+    }
+
+    protected virtual void StartInitialize()
+    {
+        _objectPooler = GameManager.sInstance.ObjectPooler;
+        _attackTarget = GameManager.sInstance.Player;
     }
 
     protected virtual void CreateEnemyStruct()

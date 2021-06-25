@@ -6,5 +6,6 @@ public struct EnemyData
 {
     public bool Walking;
     public bool Attacking;
+    public bool TakingDamage;
     public bool HittedPlayer;
 }

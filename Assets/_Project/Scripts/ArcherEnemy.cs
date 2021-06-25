@@ -65,9 +65,9 @@ public class ArcherEnemy : Enemy
         }
     }
 
-    protected override void Initialize()
+    protected override void AwakeInitialize()
     {
-        base.Initialize();
+        base.AwakeInitialize();
 
         _waypoints = GameObject.FindGameObjectsWithTag("waypoints"); //TODO ARRUMAR !!!!!!!!!!!!! IMPORTANTE
         
@@ -95,7 +95,8 @@ public class ArcherEnemy : Enemy
     protected override void Death()  
     { 
         base.Death();
-        _navMeshAgent.isStopped = true;    //avoid archer to walk after death
+        Debug.Log(GetComponent<Rigidbody>().velocity);
+        //_navMeshAgent.isStopped = true;    //avoid archer to walk after death
         
         OnDeath?.Invoke(ObjectsTag.ArcherEnemy);
         _animator.SetTrigger(EnemyAnimationParameters.Death);
